@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports System.Web.Script.Serialization
+Imports System.IO
+Public Class Form1
 
     '=========定义公用变量=========
     Public circle, tms, ranges, memories, exe, makesure, checked, checked2 As Integer, temp2 As String
@@ -15,6 +17,9 @@
 
     '常量列表
     Public tp(10), TypeN, mdname(10), doex(10) As String, mxarea, tomode As Integer, extime(10), exrange(10) As Integer
+    '
+    Public Setting As Config
+    Public JsonWord As String
 
     '内部存储
 
@@ -121,10 +126,6 @@
     Public Sub CoreProgram()
         Dim datas, tmsreal As Integer, temp As String
         Dim selCell As DataGridViewCell
-
-        tmsreal = tms - 1
-        memories = 1 + memories
-        ProgressBar1.Value = 10
         If makesure = 0 Then
 CX8:
             If doextreme = False Then
@@ -135,6 +136,9 @@ CX8:
                 End If
             End If
         End If
+        tmsreal = tms - 1
+        memories = 1 + memories
+        ProgressBar1.Value = 10
         '随机数模式
         If dodata = False Then
             Dim repeat(6) As Int16
@@ -806,6 +810,7 @@ SX2:
                 Call Bla()
         End Select
         ulcheck = True
+        ToolStripLabel5.Enabled = False
     End Sub
 
     '更换背景
@@ -883,6 +888,7 @@ SX2:
         ulcheck = False
         Call Xs()
         ulcheck = True
+        ToolStripLabel5.Enabled = False
     End Sub
 
     '更换对话框
@@ -929,6 +935,7 @@ SX2:
         ulcheck = False
         Call Xs()
         ulcheck = True
+        ToolStripLabel5.Enabled = False
         Timer4.Enabled = True
     End Sub
 
@@ -1155,6 +1162,9 @@ SX2:
         Dim cir As Integer, et(19), TypeN As String
         def = False
         ComboBox1.Items.Clear()
+        Dim sw As New StreamReader("RMNewConfig.json")
+        JsonWord = sw.ReadToEnd
+        sw.Close()
         FileOpen(2, "RMConfig.ini", OpenMode.Input, OpenAccess.Read)
         EOF(2)
         et(0) = LineInput(2)
