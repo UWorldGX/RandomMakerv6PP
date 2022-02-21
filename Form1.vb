@@ -11,6 +11,7 @@
 
     '最大范围，单列
     Public Const readme As String = "这里可以显示对话框的预览效果."
+    Public Const ver As String = "6.0.0"
 
     '常量列表
     Public tp(10), TypeN, mdname(10), doex(10) As String, mxarea, tomode As Integer, extime(10), exrange(10) As Integer
@@ -120,15 +121,18 @@
     Public Sub CoreProgram()
         Dim datas, tmsreal As Integer, temp As String
         Dim selCell As DataGridViewCell
+
         tmsreal = tms - 1
         memories = 1 + memories
         ProgressBar1.Value = 10
         If makesure = 0 Then
 CX8:
-            If doextreme = True Then
-                MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & ComboBox1.Text & Chr(13) & Chr(10) & "抽取次数:" & Str(tms) & Chr(13) & Chr(10) & "警告!抽取后将无法重复,确定吗?", vbOKCancel + vbCritical, "确认对话框")
+            If doextreme = False Then
+                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & ComboBox1.Text & Chr(13) & Chr(10) & "抽取次数:" & Str(tms), vbOKCancel + vbQuestion, "确认对话框") <> MsgBoxResult.Ok Then Exit Sub
             Else
-                MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & ComboBox1.Text & Chr(13) & Chr(10) & "抽取次数:" & Str(tms), vbOKCancel + vbQuestion, "确认对话框")
+                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & ComboBox1.Text & Chr(13) & Chr(10) & "抽取次数:" & Str(tms) & Chr(13) & Chr(10) & "警告!抽取后将无法重复,确定吗?", vbOKCancel + vbCritical, "确认对话框") <> MsgBoxResult.Ok Then
+                    Exit Sub
+                End If
             End If
         End If
         '随机数模式
@@ -551,7 +555,6 @@ CX6:
         ComboBox1.SelectedIndex = mimo
         lock = False
     End Sub
-
 
 
     '载入配置

@@ -86,7 +86,6 @@ Partial Class Form1
         Me.Label13 = New System.Windows.Forms.Label()
         Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.ReDiveP = New System.Windows.Forms.LinkLabel()
-        Me.Button8 = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
@@ -821,7 +820,6 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.ComboBox4)
         Me.GroupBox2.Controls.Add(Me.ReDiveP)
-        Me.GroupBox2.Controls.Add(Me.Button8)
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.ComboBox3)
         Me.GroupBox2.Controls.Add(Me.ComboBox2)
@@ -864,20 +862,6 @@ Partial Class Form1
         Me.ReDiveP.TabIndex = 16
         Me.ReDiveP.TabStop = True
         Me.ReDiveP.Text = "还原本页默认设置" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Button8
-        '
-        Me.Button8.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button8.FlatAppearance.BorderSize = 0
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.ForeColor = System.Drawing.SystemColors.Window
-        Me.Button8.Location = New System.Drawing.Point(217, 145)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(80, 32)
-        Me.Button8.TabIndex = 15
-        Me.Button8.Text = "预览效果"
-        Me.Button8.UseVisualStyleBackColor = True
         '
         'Label10
         '
@@ -1087,10 +1071,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel2)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1184,7 +1168,6 @@ Partial Class Form1
     Friend WithEvents Label10 As Label
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents Timer4 As Timer
-    Friend WithEvents Button8 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents ReDiveP As LinkLabel
