@@ -193,7 +193,7 @@ CX7:
                 ProgressBar1.Value = 50
                 Randomize()
                 datas = Rnd() * exe
-                If datas > Area Or datas = 0 Then GoTo CX7
+                If datas > Area Then GoTo CX7
                 repeat(0) = datas
                 selCell = DataGridView1(1, datas)
                 temp = selCell.Value
@@ -207,7 +207,7 @@ CX7:
 CX6:
                         Randomize()
                         datas = Rnd() * exe
-                        If datas = 0 Then GoTo CX6
+                        'If datas = 0 Then GoTo CX6
                         selCell = DataGridView1(1, datas)
                         ProgressBar1.Value = 70
                         selCell = DataGridView1(2, datas)
@@ -335,7 +335,7 @@ CX6:
             CheckBox2.Checked = False
         End If
         Timer2.Enabled = True
-
+        Button7.Visible = False
     End Sub
 
     '初始化
@@ -413,6 +413,7 @@ CX6:
         If lock = True Then Exit Sub
         If dodata <> False Then
             dodata = False
+            CheckBox3.Enabled = False
             ComboBox1.Text = "自定义模式"
             ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
             TextBox1.Text = ComboBox1.Text & tomode - 3
@@ -423,8 +424,13 @@ CX6:
     '随机数开关
     Private Sub ItemSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ItemSwitch.CheckedChanged
         If lock = True Then Exit Sub
+        If mxarea < pool.Value Then
+            MsgBox("错误!数据库模式抽取范围不应超过" & mxarea & "!", vbOKOnly + vbCritical, "错误")
+            Exit Sub
+        End If
         If dodata <> True Then
             dodata = True
+            CheckBox3.Enabled = True
             ComboBox1.Text = "数据驱动模式Personailze"
             ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
             TextBox1.Text = ComboBox1.Text & tomode - 3
@@ -560,11 +566,21 @@ CX6:
         lock = False
     End Sub
 
+    Private Sub 更新记录ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 更新记录ToolStripMenuItem.Click
+        Form3.Show()
+    End Sub
+
+
+    '更新记录
 
     '载入配置
 
     Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
         If lock = True Then Exit Sub
+        If dodata = False Then
+            MsgBox("警告!该选项仅供数据库模式使用!", vbOKOnly + vbCritical, "提示")
+            Exit Sub
+        End If
         If dorepeat = False Then
             dorepeat = True
         Else
@@ -1162,9 +1178,9 @@ SX2:
         Dim cir As Integer, et(19), TypeN As String
         def = False
         ComboBox1.Items.Clear()
-        Dim sw As New StreamReader("RMNewConfig.json")
-        JsonWord = sw.ReadToEnd
-        sw.Close()
+        'Dim sw As New StreamReader("RMNewConfig.json")
+        'JsonWord = sw.ReadToEnd
+        'sw.Close()
         FileOpen(2, "RMConfig.ini", OpenMode.Input, OpenAccess.Read)
         EOF(2)
         et(0) = LineInput(2)
@@ -1177,6 +1193,14 @@ SX2:
         et(13) = LineInput(2)
         Timer2.Interval = LineInput(2)
         Timer4.Interval = Timer2.Interval
+        Select Case Timer2.Interval
+            Case Is = 10
+                ComboBox3.Text = "快"
+            Case Is = 25
+                ComboBox3.Text = "中"
+            Case Is = 100
+                ComboBox3.Text = "慢"
+        End Select
         et(14) = LineInput(2)
         ComboBox2.SelectedItem = LineInput(2)
         et(15) = LineInput(2)
@@ -1213,6 +1237,7 @@ SX2:
             pool.Maximum = 100
             pool.Value = ranges
             dodata = False
+            CheckBox3.Enabled = False
             NumberSwitch.Checked = True
             ItemSwitch.Checked = False
             ToolStripLabel4.Enabled = False
@@ -1221,6 +1246,7 @@ SX2:
             pool.Maximum = Area
             pool.Value = exe
             dodata = True
+            CheckBox3.Enabled = True
             NumberSwitch.Checked = False
             ItemSwitch.Checked = True
             ToolStripLabel4.Enabled = True

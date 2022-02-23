@@ -47,7 +47,7 @@ Partial Class Form2
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(205, 21)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "抽号发生器 .NET Ver. 5.1.0" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label1.Text = "抽号发生器 .NET Ver. 6.0.0" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label2
         '

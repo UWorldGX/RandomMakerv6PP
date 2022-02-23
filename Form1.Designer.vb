@@ -99,8 +99,6 @@ Partial Class Form1
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.StudentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New RandomMakerv6PP.Database1DataSet()
-        Me.SaveView = New System.Windows.Forms.Button()
-        Me.LoadView = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -179,11 +177,13 @@ Partial Class Form1
         '
         'FontDialog1
         '
-        Me.FontDialog1.Color = System.Drawing.Color.White
+        Me.FontDialog1.AllowVerticalFonts = False
         Me.FontDialog1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.FontDialog1.FontMustExist = True
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"英语/语文模式(正常)", "英语/语文模式(极限)", "数据驱动模式Normal", "数据驱动模式Premium"})
@@ -192,7 +192,6 @@ Partial Class Form1
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(163, 25)
         Me.ComboBox1.TabIndex = 13
-        Me.ComboBox1.Text = "选择模式"
         '
         'StatusStrip1
         '
@@ -674,6 +673,7 @@ Partial Class Form1
         'Debugselect
         '
         Me.Debugselect.BackColor = System.Drawing.Color.Transparent
+        Me.Debugselect.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.Debugselect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Debugselect.FlatAppearance.BorderSize = 0
         Me.Debugselect.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -845,13 +845,13 @@ Partial Class Form1
         '
         'ComboBox4
         '
+        Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox4.FormattingEnabled = True
         Me.ComboBox4.Items.AddRange(New Object() {"Pt(默认)", "HGSS", "DP", "E", "ORAS"})
         Me.ComboBox4.Location = New System.Drawing.Point(129, 103)
         Me.ComboBox4.Name = "ComboBox4"
         Me.ComboBox4.Size = New System.Drawing.Size(172, 28)
         Me.ComboBox4.TabIndex = 17
-        Me.ComboBox4.Text = "Pt(默认)"
         '
         'ReDiveP
         '
@@ -874,23 +874,23 @@ Partial Class Form1
         '
         'ComboBox3
         '
+        Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Items.AddRange(New Object() {"快", "中", "慢"})
         Me.ComboBox3.Location = New System.Drawing.Point(129, 145)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(63, 28)
         Me.ComboBox3.TabIndex = 13
-        Me.ComboBox3.Text = "中"
         '
         'ComboBox2
         '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Items.AddRange(New Object() {"天空邮件", "空间邮件", "彩嵌邮件", "青草邮件", "水蓝邮件", "暴雪邮件", "钢铁邮件", "砖块邮件", "初次邮件", "回复邮件", "喜爱邮件", "感谢邮件", "桥梁邮件W", "桥梁邮件C", "桥梁邮件V", "桥梁邮件H", "桥梁邮件S"})
         Me.ComboBox2.Location = New System.Drawing.Point(129, 64)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(172, 28)
         Me.ComboBox2.TabIndex = 12
-        Me.ComboBox2.Text = "天空邮件"
         '
         'Label8
         '
@@ -935,8 +935,6 @@ Partial Class Form1
         '
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
         Me.Panel4.Controls.Add(Me.DataGridView1)
-        Me.Panel4.Controls.Add(Me.SaveView)
-        Me.Panel4.Controls.Add(Me.LoadView)
         Me.Panel4.Controls.Add(Me.Label2)
         Me.Panel4.Location = New System.Drawing.Point(51, 29)
         Me.Panel4.Name = "Panel4"
@@ -982,38 +980,6 @@ Partial Class Form1
         '
         Me.Database1DataSet.DataSetName = "Database1DataSet"
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SaveView
-        '
-        Me.SaveView.BackColor = System.Drawing.Color.Transparent
-        Me.SaveView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.SaveView.FlatAppearance.BorderSize = 0
-        Me.SaveView.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SaveView.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.SaveView.ForeColor = System.Drawing.Color.White
-        Me.SaveView.Location = New System.Drawing.Point(124, 285)
-        Me.SaveView.Name = "SaveView"
-        Me.SaveView.Size = New System.Drawing.Size(80, 32)
-        Me.SaveView.TabIndex = 33
-        Me.SaveView.Text = "保存"
-        Me.SaveView.UseVisualStyleBackColor = False
-        Me.SaveView.Visible = False
-        '
-        'LoadView
-        '
-        Me.LoadView.BackColor = System.Drawing.Color.Transparent
-        Me.LoadView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.LoadView.FlatAppearance.BorderSize = 0
-        Me.LoadView.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.LoadView.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.LoadView.ForeColor = System.Drawing.Color.White
-        Me.LoadView.Location = New System.Drawing.Point(43, 285)
-        Me.LoadView.Name = "LoadView"
-        Me.LoadView.Size = New System.Drawing.Size(80, 32)
-        Me.LoadView.TabIndex = 32
-        Me.LoadView.Text = "载入"
-        Me.LoadView.UseVisualStyleBackColor = False
-        Me.LoadView.Visible = False
         '
         'Label2
         '
@@ -1071,10 +1037,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel4)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1180,8 +1146,6 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents LoadView As Button
-    Friend WithEvents SaveView As Button
     Friend WithEvents Label13 As Label
     Friend WithEvents ComboBox4 As ComboBox
     Friend WithEvents Label14 As Label

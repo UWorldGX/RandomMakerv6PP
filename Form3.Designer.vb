@@ -31,9 +31,9 @@ Partial Class Form3
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Location = New System.Drawing.Point(14, 14)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(154, 51)
+        Me.Label1.Size = New System.Drawing.Size(154, 68)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "v4.0 大幅度修复bug" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v5.0  正式版发布" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v5.1    修复了一些致命bug"
+        Me.Label1.Text = "v4.0 大幅度修复bug" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v5.0  正式版发布" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v5.1    修复了一些致命bug" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v6.0 预发布版"
         '
         'Form3
         '

@@ -17,6 +17,7 @@
         Timer3.Enabled = True
         Timer2.Enabled = False
         Label1.Text = "Now Loading.."
+        Form1.Select()
     End Sub
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
@@ -27,7 +28,6 @@
     End Sub
 
     Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
-        Label1.Text = "Done."
         Form1.Show()
         Me.Close()
     End Sub

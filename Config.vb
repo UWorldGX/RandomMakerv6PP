@@ -12,6 +12,7 @@ Public Class Config
     Public Ver As String
     Public TotalMode As Byte
     Public CurrentMode As Byte
+    Public MaximaArea As Byte
     Public BackGroundImage As String
     Public VoiceSpeed As Byte
     Public CreateTime As String

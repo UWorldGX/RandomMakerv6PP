@@ -31,7 +31,7 @@ Partial Class DebugForm
         'DebugOutput
         '
         Me.DebugOutput.BackColor = System.Drawing.Color.Transparent
-        Me.DebugOutput.BackgroundImage = My.Resources.Resources.bton1
+        Me.DebugOutput.BackgroundImage = CType(resources.GetObject("DebugOutput.BackgroundImage"), System.Drawing.Image)
         Me.DebugOutput.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.DebugOutput.FlatAppearance.BorderSize = 0
         Me.DebugOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -52,7 +52,7 @@ Partial Class DebugForm
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.BackgroundImage = My.Resources.Resources.bton1
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -69,7 +69,7 @@ Partial Class DebugForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = My.Resources.Resources.桥梁邮件Ｈ
+        Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｈ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(333, 159)
         Me.Controls.Add(Me.Button1)
