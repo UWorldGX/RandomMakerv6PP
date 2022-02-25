@@ -59,7 +59,7 @@ Public Class Form1
                 Label6.Text = Str(exe)
                 If ulcheck = True Then
                     ListBox1.Items.Clear()
-                    temp2 = "数据驱动模式已就绪.等待抽取."
+                    temp2 = "数据库模式已就绪.等待抽取."
                     ListBox1.Items.Add(mdname(xr) & "就绪.")
                 End If
                 ToolStripLabel4.Enabled = True
@@ -192,7 +192,7 @@ CX2:
 CX7:
                 ProgressBar1.Value = 50
                 Randomize()
-                datas = Rnd() * exe
+                datas = Rnd() * (exe - 1)
                 If datas > Area Then GoTo CX7
                 repeat(0) = datas
                 selCell = DataGridView1(1, datas)
@@ -206,7 +206,7 @@ CX7:
                     For circle = 1 To tmsreal Step 1
 CX6:
                         Randomize()
-                        datas = Rnd() * exe
+                        datas = Rnd() * (exe - 1)
                         'If datas = 0 Then GoTo CX6
                         selCell = DataGridView1(1, datas)
                         ProgressBar1.Value = 70
@@ -269,7 +269,7 @@ CX6:
             For temp = 1 To memories
                 WriteLine(2, ListBox1.Items.Item(temp))
             Next
-            WriteLine(2, "一共抽取了" & ListBox1.Items.Count - 1 & "次!")
+            WriteLine(2, "一共抽取了" & ListBox1.Items.Count - 1 & "次")
             WriteLine(2, "使用的模式:" & ComboBox1.SelectedItem)
             FileClose(2)
         Else
@@ -320,7 +320,7 @@ CX6:
                 Label7.Text = Str(tms)
                 NumberSwitch.Checked = False
                 ItemSwitch.Checked = True
-                temp2 = "数据驱动模式已初始化完毕."
+                temp2 = "数据库模式已初始化完毕."
                 ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
         End Select
         If doex(xr) = "#TRUE#" Then
@@ -431,14 +431,14 @@ CX6:
         If dodata <> True Then
             dodata = True
             CheckBox3.Enabled = True
-            ComboBox1.Text = "数据驱动模式Personailze"
+            ComboBox1.Text = "数据库模式Personailze"
             ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
             TextBox1.Text = ComboBox1.Text & tomode - 3
             ToolStripLabel4.Enabled = True
         End If
     End Sub
 
-    '数据驱动模式开关
+    '数据库模式开关
 
     Private Sub Button5_Click_1(sender As Object, e As EventArgs) Handles Button5.Click
         lock = True
@@ -449,7 +449,7 @@ CX6:
             Static temp As Integer
             Dim temp3 As Boolean
             temp = ComboBox1.Items.Count
-            mymodename = InputBox("为该配置命名?", "保存确认")
+            mymodename = SaveFileDialog1.FileName
             FileOpen(2, SaveFileDialog1.FileName, OpenMode.Output, OpenAccess.Default)
             WriteLine(2, frontline)
             WriteLine(2, "TypeName:")
@@ -728,8 +728,8 @@ SX2:
             Label9.Image = My.Resources.PtDialog
             mdname(0) = "随机数模式(正常)"
             mdname(1) = "随机数模式(极限)"
-            mdname(2) = "数据驱动模式Normal"
-            mdname(3) = "数据驱动模式Premium"
+            mdname(2) = "数据库模式Normal"
+            mdname(3) = "数据库模式Premium"
             For cir = 4 To 10
                 mdname(cir) = Nothing
                 tp(cir) = Nothing
@@ -740,8 +740,8 @@ SX2:
             ComboBox1.Items.Clear()
             ComboBox1.Items.Add("随机数模式(正常)")
             ComboBox1.Items.Add("随机数模式(极限)")
-            ComboBox1.Items.Add("数据驱动模式Normal")
-            ComboBox1.Items.Add("数据驱动模式Premium")
+            ComboBox1.Items.Add("数据库模式Normal")
+            ComboBox1.Items.Add("数据库模式Premium")
             ComboBox1.SelectedIndex = 0
             ListBox1.Items.Clear()
             ListBox1.Items.Add("准备就绪.")

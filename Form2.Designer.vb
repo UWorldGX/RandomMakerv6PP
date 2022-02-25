@@ -31,7 +31,7 @@ Partial Class Form2
         '
         Me.Button1.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.Button1.Image = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button1.Location = New System.Drawing.Point(212, 102)
+        Me.Button1.Location = New System.Drawing.Point(235, 183)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(68, 33)
         Me.Button1.TabIndex = 0
@@ -54,12 +54,12 @@ Partial Class Form2
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label2.Location = New System.Drawing.Point(27, 82)
+        Me.Label2.Location = New System.Drawing.Point(27, 62)
         Me.Label2.MaximumSize = New System.Drawing.Size(160, 200)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(157, 53)
+        Me.Label2.Size = New System.Drawing.Size(157, 104)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "基于Visual Basic .NET技术构建" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "具有多种实用功能"
+        Me.Label2.Text = "基于Visual Basic .NET技术构建" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "具有多种实用功能" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "制造者:胡延涛" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "调试:胡延涛" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "特别感谢:陈远洋"
         '
         'Form2
         '
@@ -67,7 +67,7 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.钢铁邮件
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(292, 147)
+        Me.ClientSize = New System.Drawing.Size(339, 228)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)

@@ -3,6 +3,7 @@
     Private Sub SplashScreen1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Timer1.Enabled = True
         Form1.Hide()
+        Form1.Select()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -17,7 +18,6 @@
         Timer3.Enabled = True
         Timer2.Enabled = False
         Label1.Text = "Now Loading.."
-        Form1.Select()
     End Sub
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
