@@ -503,67 +503,70 @@ CX6:
     '保存配置
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        OpenFileDialog1.Filter = "抽号发生器配置文件|*.ini"
-        OpenFileDialog1.ShowReadOnly = True
-        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
-            lock = True
-            Dim cir As Integer, et(19) As String
-            ComboBox1.Items.Clear()
-
-            Timer2.Interval = LineInput(2)
-            Timer4.Interval = Timer2.Interval
-            et(14) = LineInput(2)
-            ComboBox2.SelectedItem = LineInput(2)
-            et(15) = LineInput(2)
-            ComboBox4.SelectedItem = LineInput(2)
-            For cir = 0 To tomode - 1 Step 1
-                EOF(2)
-                et(4) = LineInput(2)
-                et(5) = LineInput(2)
-                mdname(cir) = LineInput(2)
-                et(6) = LineInput(2)
-                extime(cir) = LineInput(2)
-                et(7) = LineInput(2)
-                exrange(cir) = LineInput(2)
-                et(8) = LineInput(2)
-                tp(cir) = LineInput(2)
-                et(9) = LineInput(2)
-                doex(cir) = LineInput(2)
-                ComboBox1.Items.Add(mdname(cir))
-                EOF(2)
-            Next
-            et(9) = LineInput(2)
-            et(9) = LineInput(2)
-            mimo = Val(LineInput(2))
-            FileClose(2)
-            Area = mxarea
-            tms = Val(extime(mimo))
-            If tp(mimo) = "#FALSE#" Then
-                ranges = Val(exrange(mimo))
-                pool.Maximum = 100
-                pool.Value = ranges
-            Else
-                exe = Val(exrange(mimo))
-                pool.Maximum = Area
-                pool.Value = exe
-            End If
-            NumericUpDown1.Value = tms
-            Label6.Text = exrange(mimo)
-            Label7.Text = Str(NumericUpDown1.Value)
-            If doex(mimo) = "#FALSE#" Then
-                doextreme = False
-            Else
-                doextreme = True
-            End If
-            ListBox1.Items.Clear()
-            ListBox1.Items.Add(mdname(mimo) & "就绪")
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-            Form5.Show()
-        Else
-            Exit Sub
-        End If
-        ComboBox1.SelectedIndex = mimo
-        lock = False
+        MsgBox("开发中,暂时不可用", vbOKOnly, "提示")
+        'OpenFileDialog1.Filter = "抽号发生器配置文件|*.ini"
+        'OpenFileDialog1.ShowReadOnly = True
+        'If OpenFileDialog1.ShowDialog = DialogResult.OK Then
+        '    lock = True
+        '    Dim cir As Integer, et(19) As String
+        '    ComboBox1.Items.Clear()
+        '    FileOpen(2, OpenFileDialog1.FileName, OpenMode.Input, OpenAccess.Read)
+        '    EOF(2)
+        '    et(16) = LineInput(2)
+        '    Timer2.Interval = LineInput(2)
+        '    Timer4.Interval = Timer2.Interval
+        '    et(14) = LineInput(2)
+        '    ComboBox2.SelectedItem = LineInput(2)
+        '    et(15) = LineInput(2)
+        '    ComboBox4.SelectedItem = LineInput(2)
+        '    For cir = 0 To tomode - 1 Step 1
+        '        EOF(2)
+        '        et(4) = LineInput(2)
+        '        et(5) = LineInput(2)
+        '        mdname(cir) = LineInput(2)
+        '        et(6) = LineInput(2)
+        '        extime(cir) = LineInput(2)
+        '        et(7) = LineInput(2)
+        '        exrange(cir) = LineInput(2)
+        '        et(8) = LineInput(2)
+        '        tp(cir) = LineInput(2)
+        '        et(9) = LineInput(2)
+        '        doex(cir) = LineInput(2)
+        '        ComboBox1.Items.Add(mdname(cir))
+        '        EOF(2)
+        '    Next
+        '    et(9) = LineInput(2)
+        '    et(9) = LineInput(2)
+        '    mimo = Val(LineInput(2))
+        '    FileClose(2)
+        '    Area = mxarea
+        '    tms = Val(extime(mimo))
+        '    If tp(mimo) = "#FALSE#" Then
+        '        ranges = Val(exrange(mimo))
+        '        pool.Maximum = 100
+        '        pool.Value = ranges
+        '    Else
+        '        exe = Val(exrange(mimo))
+        '        pool.Maximum = Area
+        '        pool.Value = exe
+        '    End If
+        '    NumericUpDown1.Value = tms
+        '    Label6.Text = exrange(mimo)
+        '    Label7.Text = Str(NumericUpDown1.Value)
+        '    If doex(mimo) = "#FALSE#" Then
+        '        doextreme = False
+        '    Else
+        '        doextreme = True
+        '    End If
+        '    ListBox1.Items.Clear()
+        '    ListBox1.Items.Add(mdname(mimo) & "就绪")
+        '    ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
+        '    Form5.Show()
+        'Else
+        '    Exit Sub
+        'End If
+        'ComboBox1.SelectedIndex = mimo
+        'lock = False
     End Sub
 
     Private Sub 更新记录ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 更新记录ToolStripMenuItem.Click
