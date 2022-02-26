@@ -16,5 +16,5 @@ Public Class Config
     Public BackGroundImage As String
     Public VoiceSpeed As Byte
     Public CreateTime As String
-    Public ModeCollection() As Mode
+    Public ModeCollections() As Mode
 End Class
