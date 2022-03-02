@@ -26,6 +26,7 @@ Partial Class DebugForm
         Me.DebugOutput = New System.Windows.Forms.Button()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'DebugOutput
@@ -36,7 +37,7 @@ Partial Class DebugForm
         Me.DebugOutput.FlatAppearance.BorderSize = 0
         Me.DebugOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DebugOutput.ForeColor = System.Drawing.Color.White
-        Me.DebugOutput.Location = New System.Drawing.Point(204, 81)
+        Me.DebugOutput.Location = New System.Drawing.Point(151, 163)
         Me.DebugOutput.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.DebugOutput.Name = "DebugOutput"
         Me.DebugOutput.Size = New System.Drawing.Size(93, 45)
@@ -57,7 +58,7 @@ Partial Class DebugForm
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(27, 81)
+        Me.Button1.Location = New System.Drawing.Point(25, 163)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 45)
@@ -65,13 +66,21 @@ Partial Class DebugForm
         Me.Button1.Text = "输出10000次"
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(242, 47)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(133, 23)
+        Me.TextBox1.TabIndex = 2
+        '
         'DebugForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｈ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(333, 159)
+        Me.ClientSize = New System.Drawing.Size(432, 221)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DebugOutput)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -81,10 +90,12 @@ Partial Class DebugForm
         Me.Name = "DebugForm"
         Me.Text = "DebugForm"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents DebugOutput As Button
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents Button1 As Button
+    Friend WithEvents TextBox1 As TextBox
 End Class

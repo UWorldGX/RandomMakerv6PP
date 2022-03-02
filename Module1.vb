@@ -10,14 +10,14 @@ CX1:
             Randomize()
             datas = Rnd() * Form1.ranges
             If datas = 0 Then GoTo CX1
-            Form1.temp2 = "抽出数值:" & Str(datas)
+            Form1.DialogText = "抽出数值:" & Str(datas)
             temp = Str(datas)
             For circle = 1 To tmsreal
 CX2:
                 Randomize()
                 datas = Rnd() * Form1.ranges
                 If datas = 0 Then GoTo CX2
-                Form1.temp2 = Form1.temp2 & "/" & Str(datas)
+                Form1.DialogText = Form1.DialogText & "/" & Str(datas)
                 temp = temp & "/" & Str(datas)
             Next
             Form1.ListBox1.Items.Add(temp)
@@ -40,25 +40,25 @@ CX2:
                     trigger += 1
                 Loop Until selCell.Value = False
                 '监测范围内是否有可用项
-                For trigger = 1 To Form1.exe
+                For trigger = 1 To Form1.dataRange
                     selCell = Form1.DataGridView1(2, trigger)
                     If selCell.Value = True Then errortimes += 1
                 Next
 CX7:
-                If Form1.exe - errortimes <= tmsreal Then GoTo CX7
+                If Form1.dataRange - errortimes <= tmsreal Then GoTo CX7
                 Randomize()
-                datas = Rnd() * Form1.exe
+                datas = Rnd() * Form1.dataRange
                 If datas > Form1.Area Then GoTo CX7
                 repeat(0) = datas
                 selCell = Form1.DataGridView1(1, datas)
                 temp = selCell.Value
                 selCell = Form1.DataGridView1(2, datas)
                 If selCell.Value = False Then
-                    Form1.temp2 = "抽取对象为:" & temp
+                    Form1.DialogText = "抽取对象为:" & temp
                     For circle = 1 To tmsreal Step 1
 CX6:
                         Randomize()
-                        datas = Rnd() * Form1.exe
+                        datas = Rnd() * Form1.dataRange
                         If datas = 0 Then GoTo CX6
                         selCell = Form1.DataGridView1(1, datas)
                         check = temp = selCell.Value
@@ -74,7 +74,7 @@ CX6:
                             GoTo CX6
                         End If
                         selCell = Form1.DataGridView1(1, datas)
-                        Form1.temp2 += "/" & selCell.Value
+                        Form1.DialogText += "/" & selCell.Value
                         temp = temp & "/" & selCell.Value
                     Next
                     Form1.ListBox1.Items.Add(temp)
@@ -93,14 +93,14 @@ CX6:
     End Sub
     '调试核心程序
     Public Sub AutoSaveRecord()
-        Dim temp2 As Integer, dt As DateTime
+        Dim DialogText As Integer, dt As DateTime
         Form1.SaveFileDialog2.FileName = "抽取记录" & dt.Year & "." & dt.Month & "." & dt.Day & "." & dt.Hour & "/" & dt.Minute & "/" & dt.Second
         If Form1.SaveFileDialog2.ShowDialog = DialogResult.OK Then
             dt = Date.Now
             FileOpen(2, Form1.SaveFileDialog2.FileName, OpenMode.Output, OpenAccess.Default)
             WriteLine(2, "抽取时间" & dt.Year & dt.Month & dt.Day)
-            For temp2 = 1 To Form1.ListBox1.Items.Count - 1
-                WriteLine(2, Form1.ListBox1.Items.Item(temp2))
+            For DialogText = 1 To Form1.ListBox1.Items.Count - 1
+                WriteLine(2, Form1.ListBox1.Items.Item(DialogText))
             Next
             WriteLine(2, "一共抽取了" & Form1.ListBox1.Items.Count - 1 & "次!")
             WriteLine(2, "使用的模式:" & Form1.ComboBox1.SelectedItem)
@@ -109,5 +109,45 @@ CX6:
         Else
             Exit Sub
         End If
+    End Sub
+    Public Sub Initialization()
+        Form1.Setting.Name = "Default"
+        Form1.Setting.TotalMode = 4
+        Form1.Setting.CurrentMode = 0
+        Form1.Setting.MaxArea = 69
+        Form1.Setting.Voicespeed = 25
+        Form1.Setting.Version = "6.0.0"
+        Form1.Setting.BackGroundImage = "天空邮件"
+        Form1.Setting.DialogImage = "Pt(默认)"
+        Form1.Setting.CreateTime = "2022.03.02"
+        ReDim Form1.Setting.ModeCollections(3)
+        Form1.Setting.ModeCollections(0).Name = "随机数模式(正常)"
+        Form1.Setting.ModeCollections(0).Range = 16
+        Form1.Setting.ModeCollections(0).Times = 1
+        Form1.Setting.ModeCollections(0).Type = False
+        Form1.Setting.ModeCollections(0).DoExtreme = False
+        Form1.Setting.ModeCollections(0).DoRepeat = False
+        '
+        Form1.Setting.ModeCollections(1).Name = "随机数模式(极限)"
+        Form1.Setting.ModeCollections(1).Range = 16
+        Form1.Setting.ModeCollections(1).Times = 1
+        Form1.Setting.ModeCollections(1).Type = False
+        Form1.Setting.ModeCollections(1).DoExtreme = True
+        Form1.Setting.ModeCollections(1).DoRepeat = False
+        '
+        Form1.Setting.ModeCollections(2).Name = "数据库模式Normal"
+        Form1.Setting.ModeCollections(2).Range = 69
+        Form1.Setting.ModeCollections(2).Times = 1
+        Form1.Setting.ModeCollections(2).Type = True
+        Form1.Setting.ModeCollections(2).DoExtreme = False
+        Form1.Setting.ModeCollections(2).DoRepeat = False
+        '
+        Form1.Setting.ModeCollections(3).Name = "数据库模式Premium"
+        Form1.Setting.ModeCollections(3).Range = 36
+        Form1.Setting.ModeCollections(3).Times = 1
+        Form1.Setting.ModeCollections(3).Type = True
+        Form1.Setting.ModeCollections(3).DoExtreme = False
+        Form1.Setting.ModeCollections(3).DoRepeat = False
+
     End Sub
 End Module
