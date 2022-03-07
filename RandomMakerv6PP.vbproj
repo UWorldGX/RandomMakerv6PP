@@ -120,6 +120,11 @@
     <Compile Include="Database1DataSet1.vb">
       <DependentUpon>Database1DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Database1DataSet11.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1DataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Debugform.Designer.vb">
       <DependentUpon>Debugform.vb</DependentUpon>
     </Compile>
@@ -174,6 +179,12 @@
     <Compile Include="SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UniversalDialog1.Designer.vb">
+      <DependentUpon>UniversalDialog1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UniversalDialog1.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DebugForm.resx">
@@ -200,6 +211,9 @@
     <EmbeddedResource Include="SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UniversalDialog1.resx">
+      <DependentUpon>UniversalDialog1.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Database1DataSet1.xsc">
@@ -212,6 +226,17 @@
     </None>
     <None Include="Database1DataSet1.xss">
       <DependentUpon>Database1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet11.xsc">
+      <DependentUpon>Database1DataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1DataSet11.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1DataSet11.xss">
+      <DependentUpon>Database1DataSet11.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

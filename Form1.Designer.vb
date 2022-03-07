@@ -63,12 +63,10 @@ Partial Class Form1
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Saver = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -99,9 +97,11 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.StudentsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Database1DataSet1 = New RandomMakerv6PP.Database1DataSet1()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.StudentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New RandomMakerv6PP.Database1DataSet()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -109,6 +109,7 @@ Partial Class Form1
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.StudentsTableAdapter = New RandomMakerv6PP.Database1DataSetTableAdapters.StudentsTableAdapter()
+        Me.StudentsTableAdapter1 = New RandomMakerv6PP.Database1DataSet1TableAdapters.StudentsTableAdapter()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -124,6 +125,8 @@ Partial Class Form1
         Me.GroupBox2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StudentsBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StudentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -551,12 +554,10 @@ Partial Class Form1
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.Button4)
         Me.Panel2.Controls.Add(Me.Saver)
         Me.Panel2.Controls.Add(Me.TextBox1)
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.LinkLabel2)
-        Me.Panel2.Controls.Add(Me.LinkLabel1)
         Me.Panel2.Controls.Add(Me.Button6)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Controls.Add(Me.GroupBox3)
@@ -566,22 +567,6 @@ Partial Class Form1
         Me.Panel2.Size = New System.Drawing.Size(498, 355)
         Me.Panel2.TabIndex = 22
         Me.Panel2.Visible = False
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.Transparent
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Location = New System.Drawing.Point(94, 257)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(118, 32)
-        Me.Button4.TabIndex = 32
-        Me.Button4.Text = "编辑已有模式......"
-        Me.Button4.UseVisualStyleBackColor = False
-        Me.Button4.Visible = False
         '
         'Saver
         '
@@ -622,22 +607,12 @@ Partial Class Form1
         'LinkLabel2
         '
         Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(259, 290)
+        Me.LinkLabel2.Location = New System.Drawing.Point(342, 303)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(129, 20)
         Me.LinkLabel2.TabIndex = 28
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "还原全部默认设置" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(109, 289)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(129, 20)
-        Me.LinkLabel1.TabIndex = 27
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "还原本页默认设置" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Button6
         '
@@ -974,7 +949,7 @@ Partial Class Form1
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewCheckBoxColumn1})
-        Me.DataGridView1.DataSource = Me.StudentsBindingSource
+        Me.DataGridView1.DataSource = Me.StudentsBindingSource1
         Me.DataGridView1.Location = New System.Drawing.Point(81, 8)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
@@ -999,15 +974,15 @@ Partial Class Form1
         Me.DataGridViewCheckBoxColumn1.HeaderText = "IsChecked"
         Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
         '
-        'StudentsBindingSource
+        'StudentsBindingSource1
         '
-        Me.StudentsBindingSource.DataMember = "Students"
-        Me.StudentsBindingSource.DataSource = Me.Database1DataSet
+        Me.StudentsBindingSource1.DataMember = "Students"
+        Me.StudentsBindingSource1.DataSource = Me.Database1DataSet1
         '
-        'Database1DataSet
+        'Database1DataSet1
         '
-        Me.Database1DataSet.DataSetName = "Database1DataSet"
-        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Database1DataSet1.DataSetName = "Database1DataSet1"
+        Me.Database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label2
         '
@@ -1019,6 +994,16 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(287, 19)
         Me.Label2.TabIndex = 22
         Me.Label2.Text = "提示:选中某个对象以在实际抽取中忽略它."
+        '
+        'StudentsBindingSource
+        '
+        Me.StudentsBindingSource.DataMember = "Students"
+        Me.StudentsBindingSource.DataSource = Me.Database1DataSet
+        '
+        'Database1DataSet
+        '
+        Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'SaveFileDialog1
         '
@@ -1058,6 +1043,10 @@ Partial Class Form1
         '
         Me.StudentsTableAdapter.ClearBeforeFill = True
         '
+        'StudentsTableAdapter1
+        '
+        Me.StudentsTableAdapter1.ClearBeforeFill = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1068,10 +1057,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel4)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1105,6 +1094,8 @@ Partial Class Form1
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StudentsBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StudentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1169,10 +1160,8 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents ReDiveP As LinkLabel
     Friend WithEvents LinkLabel2 As LinkLabel
-    Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents pool As NumericUpDown
     Friend WithEvents Label11 As Label
-    Friend WithEvents Button4 As Button
     Friend WithEvents Saver As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label12 As Label
@@ -1199,4 +1188,7 @@ Partial Class Form1
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Button8 As Button
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Database1DataSet1 As Database1DataSet1
+    Friend WithEvents StudentsBindingSource1 As BindingSource
+    Friend WithEvents StudentsTableAdapter1 As Database1DataSet1TableAdapters.StudentsTableAdapter
 End Class

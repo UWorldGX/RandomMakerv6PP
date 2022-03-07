@@ -19,10 +19,11 @@ Public Class Form1
     Public Const ver As String = "6.0.0"
     Public Const fast As Integer = 10, medium As Integer = 25, slow As Integer = 100
     '常量列表
-    Public tp(10), TypeN, mdname(10), doex(10) As String, mxarea, tomode As Integer, extime(10), exrange(10) As Integer
-    '
-    Public Setting As New Configs
 
+    Public Setting As New Configs
+    '核心参数
+    Public DoReadOnly As Boolean
+    '控制对话框是否为单按钮
     Public JsonWord As String
     Public reader As New JavaScriptSerializer
 
@@ -257,13 +258,22 @@ CX6:
 
     '核心程序
 
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If lock = True Then Exit Sub
+        If CheckBox1.Checked = True Then
+            makesure = 1
+        Else
+            makesure = 0
+        End If
+    End Sub
 
     '确认对话框控制
 
     Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
-        Dim dt As DateTime
-        dt = Date.Now
-        SaveFileDialog2.FileName = "抽取记录" & dt.Year & dt.Month & dt.Day
+        Dim dts As DateTime
+        dts = Now()
+        Dim dtstring As String = Timeformat(dts)
+        SaveFileDialog2.FileName = "抽取记录" & dts
         If SaveFileDialog2.ShowDialog = DialogResult.OK Then
             Dim temp As Integer
             FileOpen(2, SaveFileDialog2.FileName, OpenMode.Output, OpenAccess.Default)
@@ -274,6 +284,9 @@ CX6:
             WriteLine(2, "一共抽取了" & ListBox1.Items.Count - 1 & "次")
             WriteLine(2, "使用的模式:" & Setting.ModeCollections(Setting.CurrentMode).Name)
             FileClose(2)
+            DoReadOnly = False
+            UniversalDialog1.Label1.Text = "抽取记录保存成功！"
+            UniversalDialog1.ShowDialog()
         Else
             Exit Sub
         End If
@@ -380,7 +393,7 @@ CX6:
             TimesDisplay.Text = Str(NumericUpDown1.Value)
             ComboBox1.Text = "自定义模式"
             ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-            TextBox1.Text = ComboBox1.Text & tomode - 3
+            TextBox1.Text = "自定义模式"
         Else
             pool.Maximum = Setting.MaxArea
             dataRange = pool.Value
@@ -388,7 +401,7 @@ CX6:
             TimesDisplay.Text = Str(NumericUpDown1.Value)
             ComboBox1.Text = "数据驱动模式Personaize"
             ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-            TextBox1.Text = ComboBox1.Text & tomode - 3
+            TextBox1.Text = "自定义模式(数据库)"
         End If
     End Sub
 
@@ -427,7 +440,6 @@ CX6:
         If lock = True Then Exit Sub
         If Setting.MaxArea < pool.Value Then
             MsgBox("错误!数据库模式抽取范围不应超过" & Setting.MaxArea & "!", vbOKOnly + vbCritical, "错误")
-            ItemSwitch.Checked = False
             Exit Sub
         End If
         If dodata <> True Then
@@ -454,64 +466,10 @@ CX6:
             sw.Write(JsonWord)
             sw.Close()
             fs.Close()
-            MsgBox("保存成功", vbOKOnly)
+            UniversalDialog1.Label1.Text = "用户配置保存成功！"
+            DoReadOnly = True
+            UniversalDialog1.ShowDialog()
         End If
-
-        'Const frontline As String = "=====The Configuration Of RM ver5.x.x====="
-        'If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-        '    SaveFileDialog1.Filter = "抽号发生器配置文件|*.ini"
-        '    Dim et(15) As String, mymodename As String, DialogText, ex(3) As Integer
-        '    Static temp As Integer
-        '    Dim temp3 As Boolean
-        '    temp = ComboBox1.Items.Count
-        '    mymodename = SaveFileDialog1.FileName
-        '    FileOpen(2, SaveFileDialog1.FileName, OpenMode.Output, OpenAccess.Default)
-        '    WriteLine(2, frontline)
-        '    WriteLine(2, "TypeName:")
-        '    PrintLine(2, mymodename)
-        '    WriteLine(2, "MaximaArea")
-        '    WriteLine(2, Area)
-        '    WriteLine(2, "totalmode")
-        '    WriteLine(2, tomode)
-        '    WriteLine(2, "Speakers:")
-        '    WriteLine(2, Timer2.Interval)
-        '    WriteLine(2, "BackgroundImage:")
-        '    PrintLine(2, ComboBox2.SelectedItem)
-        '    WriteLine(2, "DialogImage:")
-        '    PrintLine(2, ComboBox4.SelectedItem)
-        '    DeadLocker = False
-        '    For DialogText = 0 To temp - 1
-        '        ComboBox1.SelectedIndex = DialogText
-        '        temp3 = dodata
-        '        WriteLine(2, "=====Mode" & DialogText + 1 & “=====”)
-        '        WriteLine(2, "ModeName:")
-        '        PrintLine(2, ComboBox1.SelectedItem)
-        '        ex(0) = Str(NumericUpDown1.Value）
-        '        If dodata = True Then
-        '            ex(2) = dataRange
-        '        Else
-        '            ex(2) = ranges
-        '        End If
-        '        WriteLine(2, "Extract Times:")
-        '        WriteLine(2, ex(0))
-        '        WriteLine(2, "Extract Ranges:")
-        '        WriteLine(2, ex(2))
-        '        WriteLine(2, "ModeType:")
-        '        WriteLine(2, temp3)
-        '        WriteLine(2, "DoExtremeMode")
-        '        WriteLine(2, doextreme)
-        '    Next
-        '    WriteLine(2, "CreateTime:" & Date.Now)
-        '    WriteLine(2, "使用的模式:")
-        '    WriteLine(2, ComboBox1.SelectedIndex)
-        '    FileClose(2)
-        '    ComboBox1.SelectedIndex = seo
-        '    ComboBox1.Text = mdname(seo)
-        '    DeadLocker = True
-        '    MessageBox.Show("保存成功")
-        'Else
-        '    Exit Sub
-        'End If
         lock = False
     End Sub
 
@@ -519,23 +477,32 @@ CX6:
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         If OpenFileDialog1.ShowDialog = DialogResult.OK Then
-            Dim fs As FileStream
-            fs = File.Open(OpenFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.Read)
-            Dim sr As New StreamReader(fs, Encoding.UTF8)
-            JsonWord = sr.ReadToEnd()
-            sr.Close()
-            Setting = reader.Deserialize(Of Configs)(JsonWord)
-            lock = True
-            ComboBox1.Items.Clear()
-            For i As Integer = 0 To Setting.TotalMode - 1
-                ComboBox1.Items.Add(Setting.ModeCollections(i).Name)
-            Next
-            BackGroundBase.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
-            BackGroundBase.Text = Setting.ModeCollections(Setting.CurrentMode).Name
-            Timer2.Interval = Setting.Voicespeed
-            lock = False
-            MadePreparation()
-            MsgBox("载入成功", vbOKOnly)
+            Try
+                Dim fs As FileStream
+                fs = File.Open(OpenFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.Read)
+                Dim sr As New StreamReader(fs, Encoding.UTF8)
+                JsonWord = sr.ReadToEnd()
+                sr.Close()
+                Setting = reader.Deserialize(Of Configs)(JsonWord)
+                lock = True
+                ComboBox1.Items.Clear()
+                For i As Integer = 0 To Setting.TotalMode - 1
+                    ComboBox1.Items.Add(Setting.ModeCollections(i).Name)
+                Next
+                BackGroundBase.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
+                BackGroundBase.Text = Setting.ModeCollections(Setting.CurrentMode).Name
+                Timer2.Interval = Setting.Voicespeed
+                lock = False
+                MadePreparation()
+                UniversalDialog1.Label1.Text = "用户配置载入成功！"
+                DoReadOnly = True
+                UniversalDialog1.ShowDialog()
+            Catch g As Exception
+                UniversalDialog1.Label1.Text = "载入错误！配置文件不是合法的JSON文件"
+                DoReadOnly = True
+                UniversalDialog1.ShowDialog()
+                Exit Sub
+            End Try
         Else
             Exit Sub
         End If
@@ -563,6 +530,48 @@ CX6:
             dorepeat = False
         End If
     End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        DoReadOnly = False
+        UniversalDialog1.Label1.Text = "这是测试赛"
+        If UniversalDialog1.ShowDialog() = DialogResult.OK Then
+            'MsgBox("测试成功")
+            DialogText = "测试成功"
+            Timer2.Enabled = True
+        End If
+    End Sub
+    '测试按钮
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        Dim selCell As DataGridViewCell, lblCellInfoColIndex, lblCellInfoRowIndex As Byte
+        selCell = DataGridView1.CurrentCell
+        lblCellInfoColIndex = selCell.ColumnIndex
+        lblCellInfoRowIndex = selCell.RowIndex
+        Dim odc As New OleDbConnection() With {
+            .ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;data source=Database1.mdb"
+        }
+        Dim a As Boolean
+        If selCell.Value = True Then
+            a = False
+        Else
+            a = True
+        End If
+        Try
+            Dim odccmd As New OleDbCommand With {
+            .CommandText = "UPDATE Students SET IsChecked = " & a & " WHERE ID= " & selCell.RowIndex + 1,
+            .Connection = odc
+        }
+            odc.Open()
+            Dim odcread As OleDbDataReader
+            'Dim dt As DataTable
+            'dt = odc.GetOleDbSchemaTable
+            odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
+        Catch g As Exception
+            MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
+        End Try
+        odc.Close()
+
+    End Sub
+
 
 
     '是否允许重复抽取
@@ -604,162 +613,69 @@ CX6:
     End Sub
 
     '保存自定义模式
-    Private Sub LinkLabel1_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        Dim xr As Integer
-        xr = ComboBox1.SelectedIndex
-        donew = False
-        Select Case dodata
-            Case Is = False
-                circle = 1
-                tms = extime(xr)
-                memories = 0
-                ranges = exrange(xr)
-                dataRange = Area
-                RangeDisplay.Text = Str(ranges)
-                TimesDisplay.Text = Str(tms)
-                NumericUpDown1.Value = tms
-                pool.Maximum = 100
-                pool.Value = ranges
-                MainDialog.ForeColor = Color.Black
-                ToolStripLabel4.Enabled = False
-                ComboBox1.Text = mdname(xr)
-                ListBox1.ForeColor = Color.Black
-                NumberSwitch.Checked = True
-                ItemSwitch.Checked = False
-                RangeDisplay.Text = Str(ranges)
-                TimesDisplay.Text = Str(tms)
-                ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-            Case Is = True
-SX2:
-                circle = 1
-                tms = extime(xr)
-                memories = 0
-                dataRange = exrange(xr)
-                NumericUpDown1.Value = tms
-                memories = 0
-                pool.Maximum = Area
-                pool.Value = dataRange
-                MainDialog.ForeColor = Color.Black
-                ListBox1.ForeColor = Color.Chocolate
-                ToolStripLabel4.Enabled = True
-                RangeDisplay.Text = Str(dataRange)
-                TimesDisplay.Text = Str(tms)
-                NumberSwitch.Checked = False
-                ItemSwitch.Checked = True
-                ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-        End Select
-        If doex(xr) = "#TRUE#" Then
-            doextreme = True
-            ExtremeLabel.Visible = True
-            Button1.Enabled = True
-            ExtremeSwitch.Checked = True
-        Else
-            doextreme = False
-            ExtremeLabel.Visible = False
-            Button1.Enabled = True
-            ExtremeSwitch.Checked = False
-        End If
-    End Sub
 
-    '部分重置
 
     Private Sub LinkLabel2_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
         If MsgBox("即将恢复至默认状态,自定义配置将丢失,确定吗"， vbOKCancel + vbQuestion, "注意") = MsgBoxResult.Ok Then
             Initialization()
             Xs()
             MadePreparation()
+            ToolStripLabel2.LinkVisited = False
             DialogText = "重置成功."
-            'Label1.ForeColor = Color.Black
-            'Dim cir As Byte
-            'def = True
-            'lock = True
-            'donew = False
-            'ComboBox2.SelectedItem = "天空邮件"
-            'NumberSwitch.Checked = True
-            'ItemSwitch.Checked = False
-            'lock = False
-            'circle = 1
-            'tms = 1
-            'extime(0) = 1
-            'extime(1) = 1
-            'extime(2) = 1
-            'extime(3) = 1
-            'memories = 0
-            'ranges = 16
-            'exrange(0) = 16
-            'exrange(1) = 16
-            'Area = 69
-            'dataRange = Area
-            'exrange(2) = Area
-            'exrange(3) = 36
-            'tp(0) = "#FALSE#"
-            'tp(1) = "#FALSE#"
-            'tp(2) = "#TRUE#"
-            'tp(3) = "#TRUE#"
-            'doex(0) = "#FALSE#"
-            'doex(1) = "#TRUE#"
-            'doex(2) = "#FALSE#"
-            'doex(3) = "#FALSE#"
-            'makesure = 0
-            'CheckBox1.Checked = False
-            'CheckBox2.Checked = False
-            'checked = 1
-            'checked2 = 1
-            'memo = False
-            'dodata = False
-            'tomode = 4
-            'Button1.Enabled = True
-            'Timer1.Enabled = True
-            'Label6.Text = Str(ranges)
-            'Label7.Text = Str(tms)
-            'lock = True
-            'Me.BackgroundImage = My.Resources.天空邮件
-            'Label1.Image = My.Resources.PtDialog
-            'Label9.Image = My.Resources.PtDialog
-            'mdname(0) = "随机数模式(正常)"
-            'mdname(1) = "随机数模式(极限)"
-            'mdname(2) = "数据库模式Normal"
-            'mdname(3) = "数据库模式Premium"
-            'For cir = 4 To 10
-            '    mdname(cir) = Nothing
-            '    tp(cir) = Nothing
-            '    doex(cir) = Nothing
-            '    extime(cir) = 0
-            '    exrange(cir) = 0
-            'Next
-            'ComboBox1.Items.Clear()
-            'ComboBox1.Items.Add("随机数模式(正常)")
-            'ComboBox1.Items.Add("随机数模式(极限)")
-            'ComboBox1.Items.Add("数据库模式Normal")
-            'ComboBox1.Items.Add("数据库模式Premium")
-            'ComboBox1.SelectedIndex = 0
-            'ListBox1.Items.Clear()
-            'ListBox1.Items.Add("准备就绪.")
-            'Label14.Visible = False
-            'Timer2.Enabled = True
-            'DeadLocker = False
-            'Call Bla()
-            'lock = False
-            'DeadLocker = True
-            'ComboBox1.SelectedIndex = 0
-            'ComboBox1.Text = ComboBox1.Items(0)
-            'DialogText = "重置成功."
-            'Timer2.Enabled = True
-            'ToolStripStatusLabel2.Text = Date.Now
-            'ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
         Else
             Exit Sub
         End If
+    End Sub
+
+    Public Sub Initialization()
+        Setting.Name = "Default"
+        Setting.TotalMode = 4
+        Setting.CurrentMode = 0
+        Setting.MaxArea = 69
+        Setting.Voicespeed = 25
+        Setting.Version = "6.0.0"
+        Setting.BackGroundImage = "天空邮件"
+        Setting.DialogImage = "Pt(默认)"
+        Setting.CreateTime = "2022.03.02"
+        ReDim Preserve Setting.ModeCollections(3)
+        Setting.ModeCollections(0).Name = "随机数模式(正常)"
+        Setting.ModeCollections(0).Range = 16
+        Setting.ModeCollections(0).Times = 1
+        Setting.ModeCollections(0).Type = False
+        Setting.ModeCollections(0).DoExtreme = False
+        Setting.ModeCollections(0).DoRepeat = False
+        '
+        Setting.ModeCollections(1).Name = "随机数模式(极限)"
+        Setting.ModeCollections(1).Range = 16
+        Setting.ModeCollections(1).Times = 1
+        Setting.ModeCollections(1).Type = False
+        Setting.ModeCollections(1).DoExtreme = True
+        Setting.ModeCollections(1).DoRepeat = False
+        '
+        Setting.ModeCollections(2).Name = "数据库模式Normal"
+        Setting.ModeCollections(2).Range = 69
+        Setting.ModeCollections(2).Times = 1
+        Setting.ModeCollections(2).Type = True
+        Setting.ModeCollections(2).DoExtreme = False
+        Setting.ModeCollections(2).DoRepeat = False
+        '
+        Setting.ModeCollections(3).Name = "数据库模式Premium"
+        Setting.ModeCollections(3).Range = 36
+        Setting.ModeCollections(3).Times = 1
+        Setting.ModeCollections(3).Type = True
+        Setting.ModeCollections(3).DoExtreme = False
+        Setting.ModeCollections(3).DoRepeat = False
+
     End Sub
 
     '全重置
 
     Sub MadePreparation()
         ComboBox1.Items.Clear()
+        DoReadOnly = False
         For i As Integer = 0 To Setting.TotalMode - 1
             ComboBox1.Items.Add(Setting.ModeCollections(i).Name)
         Next
-
         ComboBox1.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
         ColorSwitch(Setting.CurrentMode)
         BackGroundBase.Text = Setting.ModeCollections(Setting.CurrentMode).Name
@@ -804,12 +720,16 @@ SX2:
         End If
         memories = 0
         makesure = 0
+        lock = True
+        CheckBox1.Checked = False
+        lock = False
         memo = False
-        CheckBox1.Checked = True
         Timer1.Enabled = True
         def = True
         ToolStripStatusLabel3.Text = "使用的模式:" & Setting.ModeCollections(Setting.CurrentMode).Name
     End Sub
+
+    '预加载
     Private Sub Debugselect_Click_1(sender As Object, e As EventArgs) Handles Debugselect.Click
         DebugForm.Show()
     End Sub
@@ -1038,15 +958,6 @@ SX2:
     '个性化页面-重置
 
     '=======Page 4 of 4,数据驱动相关=======
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-        Dim selCell As DataGridViewCell, lblCellInfoColIndex, lblCellInfoRowIndex As Byte
-        selCell = DataGridView1.CurrentCell
-        lblCellInfoColIndex = selCell.ColumnIndex
-        lblCellInfoRowIndex = selCell.RowIndex
-
-    End Sub
-
-    '更改数据库数据
 
 
     '=======Page 5 of 4,预加载和其他设定=======
@@ -1170,43 +1081,25 @@ SX2:
     '主对话框动画效果
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Dim dt As DateTime
-        dt = Date.Now
-        If dt.Hour < 10 Then
-            ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 0" & dt.Hour & ":" & dt.Minute & ":" & dt.Second
-            If dt.Minute < 10 Then
-                ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 0" & dt.Hour & ":0" & dt.Minute & ":" & dt.Second
-                If dt.Second < 10 Then
-                    ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 0" & dt.Hour & ":0" & dt.Minute & ":0" & dt.Second
-                End If
-            End If
-        End If
-        If dt.Minute < 10 Then
-            ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 0" & dt.Hour & ":0" & dt.Minute & ":" & dt.Second
-            If dt.Second < 10 Then
-                ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 0" & dt.Hour & ":0" & dt.Minute & ":0" & dt.Second
-            End If
-        End If
-        If dt.Second < 10 Then
-            ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 0" & dt.Hour & ":0" & dt.Minute & ":0" & dt.Second
-        End If
-        ToolStripStatusLabel2.Text = "现在时间:" & dt.Year & "年" & dt.Month & "月" & dt.Day & "日 " & dt.Hour & ":" & dt.Minute & ":" & dt.Second
+        Dim dts As DateTime
+        dts = Date.Now
+        ToolStripStatusLabel2.Text = "现在时间:" & dts
     End Sub
 
     '实时时间
 
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: 这行代码将数据加载到表“Database1DataSet.Students”中。您可以根据需要移动或删除它。
+        'TODO: 这行代码将数据加载到表“Database1DataSet1.Students”中。您可以根据需要移动或删除它。
+        Me.StudentsTableAdapter1.Fill(Me.Database1DataSet1.Students)
         Dim sw As New StreamReader("RMNewConfig.json")
         JsonWord = sw.ReadToEnd
         Setting = reader.Deserialize(Of Configs)(JsonWord)
         sw.Close()
-        '
-        Me.StudentsTableAdapter.Fill(Me.Database1DataSet.Students)
         MadePreparation()
         Dim odc As New OleDbConnection() With {
-            .ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;data source=Database1.mdb"
+            .ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
         }
+        odc.Open()
         Try
             Dim odccmd As New OleDbCommand With {
             .CommandText = "SELECT * FROM Students WHERE ID =" & Setting.MaxArea - 2,
@@ -1214,8 +1107,6 @@ SX2:
         }
             odc.Open()
             Dim odcread As OleDbDataReader
-            'Dim dt As DataTable
-            'dt = odc.GetOleDbSchemaTable
             Dim f As Object
             odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
             If odcread.HasRows = False Then
