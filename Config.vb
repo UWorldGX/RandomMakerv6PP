@@ -1,12 +1,4 @@
 ﻿
-Public Class Mode
-    Public Name As String
-    Public Type As Boolean
-    Public Range As Integer
-    Public Times As Integer
-    Public DoExtreme As Boolean
-    Public DoRepeat As Boolean
-End Class
 Public Class Configs
     Public Name As String
     Public CurrentMode As Integer
@@ -17,6 +9,15 @@ Public Class Configs
     Public DialogImage As String
     Public CreateTime As String
     Public Version As String
-    Public ModeCollections() As Mode
+    Public Structure Mode
+        Public Property Name As String
+        Public Property Type As Boolean
+        Public Property Range As Integer
+        Public Property Times As Integer
+        Public Property DoExtreme As Boolean
+        Public Property DoRepeat As Boolean
+    End Structure
+
+    Public ModeCollections(10) As Mode
 End Class
 

@@ -31,7 +31,7 @@ Partial Class Form1
         Me.更新记录ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.关于ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ModeSelection = New System.Windows.Forms.ComboBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -49,28 +49,27 @@ Partial Class Form1
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel5 = New System.Windows.Forms.ToolStripLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TimesDisplay = New System.Windows.Forms.Label()
         Me.RangeDisplay = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CoreButton = New System.Windows.Forms.Button()
         Me.ExtremeLabel = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.SaveLogs = New System.Windows.Forms.Button()
+        Me.DoMakesureSwitch = New System.Windows.Forms.CheckBox()
+        Me.Logs = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Saver = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ImportButton = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.RepeatSwitch = New System.Windows.Forms.CheckBox()
         Me.Debugselect = New System.Windows.Forms.Button()
         Me.ExtremeSwitch = New System.Windows.Forms.CheckBox()
         Me.ItemSwitch = New System.Windows.Forms.RadioButton()
@@ -78,10 +77,10 @@ Partial Class Form1
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pool = New System.Windows.Forms.NumericUpDown()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.timepool = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.PreviewDialog = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.DialogBase = New System.Windows.Forms.ComboBox()
@@ -90,8 +89,8 @@ Partial Class Form1
         Me.VoiceSpeedBase = New System.Windows.Forms.ComboBox()
         Me.BackGroundBase = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.PersonalizeFonts = New System.Windows.Forms.Button()
+        Me.PersonalizeColor = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -120,7 +119,7 @@ Partial Class Form1
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.pool, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.timepool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -171,13 +170,13 @@ Partial Class Form1
         '更新记录ToolStripMenuItem
         '
         Me.更新记录ToolStripMenuItem.Name = "更新记录ToolStripMenuItem"
-        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.更新记录ToolStripMenuItem.Text = "更新记录"
         '
         '关于ToolStripMenuItem
         '
         Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
-        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.关于ToolStripMenuItem.Text = "关于"
         '
         'FontDialog1
@@ -186,17 +185,17 @@ Partial Class Form1
         Me.FontDialog1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FontDialog1.FontMustExist = True
         '
-        'ComboBox1
+        'ModeSelection
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"英语/语文模式(正常)", "英语/语文模式(极限)", "数据驱动模式Normal", "数据驱动模式Premium"})
-        Me.ComboBox1.Location = New System.Drawing.Point(6, 96)
-        Me.ComboBox1.MaxDropDownItems = 10
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(163, 25)
-        Me.ComboBox1.TabIndex = 13
+        Me.ModeSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ModeSelection.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ModeSelection.FormattingEnabled = True
+        Me.ModeSelection.Items.AddRange(New Object() {"英语/语文模式(正常)", "英语/语文模式(极限)", "数据驱动模式Normal", "数据驱动模式Premium"})
+        Me.ModeSelection.Location = New System.Drawing.Point(6, 96)
+        Me.ModeSelection.MaxDropDownItems = 10
+        Me.ModeSelection.Name = "ModeSelection"
+        Me.ModeSelection.Size = New System.Drawing.Size(163, 25)
+        Me.ModeSelection.TabIndex = 13
         '
         'StatusStrip1
         '
@@ -368,28 +367,20 @@ Partial Class Form1
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.Controls.Add(Me.TextBox2)
         Me.Panel1.Controls.Add(Me.Button8)
         Me.Panel1.Controls.Add(Me.GroupBox4)
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.CoreButton)
         Me.Panel1.Controls.Add(Me.ExtremeLabel)
         Me.Panel1.Controls.Add(Me.ProgressBar1)
-        Me.Panel1.Controls.Add(Me.Button7)
-        Me.Panel1.Controls.Add(Me.CheckBox1)
+        Me.Panel1.Controls.Add(Me.SaveLogs)
+        Me.Panel1.Controls.Add(Me.DoMakesureSwitch)
         Me.Panel1.Controls.Add(Me.MainDialog)
-        Me.Panel1.Controls.Add(Me.ListBox1)
+        Me.Panel1.Controls.Add(Me.Logs)
         Me.Panel1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Panel1.Location = New System.Drawing.Point(55, 27)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(762, 359)
+        Me.Panel1.Size = New System.Drawing.Size(455, 359)
         Me.Panel1.TabIndex = 21
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(43, 250)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(187, 23)
-        Me.TextBox2.TabIndex = 32
         '
         'Button8
         '
@@ -406,6 +397,7 @@ Partial Class Form1
         Me.Button8.TabIndex = 31
         Me.Button8.Text = "Test"
         Me.Button8.UseVisualStyleBackColor = False
+        Me.Button8.Visible = False
         '
         'GroupBox4
         '
@@ -413,7 +405,7 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.RangeDisplay)
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Controls.Add(Me.Label4)
-        Me.GroupBox4.Controls.Add(Me.ComboBox1)
+        Me.GroupBox4.Controls.Add(Me.ModeSelection)
         Me.GroupBox4.Location = New System.Drawing.Point(261, 94)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(178, 143)
@@ -465,26 +457,26 @@ Partial Class Form1
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(12, 25)
+        Me.Label4.Location = New System.Drawing.Point(25, 25)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(88, 19)
+        Me.Label4.Size = New System.Drawing.Size(73, 19)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "随机数范围:"
+        Me.Label4.Text = "抽取范围:"
         '
-        'Button1
+        'CoreButton
         '
-        Me.Button1.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Button1.Location = New System.Drawing.Point(302, 239)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(96, 43)
-        Me.Button1.TabIndex = 29
-        Me.Button1.Text = "抽取"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.CoreButton.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
+        Me.CoreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.CoreButton.FlatAppearance.BorderSize = 0
+        Me.CoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CoreButton.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CoreButton.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.CoreButton.Location = New System.Drawing.Point(302, 239)
+        Me.CoreButton.Name = "CoreButton"
+        Me.CoreButton.Size = New System.Drawing.Size(96, 43)
+        Me.CoreButton.TabIndex = 29
+        Me.CoreButton.Text = "抽取"
+        Me.CoreButton.UseVisualStyleBackColor = True
         '
         'ExtremeLabel
         '
@@ -508,48 +500,48 @@ Partial Class Form1
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.ProgressBar1.TabIndex = 23
         '
-        'Button7
+        'SaveLogs
         '
-        Me.Button7.BackColor = System.Drawing.Color.Transparent
-        Me.Button7.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button7.FlatAppearance.BorderSize = 0
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button7.ForeColor = System.Drawing.Color.White
-        Me.Button7.Location = New System.Drawing.Point(349, 296)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(80, 32)
-        Me.Button7.TabIndex = 26
-        Me.Button7.Text = "保存记录"
-        Me.Button7.UseVisualStyleBackColor = False
-        Me.Button7.Visible = False
+        Me.SaveLogs.BackColor = System.Drawing.Color.Transparent
+        Me.SaveLogs.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
+        Me.SaveLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SaveLogs.FlatAppearance.BorderSize = 0
+        Me.SaveLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SaveLogs.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.SaveLogs.ForeColor = System.Drawing.Color.White
+        Me.SaveLogs.Location = New System.Drawing.Point(349, 296)
+        Me.SaveLogs.Name = "SaveLogs"
+        Me.SaveLogs.Size = New System.Drawing.Size(80, 32)
+        Me.SaveLogs.TabIndex = 26
+        Me.SaveLogs.Text = "保存记录"
+        Me.SaveLogs.UseVisualStyleBackColor = False
+        Me.SaveLogs.Visible = False
         '
-        'CheckBox1
+        'DoMakesureSwitch
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox1.ForeColor = System.Drawing.Color.Black
-        Me.CheckBox1.Location = New System.Drawing.Point(39, 304)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(123, 21)
-        Me.CheckBox1.TabIndex = 25
-        Me.CheckBox1.Text = "不显示确认对话框"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.DoMakesureSwitch.AutoSize = True
+        Me.DoMakesureSwitch.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.DoMakesureSwitch.ForeColor = System.Drawing.Color.Black
+        Me.DoMakesureSwitch.Location = New System.Drawing.Point(39, 304)
+        Me.DoMakesureSwitch.Name = "DoMakesureSwitch"
+        Me.DoMakesureSwitch.Size = New System.Drawing.Size(123, 21)
+        Me.DoMakesureSwitch.TabIndex = 25
+        Me.DoMakesureSwitch.Text = "不显示确认对话框"
+        Me.DoMakesureSwitch.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'Logs
         '
-        Me.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.HorizontalScrollbar = True
-        Me.ListBox1.ItemHeight = 17
-        Me.ListBox1.Items.AddRange(New Object() {"这里显示抽取结果的历史记录"})
-        Me.ListBox1.Location = New System.Drawing.Point(43, 84)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.ScrollAlwaysVisible = True
-        Me.ListBox1.Size = New System.Drawing.Size(207, 206)
-        Me.ListBox1.TabIndex = 15
+        Me.Logs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Logs.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Logs.FormattingEnabled = True
+        Me.Logs.HorizontalScrollbar = True
+        Me.Logs.ItemHeight = 17
+        Me.Logs.Items.AddRange(New Object() {"这里显示抽取结果的历史记录"})
+        Me.Logs.Location = New System.Drawing.Point(43, 84)
+        Me.Logs.Name = "Logs"
+        Me.Logs.ScrollAlwaysVisible = True
+        Me.Logs.Size = New System.Drawing.Size(207, 206)
+        Me.Logs.TabIndex = 15
         '
         'Panel2
         '
@@ -558,7 +550,7 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.TextBox1)
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.LinkLabel2)
-        Me.Panel2.Controls.Add(Me.Button6)
+        Me.Panel2.Controls.Add(Me.ImportButton)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Controls.Add(Me.GroupBox3)
         Me.Panel2.Controls.Add(Me.GroupBox1)
@@ -607,28 +599,28 @@ Partial Class Form1
         'LinkLabel2
         '
         Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(342, 303)
+        Me.LinkLabel2.Location = New System.Drawing.Point(331, 286)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(129, 20)
         Me.LinkLabel2.TabIndex = 28
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "还原全部默认设置" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'Button6
+        'ImportButton
         '
-        Me.Button6.BackColor = System.Drawing.Color.Transparent
-        Me.Button6.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.White
-        Me.Button6.Location = New System.Drawing.Point(300, 257)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(80, 32)
-        Me.Button6.TabIndex = 26
-        Me.Button6.Text = "导入配置"
-        Me.Button6.UseVisualStyleBackColor = False
+        Me.ImportButton.BackColor = System.Drawing.Color.Transparent
+        Me.ImportButton.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
+        Me.ImportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ImportButton.FlatAppearance.BorderSize = 0
+        Me.ImportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ImportButton.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ImportButton.ForeColor = System.Drawing.Color.White
+        Me.ImportButton.Location = New System.Drawing.Point(113, 280)
+        Me.ImportButton.Name = "ImportButton"
+        Me.ImportButton.Size = New System.Drawing.Size(80, 32)
+        Me.ImportButton.TabIndex = 26
+        Me.ImportButton.Text = "导入配置"
+        Me.ImportButton.UseVisualStyleBackColor = False
         '
         'Button5
         '
@@ -639,7 +631,7 @@ Partial Class Form1
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.White
-        Me.Button5.Location = New System.Drawing.Point(385, 257)
+        Me.Button5.Location = New System.Drawing.Point(199, 280)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(80, 32)
         Me.Button5.TabIndex = 25
@@ -648,7 +640,7 @@ Partial Class Form1
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.CheckBox3)
+        Me.GroupBox3.Controls.Add(Me.RepeatSwitch)
         Me.GroupBox3.Controls.Add(Me.Debugselect)
         Me.GroupBox3.Controls.Add(Me.ExtremeSwitch)
         Me.GroupBox3.Controls.Add(Me.ItemSwitch)
@@ -661,17 +653,17 @@ Partial Class Form1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "数据相关"
         '
-        'CheckBox3
+        'RepeatSwitch
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox3.ForeColor = System.Drawing.Color.Black
-        Me.CheckBox3.Location = New System.Drawing.Point(143, 26)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(75, 21)
-        Me.CheckBox3.TabIndex = 33
-        Me.CheckBox3.Text = "允许重复"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.RepeatSwitch.AutoSize = True
+        Me.RepeatSwitch.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RepeatSwitch.ForeColor = System.Drawing.Color.Black
+        Me.RepeatSwitch.Location = New System.Drawing.Point(143, 26)
+        Me.RepeatSwitch.Name = "RepeatSwitch"
+        Me.RepeatSwitch.Size = New System.Drawing.Size(75, 21)
+        Me.RepeatSwitch.TabIndex = 33
+        Me.RepeatSwitch.Text = "允许重复"
+        Me.RepeatSwitch.UseVisualStyleBackColor = True
         '
         'Debugselect
         '
@@ -731,7 +723,7 @@ Partial Class Form1
         '
         Me.GroupBox1.Controls.Add(Me.pool)
         Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.NumericUpDown1)
+        Me.GroupBox1.Controls.Add(Me.timepool)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
         Me.GroupBox1.Location = New System.Drawing.Point(89, 4)
@@ -767,19 +759,19 @@ Partial Class Form1
         Me.Label11.TabIndex = 9
         Me.Label11.Text = "抽取范围:"
         '
-        'NumericUpDown1
+        'timepool
         '
-        Me.NumericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.NumericUpDown1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.NumericUpDown1.Location = New System.Drawing.Point(101, 38)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {7, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.ReadOnly = True
-        Me.NumericUpDown1.Size = New System.Drawing.Size(48, 23)
-        Me.NumericUpDown1.TabIndex = 8
-        Me.NumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.timepool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.timepool.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.timepool.Location = New System.Drawing.Point(101, 38)
+        Me.timepool.Maximum = New Decimal(New Integer() {7, 0, 0, 0})
+        Me.timepool.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.timepool.Name = "timepool"
+        Me.timepool.ReadOnly = True
+        Me.timepool.Size = New System.Drawing.Size(48, 23)
+        Me.timepool.TabIndex = 8
+        Me.timepool.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.timepool.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label5
         '
@@ -796,27 +788,27 @@ Partial Class Form1
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
-        Me.Panel3.Controls.Add(Me.Label9)
+        Me.Panel3.Controls.Add(Me.PreviewDialog)
         Me.Panel3.Controls.Add(Me.GroupBox2)
         Me.Panel3.Location = New System.Drawing.Point(55, 30)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(458, 353)
         Me.Panel3.TabIndex = 23
         '
-        'Label9
+        'PreviewDialog
         '
-        Me.Label9.AutoEllipsis = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Cursor = System.Windows.Forms.Cursors.No
-        Me.Label9.Font = New System.Drawing.Font("方正像素12", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Image = Global.RandomMakerv6PP.My.Resources.Resources.PtDialog
-        Me.Label9.Location = New System.Drawing.Point(41, 17)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(399, 71)
-        Me.Label9.TabIndex = 10
-        Me.Label9.Text = "这里显示对话框的预览效果."
-        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.PreviewDialog.AutoEllipsis = True
+        Me.PreviewDialog.BackColor = System.Drawing.Color.Transparent
+        Me.PreviewDialog.Cursor = System.Windows.Forms.Cursors.No
+        Me.PreviewDialog.Font = New System.Drawing.Font("方正像素12", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.PreviewDialog.ForeColor = System.Drawing.Color.Black
+        Me.PreviewDialog.Image = Global.RandomMakerv6PP.My.Resources.Resources.PtDialog
+        Me.PreviewDialog.Location = New System.Drawing.Point(41, 17)
+        Me.PreviewDialog.Name = "PreviewDialog"
+        Me.PreviewDialog.Size = New System.Drawing.Size(399, 71)
+        Me.PreviewDialog.TabIndex = 10
+        Me.PreviewDialog.Text = "这里显示对话框的预览效果."
+        Me.PreviewDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GroupBox2
         '
@@ -827,8 +819,8 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.VoiceSpeedBase)
         Me.GroupBox2.Controls.Add(Me.BackGroundBase)
         Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.Button3)
-        Me.GroupBox2.Controls.Add(Me.Button2)
+        Me.GroupBox2.Controls.Add(Me.PersonalizeFonts)
+        Me.GroupBox2.Controls.Add(Me.PersonalizeColor)
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
         Me.GroupBox2.Location = New System.Drawing.Point(58, 91)
         Me.GroupBox2.Name = "GroupBox2"
@@ -904,35 +896,35 @@ Partial Class Form1
         Me.Label8.TabIndex = 11
         Me.Label8.Text = "更换背景:"
         '
-        'Button3
+        'PersonalizeFonts
         '
-        Me.Button3.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button3.ForeColor = System.Drawing.SystemColors.Window
-        Me.Button3.Location = New System.Drawing.Point(192, 23)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(80, 32)
-        Me.Button3.TabIndex = 10
-        Me.Button3.Text = "自定义字体"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.PersonalizeFonts.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
+        Me.PersonalizeFonts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PersonalizeFonts.FlatAppearance.BorderSize = 0
+        Me.PersonalizeFonts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PersonalizeFonts.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.PersonalizeFonts.ForeColor = System.Drawing.SystemColors.Window
+        Me.PersonalizeFonts.Location = New System.Drawing.Point(192, 23)
+        Me.PersonalizeFonts.Name = "PersonalizeFonts"
+        Me.PersonalizeFonts.Size = New System.Drawing.Size(80, 32)
+        Me.PersonalizeFonts.TabIndex = 10
+        Me.PersonalizeFonts.Text = "自定义字体"
+        Me.PersonalizeFonts.UseVisualStyleBackColor = True
         '
-        'Button2
+        'PersonalizeColor
         '
-        Me.Button2.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button2.ForeColor = System.Drawing.SystemColors.Window
-        Me.Button2.Location = New System.Drawing.Point(78, 23)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(80, 32)
-        Me.Button2.TabIndex = 9
-        Me.Button2.Text = "自定义颜色"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.PersonalizeColor.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
+        Me.PersonalizeColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PersonalizeColor.FlatAppearance.BorderSize = 0
+        Me.PersonalizeColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PersonalizeColor.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.PersonalizeColor.ForeColor = System.Drawing.SystemColors.Window
+        Me.PersonalizeColor.Location = New System.Drawing.Point(78, 23)
+        Me.PersonalizeColor.Name = "PersonalizeColor"
+        Me.PersonalizeColor.Size = New System.Drawing.Size(80, 32)
+        Me.PersonalizeColor.TabIndex = 9
+        Me.PersonalizeColor.Text = "自定义颜色"
+        Me.PersonalizeColor.UseVisualStyleBackColor = True
         '
         'Panel4
         '
@@ -1010,7 +1002,7 @@ Partial Class Form1
         Me.SaveFileDialog1.CreatePrompt = True
         Me.SaveFileDialog1.DefaultExt = "Json"
         Me.SaveFileDialog1.FileName = "RMConfig"
-        Me.SaveFileDialog1.Filter = """文本文件|*.Json"""
+        Me.SaveFileDialog1.Filter = "JSON源文件|*.Json"
         Me.SaveFileDialog1.InitialDirectory = """D:\"""
         Me.SaveFileDialog1.RestoreDirectory = True
         '
@@ -1019,6 +1011,7 @@ Partial Class Form1
         Me.OpenFileDialog1.AddExtension = False
         Me.OpenFileDialog1.DefaultExt = "Json"
         Me.OpenFileDialog1.FileName = "default"
+        Me.OpenFileDialog1.Filter = "JSON源文件|*.json"
         Me.OpenFileDialog1.RestoreDirectory = True
         Me.OpenFileDialog1.ValidateNames = False
         '
@@ -1036,8 +1029,11 @@ Partial Class Form1
         '
         'SaveFileDialog2
         '
+        Me.SaveFileDialog2.CreatePrompt = True
         Me.SaveFileDialog2.DefaultExt = "txt"
+        Me.SaveFileDialog2.Filter = "文本文件|*.txt"
         Me.SaveFileDialog2.InitialDirectory = "D:\"
+        Me.SaveFileDialog2.Title = "保存抽取记录"
         '
         'StudentsTableAdapter
         '
@@ -1087,7 +1083,7 @@ Partial Class Form1
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.pool, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.timepool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1109,7 +1105,7 @@ Partial Class Form1
     Friend WithEvents 更新记录ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 关于ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FontDialog1 As FontDialog
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ModeSelection As ComboBox
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
@@ -1123,20 +1119,20 @@ Partial Class Form1
     Friend WithEvents ToolStripLabel3 As ToolStripLabel
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents Logs As ListBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents ToolStripLabel4 As ToolStripLabel
     Friend WithEvents Label5 As Label
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents timepool As NumericUpDown
     Friend WithEvents ItemSwitch As RadioButton
     Friend WithEvents NumberSwitch As RadioButton
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents PersonalizeFonts As Button
+    Friend WithEvents PersonalizeColor As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents TimesDisplay As Label
     Friend WithEvents RangeDisplay As Label
@@ -1147,16 +1143,16 @@ Partial Class Form1
     Friend WithEvents Label8 As Label
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents DoMakesureSwitch As CheckBox
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Button7 As Button
+    Friend WithEvents PreviewDialog As Label
+    Friend WithEvents SaveLogs As Button
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Timer3 As Timer
     Friend WithEvents Label10 As Label
     Friend WithEvents VoiceSpeedBase As ComboBox
     Friend WithEvents Timer4 As Timer
-    Friend WithEvents Button6 As Button
+    Friend WithEvents ImportButton As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents ReDiveP As LinkLabel
     Friend WithEvents LinkLabel2 As LinkLabel
@@ -1173,11 +1169,11 @@ Partial Class Form1
     Friend WithEvents ToolStripLabel5 As ToolStripLabel
     Friend WithEvents Debugselect As Button
     Friend WithEvents SaveFileDialog2 As SaveFileDialog
-    Friend WithEvents Button1 As Button
+    Friend WithEvents CoreButton As Button
     Friend WithEvents IDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IsCheckedDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents RepeatSwitch As CheckBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Database1DataSet As Database1DataSet
     Friend WithEvents StudentsBindingSource As BindingSource
@@ -1187,7 +1183,6 @@ Partial Class Form1
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Button8 As Button
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Database1DataSet1 As Database1DataSet1
     Friend WithEvents StudentsBindingSource1 As BindingSource
     Friend WithEvents StudentsTableAdapter1 As Database1DataSet1TableAdapters.StudentsTableAdapter

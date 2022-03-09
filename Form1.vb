@@ -20,7 +20,7 @@ Public Class Form1
     Public Const fast As Integer = 10, medium As Integer = 25, slow As Integer = 100
     '常量列表
 
-    Public Setting As New Configs
+    Public Setting As New Configs()
     '核心参数
     Public DoReadOnly As Boolean
     '控制对话框是否为单按钮
@@ -30,15 +30,15 @@ Public Class Form1
     '内部存储
 
     '=======Page 1 of 4,主页=======
-    Private Sub ComboBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+    Private Sub ComboBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ModeSelection.SelectedIndexChanged
         If memo = True Then Exit Sub
         If def = True Then
             Dim xr As Int16
             lock = True
             donew = False
-            xr = ComboBox1.SelectedIndex
+            xr = ModeSelection.SelectedIndex
             tms = Setting.ModeCollections(xr).Times
-            NumericUpDown1.Value = tms
+            timepool.Value = tms
             If Setting.ModeCollections(xr).Type = False Then
                 ranges = Setting.ModeCollections(xr).Range
                 pool.Maximum = 100
@@ -49,11 +49,11 @@ Public Class Form1
                 ToolStripLabel4.Enabled = False
                 RangeDisplay.Text = Str(ranges)
                 dorepeat = False
-                CheckBox3.Enabled = False
+                RepeatSwitch.Enabled = False
                 If DeadLocker = True Then
-                    ListBox1.Items.Clear()
+                    Logs.Items.Clear()
                     DialogText = "随机数模式已就绪.等待抽取."
-                    ListBox1.Items.Add(Setting.ModeCollections(xr).Name & "就绪.")
+                    Logs.Items.Add(Setting.ModeCollections(xr).Name & "就绪.")
                 End If
                 ToolStripLabel4.Enabled = False
             Else
@@ -65,28 +65,28 @@ Public Class Form1
                 NumberSwitch.Checked = False
                 ItemSwitch.Checked = True
                 RangeDisplay.Text = Str(dataRange)
-                CheckBox3.Enabled = True
-                CheckBox3.Checked = Setting.ModeCollections(xr).DoRepeat
+                RepeatSwitch.Enabled = True
+                RepeatSwitch.Checked = Setting.ModeCollections(xr).DoRepeat
                 If DeadLocker = True Then
-                    ListBox1.Items.Clear()
+                    Logs.Items.Clear()
                     DialogText = "数据库模式已就绪.等待抽取."
-                    ListBox1.Items.Add(Setting.ModeCollections(xr).Name & "就绪.")
+                    Logs.Items.Add(Setting.ModeCollections(xr).Name & "就绪.")
                 End If
                 ToolStripLabel4.Enabled = True
             End If
             If DeadLocker = True Then
                 memories = 0
             End If
-            TimesDisplay.Text = Str(NumericUpDown1.Value)
+            TimesDisplay.Text = Str(timepool.Value)
             If Setting.ModeCollections(xr).DoExtreme = True Then
                 ExtremeSwitch.Checked = True
                 doextreme = True
-                Button1.Enabled = True
+                CoreButton.Enabled = True
                 ExtremeLabel.Visible = True
             Else
                 ExtremeSwitch.Checked = False
                 doextreme = False
-                Button1.Enabled = True
+                CoreButton.Enabled = True
                 ExtremeLabel.Visible = False
             End If
             ToolStripStatusLabel3.Text = "当前模式:" & Setting.ModeCollections(xr).Name
@@ -101,33 +101,33 @@ Public Class Form1
     Private Sub ColorSwitch(ByVal xc As Integer)
         Select Case xc + 1
             Case Is = 0
-                ListBox1.ResetForeColor()
+                Logs.ResetForeColor()
             Case Is = 1
-                ListBox1.ForeColor = Color.Blue
+                Logs.ForeColor = Color.Blue
             Case Is = 2
-                ListBox1.ForeColor = Color.Red
+                Logs.ForeColor = Color.Red
             Case Is = 3
-                ListBox1.ForeColor = Color.Purple
+                Logs.ForeColor = Color.Purple
             Case Is = 4
-                ListBox1.ForeColor = Color.DarkGoldenrod
+                Logs.ForeColor = Color.DarkGoldenrod
             Case Is = 5
-                ListBox1.ForeColor = Color.IndianRed
+                Logs.ForeColor = Color.IndianRed
             Case Is = 6
-                ListBox1.ForeColor = Color.DarkOrange
+                Logs.ForeColor = Color.DarkOrange
             Case Is = 8
-                ListBox1.ForeColor = Color.Gray
+                Logs.ForeColor = Color.Gray
             Case Is = 9
-                ListBox1.ForeColor = Color.Olive
+                Logs.ForeColor = Color.Olive
             Case Is = 10
-                ListBox1.ForeColor = Color.DarkCyan
+                Logs.ForeColor = Color.DarkCyan
             Case Is = 7
-                ListBox1.ForeColor = Color.Brown
+                Logs.ForeColor = Color.Brown
         End Select
     End Sub
 
     '颜色切换核心程序
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CoreButton.Click
         Call CoreProgram()
     End Sub
 
@@ -175,13 +175,13 @@ CX2:
                 temp = temp & "/" & Str(datas)
             Next
             ProgressBar1.Value = 75
-            ListBox1.Items.Add(temp)
+            Logs.Items.Add(temp)
             If doextreme = True Then
-                ListBox1.Items.Add("极限模式抽取已结束!")
-                Button1.Enabled = False
+                Logs.Items.Add("极限模式抽取已结束!")
+                CoreButton.Enabled = False
                 ProgressBar1.Value = 99
             End If
-            Button7.Visible = True
+            SaveLogs.Visible = True
             ProgressBar1.Value = 100
             Timer2.Enabled = True
         ElseIf dodata = True Then
@@ -210,7 +210,7 @@ CX7:
                 If temp = "" Then GoTo CX7
                 selCell = DataGridView1(2, datas)
                 If selCell.Value = False Then
-                    DialogText = "抽取对象为:" & temp
+                    DialogText = "抽取对象:" & temp
                     temp = "第" & Str(memories) & "次:" & temp
                     ProgressBar1.Value = 60
                     For circle = 1 To tmsreal Step 1
@@ -237,13 +237,13 @@ CX6:
                         temp = temp & "/" & selCell.Value
                     Next
                     ProgressBar1.Value = 90
-                    ListBox1.Items.Add(temp)
+                    Logs.Items.Add(temp)
                 Else
                     GoTo CX7
                 End If
                 If doextreme = True Then
-                    ListBox1.Items.Add("极限模式抽取已结束!")
-                    Button1.Enabled = False
+                    Logs.Items.Add("极限模式抽取已结束!")
+                    CoreButton.Enabled = False
                     ProgressBar1.Value = 80
                 End If
             Catch ex As Exception
@@ -251,16 +251,16 @@ CX6:
             End Try
         End If
         ProgressBar1.Value = 100
-        Button7.Visible = True
+        SaveLogs.Visible = True
         Timer2.Enabled = True
         ToolStripLabel5.Enabled = True
     End Sub
 
     '核心程序
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles DoMakesureSwitch.CheckedChanged
         If lock = True Then Exit Sub
-        If CheckBox1.Checked = True Then
+        If DoMakesureSwitch.Checked = True Then
             makesure = 1
         Else
             makesure = 0
@@ -269,19 +269,19 @@ CX6:
 
     '确认对话框控制
 
-    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles SaveLogs.Click
         Dim dts As DateTime
         dts = Now()
         Dim dtstring As String = Timeformat(dts)
-        SaveFileDialog2.FileName = "抽取记录" & dts
+        SaveFileDialog2.FileName = "抽取记录" & dtstring
         If SaveFileDialog2.ShowDialog = DialogResult.OK Then
             Dim temp As Integer
             FileOpen(2, SaveFileDialog2.FileName, OpenMode.Output, OpenAccess.Default)
             WriteLine(2, "抽取时间" & Date.Now)
             For temp = 1 To memories
-                WriteLine(2, ListBox1.Items.Item(temp))
+                WriteLine(2, Logs.Items.Item(temp))
             Next
-            WriteLine(2, "一共抽取了" & ListBox1.Items.Count - 1 & "次")
+            WriteLine(2, "一共抽取了" & Logs.Items.Count - 1 & "次")
             WriteLine(2, "使用的模式:" & Setting.ModeCollections(Setting.CurrentMode).Name)
             FileClose(2)
             DoReadOnly = False
@@ -295,15 +295,15 @@ CX6:
     '保存抽取记录
     Private Sub ToolStripLabel5_Click(sender As Object, e As EventArgs) Handles ToolStripLabel5.Click
         Dim xr As Integer
-        xr = ComboBox1.SelectedIndex
+        xr = ModeSelection.SelectedIndex
         donew = False
-        ListBox1.Items.Clear()
-        ListBox1.Items.Add(ComboBox1.Text & "就绪.")
+        Logs.Items.Clear()
+        Logs.Items.Add(ModeSelection.Text & "就绪.")
         tms = Setting.ModeCollections(xr).Times
         Select Case dodata
             Case Is = False
                 circle = 1
-                NumericUpDown1.Value = tms
+                timepool.Value = tms
                 TimesDisplay.Text = Str(tms)
                 memories = 0
                 ranges = Setting.ModeCollections(xr).Range
@@ -313,7 +313,7 @@ CX6:
                 RangeDisplay.Text = Str(ranges)
                 MainDialog.ForeColor = Color.Black
                 ToolStripLabel4.Enabled = False
-                ComboBox1.Text = Setting.ModeCollections(xr).Name
+                ModeSelection.Text = Setting.ModeCollections(xr).Name
                 NumberSwitch.Checked = True
                 ItemSwitch.Checked = False
                 RangeDisplay.Text = Str(ranges)
@@ -324,7 +324,7 @@ CX6:
                 circle = 1
                 memories = 0
                 dataRange = Setting.ModeCollections(xr).Range
-                NumericUpDown1.Value = tms
+                timepool.Value = tms
                 memories = 0
                 pool.Maximum = Setting.MaxArea
                 pool.Value = dataRange
@@ -340,16 +340,16 @@ CX6:
         If Setting.ModeCollections(xr).DoExtreme = True Then
             doextreme = True
             ExtremeLabel.Visible = True
-            Button1.Enabled = True
+            CoreButton.Enabled = True
             ExtremeSwitch.Checked = True
         Else
             doextreme = False
             ExtremeLabel.Visible = False
-            Button1.Enabled = True
+            CoreButton.Enabled = True
             ExtremeSwitch.Checked = False
         End If
         Timer2.Enabled = True
-        Button7.Visible = False
+        SaveLogs.Visible = False
     End Sub
 
     '初始化
@@ -359,28 +359,28 @@ CX6:
         Form2.Show()
     End Sub
 
-    Private Sub NumericUpDown1_ValueChanged_1(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
+    Private Sub NumericUpDown1_ValueChanged_1(sender As Object, e As EventArgs) Handles timepool.ValueChanged
         If lock = True Then Exit Sub
-        tms = NumericUpDown1.Value
+        tms = timepool.Value
         donew = True
         If dodata = False Then
-            ComboBox1.Text = "自定义模式"
+            ModeSelection.Text = "自定义模式"
             NumberSwitch.Checked = True
             ItemSwitch.Checked = False
             RangeDisplay.Text = Str(ranges)
             TimesDisplay.Text = Str(tms)
-            ListBox1.ForeColor = Color.Black
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
+            Logs.ForeColor = Color.Black
+            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
         Else
-            ComboBox1.Text = "数据库模式Personaize"
+            ModeSelection.Text = "数据库模式Personaize"
             NumberSwitch.Checked = False
             ItemSwitch.Checked = True
             RangeDisplay.Text = Str(dataRange)
             TimesDisplay.Text = Str(tms)
-            ListBox1.ForeColor = Color.Chocolate
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
+            Logs.ForeColor = Color.Chocolate
+            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
         End If
-        TextBox1.Text = ComboBox1.Text & dodata - 3
+        TextBox1.Text = ModeSelection.Text & dodata - 3
     End Sub
 
     '抽取次数
@@ -390,17 +390,17 @@ CX6:
             pool.Maximum = 100
             ranges = pool.Value
             RangeDisplay.Text = Str(ranges)
-            TimesDisplay.Text = Str(NumericUpDown1.Value)
-            ComboBox1.Text = "自定义模式"
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
+            TimesDisplay.Text = Str(timepool.Value)
+            ModeSelection.Text = "自定义模式"
+            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
             TextBox1.Text = "自定义模式"
         Else
             pool.Maximum = Setting.MaxArea
             dataRange = pool.Value
             RangeDisplay.Text = Str(dataRange)
-            TimesDisplay.Text = Str(NumericUpDown1.Value)
-            ComboBox1.Text = "数据驱动模式Personaize"
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
+            TimesDisplay.Text = Str(timepool.Value)
+            ModeSelection.Text = "数据驱动模式Personaize"
+            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
             TextBox1.Text = "自定义模式(数据库)"
         End If
     End Sub
@@ -411,11 +411,11 @@ CX6:
         If lock = True Then Exit Sub
         If doextreme = False Then
             doextreme = True
-            Button1.Enabled = True
+            CoreButton.Enabled = True
             ExtremeLabel.Visible = True
         Else
             doextreme = False
-            Button1.Enabled = True
+            CoreButton.Enabled = True
             ExtremeLabel.Visible = False
         End If
 
@@ -427,11 +427,12 @@ CX6:
         If lock = True Then Exit Sub
         If dodata <> False Then
             dodata = False
-            CheckBox3.Enabled = False
-            ComboBox1.Text = "自定义模式"
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-            TextBox1.Text = ComboBox1.Text & Setting.TotalMode - 3
+            RepeatSwitch.Enabled = False
+            ModeSelection.Text = "自定义模式"
+            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
+            TextBox1.Text = ModeSelection.Text & Setting.TotalMode - 3
             ToolStripLabel4.Enabled = False
+            ranges = pool.Value
         End If
     End Sub
 
@@ -440,15 +441,20 @@ CX6:
         If lock = True Then Exit Sub
         If Setting.MaxArea < pool.Value Then
             MsgBox("错误!数据库模式抽取范围不应超过" & Setting.MaxArea & "!", vbOKOnly + vbCritical, "错误")
+            lock = True
+            ItemSwitch.Checked = False
+            NumberSwitch.Checked = True
+            lock = False
             Exit Sub
         End If
         If dodata <> True Then
             dodata = True
-            CheckBox3.Enabled = True
-            ComboBox1.Text = "数据库模式Personailze"
-            ToolStripStatusLabel3.Text = "当前模式:" & ComboBox1.Text
-            TextBox1.Text = ComboBox1.Text & Setting.TotalMode - 3
+            RepeatSwitch.Enabled = True
+            ModeSelection.Text = "数据库模式Personailze"
+            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
+            TextBox1.Text = ModeSelection.Text & Setting.TotalMode - 3
             ToolStripLabel4.Enabled = True
+            dataRange = pool.Value
         End If
     End Sub
 
@@ -475,7 +481,7 @@ CX6:
 
     '保存配置
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles ImportButton.Click
         If OpenFileDialog1.ShowDialog = DialogResult.OK Then
             Try
                 Dim fs As FileStream
@@ -485,9 +491,9 @@ CX6:
                 sr.Close()
                 Setting = reader.Deserialize(Of Configs)(JsonWord)
                 lock = True
-                ComboBox1.Items.Clear()
+                ModeSelection.Items.Clear()
                 For i As Integer = 0 To Setting.TotalMode - 1
-                    ComboBox1.Items.Add(Setting.ModeCollections(i).Name)
+                    ModeSelection.Items.Add(Setting.ModeCollections(i).Name)
                 Next
                 BackGroundBase.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
                 BackGroundBase.Text = Setting.ModeCollections(Setting.CurrentMode).Name
@@ -517,11 +523,11 @@ CX6:
 
     '载入配置
 
-    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
         If lock = True Then Exit Sub
         If dodata = False Then
             MsgBox("警告!该选项仅供数据库模式使用!", vbOKOnly + vbCritical, "提示")
-            CheckBox3.Checked = False
+            RepeatSwitch.Checked = False
             Exit Sub
         End If
         If dorepeat = False Then
@@ -533,7 +539,7 @@ CX6:
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         DoReadOnly = False
-        UniversalDialog1.Label1.Text = "这是测试赛"
+        UniversalDialog1.Label1.Text = "这是测试按钮"
         If UniversalDialog1.ShowDialog() = DialogResult.OK Then
             'MsgBox("测试成功")
             DialogText = "测试成功"
@@ -576,47 +582,51 @@ CX6:
 
     '是否允许重复抽取
     Private Sub Saver_Click_1(sender As Object, e As EventArgs) Handles Saver.Click
-        If ComboBox1.Items.Count > 10 Then
-            MsgBox("最多存在11个模式", vbOKOnly, "提示")
-            Exit Sub
-        End If
-        If lock = True Then Exit Sub
-        ComboBox1.Items.Add(TextBox1.Text)
-        Setting.TotalMode += 1
-        ReDim Preserve Setting.ModeCollections(Setting.TotalMode - 1)
-        Setting.ModeCollections(Setting.TotalMode - 1).Name = TextBox1.Text
-        If dodata = True Then
-            Setting.ModeCollections(Setting.TotalMode - 1).Range = dataRange
-            Setting.ModeCollections(Setting.TotalMode - 1).Type = True
-            Select Case dorepeat
-                Case Is = True
-                    Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = True
-                Case Else
-                    Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = False
-            End Select
-        Else
-            Setting.ModeCollections(Setting.TotalMode - 1).Range = ranges
-            Setting.ModeCollections(Setting.TotalMode - 1).Type = False
-            Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = False
-        End If
-        Setting.ModeCollections(Setting.TotalMode - 1).Times = tms
-        If doextreme = True Then
-            Setting.ModeCollections(Setting.TotalMode - 1).DoExtreme = True
-        Else
-            Setting.ModeCollections(Setting.TotalMode - 1).DoExtreme = False
-        End If
-        donew = False
-        MsgBox("保存成功,请返回模式列表查看", vbOKOnly + vbInformation, "祝贺")
-        DeadLocker = False
-        Call Xs()
-        DeadLocker = True
+        Me.Hide()
+        ModeEditor.Show()
+        'If ModeSelection.Items.Count > 10 Then
+        '    MsgBox("最多存在11个模式", vbOKOnly, "提示")
+        '    Exit Sub
+        'End If
+        'If lock = True Then Exit Sub
+        'ModeSelection.Items.Add(TextBox1.Text)
+        'Setting.TotalMode += 1
+        'ReDim Preserve Setting.ModeCollections(Setting.TotalMode - 1)
+        'Setting.ModeCollections(Setting.TotalMode - 1).Name = TextBox1.Text
+        'If dodata = True Then
+        '    Setting.ModeCollections(Setting.TotalMode - 1).Range = dataRange
+        '    Setting.ModeCollections(Setting.TotalMode - 1).Type = True
+        '    Select Case dorepeat
+        '        Case Is = True
+        '            Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = True
+        '        Case Else
+        '            Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = False
+        '    End Select
+        'Else
+        '    Setting.ModeCollections(Setting.TotalMode - 1).Range = ranges
+        '    Setting.ModeCollections(Setting.TotalMode - 1).Type = False
+        '    Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = False
+        'End If
+        'Setting.ModeCollections(Setting.TotalMode - 1).Times = tms
+        'If doextreme = True Then
+        '    Setting.ModeCollections(Setting.TotalMode - 1).DoExtreme = True
+        'Else
+        '    Setting.ModeCollections(Setting.TotalMode - 1).DoExtreme = False
+        'End If
+        'donew = False
+        'MsgBox("保存成功,请返回模式列表查看", vbOKOnly + vbInformation, "祝贺")
+        'DeadLocker = False
+        'Call Xs()
+        'DeadLocker = True
     End Sub
 
     '保存自定义模式
 
 
     Private Sub LinkLabel2_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        If MsgBox("即将恢复至默认状态,自定义配置将丢失,确定吗"， vbOKCancel + vbQuestion, "注意") = MsgBoxResult.Ok Then
+        UniversalDialog1.Label1.Text = "即将重置全部设置,未保存配置将会丢失,确定吗?"
+        DoReadOnly = False
+        If UniversalDialog1.ShowDialog = DialogResult.OK Then
             Initialization()
             Xs()
             MadePreparation()
@@ -628,6 +638,7 @@ CX6:
     End Sub
 
     Public Sub Initialization()
+        ReDim Setting.ModeCollections(10)
         Setting.Name = "Default"
         Setting.TotalMode = 4
         Setting.CurrentMode = 0
@@ -637,7 +648,6 @@ CX6:
         Setting.BackGroundImage = "天空邮件"
         Setting.DialogImage = "Pt(默认)"
         Setting.CreateTime = "2022.03.02"
-        ReDim Preserve Setting.ModeCollections(3)
         Setting.ModeCollections(0).Name = "随机数模式(正常)"
         Setting.ModeCollections(0).Range = 16
         Setting.ModeCollections(0).Times = 1
@@ -659,24 +669,37 @@ CX6:
         Setting.ModeCollections(2).DoExtreme = False
         Setting.ModeCollections(2).DoRepeat = False
         '
-        Setting.ModeCollections(3).Name = "数据库模式Premium"
-        Setting.ModeCollections(3).Range = 36
-        Setting.ModeCollections(3).Times = 1
-        Setting.ModeCollections(3).Type = True
-        Setting.ModeCollections(3).DoExtreme = False
-        Setting.ModeCollections(3).DoRepeat = False
+        With Setting.ModeCollections(3)
+            .Name = "数据库模式Premium"
+            .Range = 36
+            .Times = 1
+            .Type = True
+            .DoExtreme = False
+            .DoRepeat = False
+        End With
+        '
+        For i = 4 To 10
+            With Setting.ModeCollections(i)
+                .Name = "添加新模式..."
+                .Range = Nothing
+                .Times = Nothing
+                .Type = Nothing
+                .DoExtreme = Nothing
+                .DoRepeat = Nothing
+            End With
 
+        Next
     End Sub
 
     '全重置
 
     Sub MadePreparation()
-        ComboBox1.Items.Clear()
+        ModeSelection.Items.Clear()
         DoReadOnly = False
         For i As Integer = 0 To Setting.TotalMode - 1
-            ComboBox1.Items.Add(Setting.ModeCollections(i).Name)
+            ModeSelection.Items.Add(Setting.ModeCollections(i).Name)
         Next
-        ComboBox1.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
+        ModeSelection.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
         ColorSwitch(Setting.CurrentMode)
         BackGroundBase.Text = Setting.ModeCollections(Setting.CurrentMode).Name
         Timer2.Interval = Setting.Voicespeed
@@ -708,9 +731,11 @@ CX6:
         If Setting.ModeCollections(Setting.CurrentMode).Type = False Then
             ranges = Setting.ModeCollections(Setting.CurrentMode).Range
             ToolStripLabel4.Enabled = False
+            RepeatSwitch.Enabled = False
         Else
             dataRange = Setting.ModeCollections(Setting.CurrentMode).Range
             ToolStripLabel4.Enabled = True
+            RepeatSwitch.Enabled = True
         End If
         doextreme = Setting.ModeCollections(Setting.CurrentMode).DoExtreme
         If Setting.ModeCollections(Setting.CurrentMode).DoExtreme = True Then
@@ -721,7 +746,7 @@ CX6:
         memories = 0
         makesure = 0
         lock = True
-        CheckBox1.Checked = False
+        DoMakesureSwitch.Checked = False
         lock = False
         memo = False
         Timer1.Enabled = True
@@ -745,6 +770,8 @@ CX6:
         DeadLocker = True
         ToolStripLabel5.Enabled = False
     End Sub
+
+
 
     Private Sub ChangeBackGround(ByVal a As String)
         Select Case a
@@ -822,9 +849,11 @@ CX6:
         Label10.ForeColor = Color.White
         Label11.ForeColor = Color.White
         Label12.ForeColor = Color.White
-        CheckBox1.ForeColor = Color.White
+        DoMakesureSwitch.ForeColor = Color.White
         NumberSwitch.ForeColor = Color.White
         ItemSwitch.ForeColor = Color.White
+        ExtremeSwitch.ForeColor = Color.White
+        RepeatSwitch.ForeColor = Color.White
         If lock = True Then Exit Sub
         Call Xs()
     End Sub
@@ -847,9 +876,11 @@ CX6:
         Label10.ForeColor = Color.Black
         Label11.ForeColor = Color.Black
         Label12.ForeColor = Color.Black
-        CheckBox1.ForeColor = Color.Black
+        DoMakesureSwitch.ForeColor = Color.Black
         NumberSwitch.ForeColor = Color.Black
         ItemSwitch.ForeColor = Color.Black
+        ExtremeSwitch.ForeColor = Color.Black
+        RepeatSwitch.ForeColor = Color.Black
         If lock = True Then Exit Sub
         Call Xs()
     End Sub
@@ -869,43 +900,43 @@ CX6:
         Select Case e
             Case Is = "E"
                 MainDialog.Image = My.Resources.EDialog
-                Label9.Image = My.Resources.EDialog
+                PreviewDialog.Image = My.Resources.EDialog
             Case Is = "Pt(默认)"
                 MainDialog.Image = My.Resources.PtDialog
-                Label9.Image = My.Resources.PtDialog
+                PreviewDialog.Image = My.Resources.PtDialog
             Case Is = "HGSS"
                 MainDialog.Image = My.Resources.hgssdialog
-                Label9.Image = My.Resources.hgssdialog
+                PreviewDialog.Image = My.Resources.hgssdialog
             Case Is = "DP"
                 MainDialog.Image = My.Resources.DialogDP
-                Label9.Image = My.Resources.DialogDP
+                PreviewDialog.Image = My.Resources.DialogDP
             Case Is = "ORAS"
                 MainDialog.Image = My.Resources.ORASDialog
-                Label9.Image = My.Resources.ORASDialog
+                PreviewDialog.Image = My.Resources.ORASDialog
         End Select
 
     End Sub
     '更换对话框
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles PersonalizeColor.Click
         ColorDialog1.Color = MainDialog.ForeColor
         If ColorDialog1.ShowDialog = DialogResult.OK Then
             MainDialog.ForeColor = ColorDialog1.Color
-            Label9.ForeColor = ColorDialog1.Color
+            PreviewDialog.ForeColor = ColorDialog1.Color
         Else
             Exit Sub
         End If
     End Sub
 
     '更换颜色
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles PersonalizeFonts.Click
         FontDialog1.Font = MainDialog.Font
         FontDialog1.ShowColor = True
         If FontDialog1.ShowDialog = DialogResult.OK Then
             MainDialog.Font = FontDialog1.Font
             MainDialog.ForeColor = FontDialog1.Color
-            Label9.Font = FontDialog1.Font
-            Label9.ForeColor = FontDialog1.Color
+            PreviewDialog.Font = FontDialog1.Font
+            PreviewDialog.ForeColor = FontDialog1.Color
         Else
             Exit Sub
         End If
@@ -941,30 +972,37 @@ CX6:
 
     '语速
     Private Sub ReDiveP_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ReDiveP.LinkClicked
-        Setting.BackGroundImage = "天空邮件"
-        Me.BackgroundImage = My.Resources.天空邮件
-        DeadLocker = False
-        Call Bla()
-        DeadLocker = True
-        Setting.DialogImage = "Pt(默认)"
-        MainDialog.Image = My.Resources.PtDialog
-        Label9.Image = My.Resources.PtDialog
-        Setting.Voicespeed = 25
-        DeadLocker = False
-        Call Xs()
-        DeadLocker = True
+        UniversalDialog1.Label1.Text = "即将重置本页面设置，确定吗?"
+        DoReadOnly = False
+        If UniversalDialog1.ShowDialog = DialogResult.OK Then
+            Setting.BackGroundImage = "天空邮件"
+            Me.BackgroundImage = My.Resources.天空邮件
+            DeadLocker = False
+            BackGroundBase.SelectedItem = "天空邮件"
+            DialogBase.SelectedItem = "Pt(默认)"
+            VoiceSpeedBase.SelectedItem = "中"
+            Call Bla()
+            DeadLocker = True
+            Setting.DialogImage = "Pt(默认)"
+            MainDialog.Image = My.Resources.PtDialog
+            PreviewDialog.Image = My.Resources.PtDialog
+            Setting.Voicespeed = 25
+            DeadLocker = False
+            Call Xs()
+            DeadLocker = True
+        End If
     End Sub
 
     '个性化页面-重置
 
-    '=======Page 4 of 4,数据驱动相关=======
+    '=======Page 4 of 4,数据库相关=======
 
 
     '=======Page 5 of 4,预加载和其他设定=======
 
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
-        If ListBox1.SelectedIndex = 0 Then Exit Sub
-        DialogText = ListBox1.SelectedItem
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Logs.SelectedIndexChanged
+        If Logs.SelectedIndex = 0 Then Exit Sub
+        DialogText = Logs.SelectedItem
         Timer2.Enabled = True
     End Sub
 
@@ -1028,7 +1066,7 @@ CX6:
         If readme = Nothing Then Exit Sub
         iris = readme.Length
         checked2 += 1
-        Label9.Text = readme.Substring(0, checked2)
+        PreviewDialog.Text = readme.Substring(0, checked2)
         If checked2 > iris - 1 Then
             checked2 = 1
             Timer4.Enabled = False
@@ -1036,14 +1074,16 @@ CX6:
     End Sub
 
     '预览
-    Private Sub Xs()
+    Public Sub Xs()
         Dim te As String
         te = reader.Serialize(Setting)
         If File.Exists("RMNewConfig.json") Then
             Try
                 File.Delete("RMNewConfig.json")
             Catch ex As Exception
-                MsgBox("未知的错误...")
+                UniversalDialog1.Label1.Text = "未知的错误..."
+                DoReadOnly = True
+                UniversalDialog1.ShowDialog()
                 Exit Sub
             End Try
         End If
