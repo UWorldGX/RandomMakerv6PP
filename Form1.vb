@@ -2,7 +2,6 @@
 Imports System.IO
 Imports System.Data.OleDb
 Imports System.Text
-Imports RandomMakerv6PP.Configs
 Public Class Form1
 
     '=========定义公用变量=========
@@ -24,7 +23,8 @@ Public Class Form1
     '核心参数
     Public DoReadOnly As Boolean
     '控制对话框是否为单按钮
-    Public JsonWord As String
+    Public JsonWord As String : Public TempMdName As String = ""
+    '存储json文本和临时的模式名称
     Public reader As New JavaScriptSerializer
 
     '内部存储
@@ -33,6 +33,12 @@ Public Class Form1
     Private Sub ComboBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ModeSelection.SelectedIndexChanged
         If memo = True Then Exit Sub
         If def = True Then
+            If donew = True Then
+                UniversalDialog1.Label1.Text = "该模式尚未保存,切换模式将导致配置丢失,是否继续?"
+                UniversalDialog1.Label2.Text = "推荐先前往[参数设置]面板保存配置。"
+                DoReadOnly = False
+                If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
+            End If
             Dim xr As Int16
             lock = True
             donew = False
@@ -89,6 +95,7 @@ Public Class Form1
                 CoreButton.Enabled = True
                 ExtremeLabel.Visible = False
             End If
+            TempMdName = ""
             ToolStripStatusLabel3.Text = "当前模式:" & Setting.ModeCollections(xr).Name
             Call ColorSwitch(xc:=xr)
         End If
@@ -217,7 +224,6 @@ CX7:
 CX6:
                         Randomize()
                         datas = Rnd() * (dataRange - 1)
-                        'If datas = 0 Then GoTo CX6
                         selCell = DataGridView1(1, datas)
                         ProgressBar1.Value = 70
                         selCell = DataGridView1(2, datas)
@@ -294,13 +300,20 @@ CX6:
 
     '保存抽取记录
     Private Sub ToolStripLabel5_Click(sender As Object, e As EventArgs) Handles ToolStripLabel5.Click
+        If donew = True Then
+            UniversalDialog1.Label1.Text = "该模式尚未保存,重置将导致配置丢失,是否继续?"
+            UniversalDialog1.Label2.Text = "推荐先前往[参数设置]面板保存配置。"
+            DoReadOnly = False
+            If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
+        End If
         Dim xr As Integer
         xr = ModeSelection.SelectedIndex
         donew = False
+        TempMdName = ""
         Logs.Items.Clear()
         Logs.Items.Add(ModeSelection.Text & "就绪.")
         tms = Setting.ModeCollections(xr).Times
-        Select Case dodata
+        Select Case Setting.ModeCollections(xr).Type
             Case Is = False
                 circle = 1
                 timepool.Value = tms
@@ -348,6 +361,8 @@ CX6:
             CoreButton.Enabled = True
             ExtremeSwitch.Checked = False
         End If
+        Call ColorSwitch(xc:=xr)
+        donew = False
         Timer2.Enabled = True
         SaveLogs.Visible = False
     End Sub
@@ -364,44 +379,46 @@ CX6:
         tms = timepool.Value
         donew = True
         If dodata = False Then
-            ModeSelection.Text = "自定义模式"
             NumberSwitch.Checked = True
             ItemSwitch.Checked = False
             RangeDisplay.Text = Str(ranges)
             TimesDisplay.Text = Str(tms)
             Logs.ForeColor = Color.Black
-            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
+            ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
+            TempMdName = "新随机数模式(未保存)"
         Else
-            ModeSelection.Text = "数据库模式Personaize"
             NumberSwitch.Checked = False
             ItemSwitch.Checked = True
             RangeDisplay.Text = Str(dataRange)
             TimesDisplay.Text = Str(tms)
             Logs.ForeColor = Color.Chocolate
-            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
+            TempMdName = "新数据库模式(未保存)"
+            ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
         End If
-        TextBox1.Text = ModeSelection.Text & dodata - 3
     End Sub
 
     '抽取次数
     Private Sub Pool_ValueChanged_1(sender As Object, e As EventArgs) Handles pool.ValueChanged
         If lock = True Then Exit Sub
+        donew = True
         If dodata = False Then
             pool.Maximum = 100
             ranges = pool.Value
             RangeDisplay.Text = Str(ranges)
             TimesDisplay.Text = Str(timepool.Value)
-            ModeSelection.Text = "自定义模式"
-            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
-            TextBox1.Text = "自定义模式"
+            Logs.ForeColor = Color.Black
+            TempMdName = "新随机数模式(未保存)"
+            ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
+            ToolStripLabel4.Enabled = False
         Else
             pool.Maximum = Setting.MaxArea
             dataRange = pool.Value
             RangeDisplay.Text = Str(dataRange)
             TimesDisplay.Text = Str(timepool.Value)
-            ModeSelection.Text = "数据驱动模式Personaize"
-            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
-            TextBox1.Text = "自定义模式(数据库)"
+            TempMdName = "新数据库模式(未保存)"
+            ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
+            ToolStripLabel4.Enabled = True
+            Logs.ForeColor = Color.Chocolate
         End If
     End Sub
 
@@ -409,6 +426,7 @@ CX6:
 
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles ExtremeSwitch.CheckedChanged
         If lock = True Then Exit Sub
+        donew = True
         If doextreme = False Then
             doextreme = True
             CoreButton.Enabled = True
@@ -425,12 +443,12 @@ CX6:
 
     Private Sub NumberSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles NumberSwitch.CheckedChanged
         If lock = True Then Exit Sub
+        donew = True
         If dodata <> False Then
             dodata = False
             RepeatSwitch.Enabled = False
-            ModeSelection.Text = "自定义模式"
-            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
-            TextBox1.Text = ModeSelection.Text & Setting.TotalMode - 3
+            TempMdName = "新随机数模式(未保存)"
+            ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
             ToolStripLabel4.Enabled = False
             ranges = pool.Value
         End If
@@ -439,6 +457,7 @@ CX6:
     '随机数开关
     Private Sub ItemSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ItemSwitch.CheckedChanged
         If lock = True Then Exit Sub
+        donew = True
         If Setting.MaxArea < pool.Value Then
             MsgBox("错误!数据库模式抽取范围不应超过" & Setting.MaxArea & "!", vbOKOnly + vbCritical, "错误")
             lock = True
@@ -450,9 +469,8 @@ CX6:
         If dodata <> True Then
             dodata = True
             RepeatSwitch.Enabled = True
-            ModeSelection.Text = "数据库模式Personailze"
-            ToolStripStatusLabel3.Text = "当前模式:" & ModeSelection.Text
-            TextBox1.Text = ModeSelection.Text & Setting.TotalMode - 3
+            TempMdName = "新数据库模式(未保存)"
+            ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
             ToolStripLabel4.Enabled = True
             dataRange = pool.Value
         End If
@@ -525,6 +543,7 @@ CX6:
 
     Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
         If lock = True Then Exit Sub
+        donew = True
         If dodata = False Then
             MsgBox("警告!该选项仅供数据库模式使用!", vbOKOnly + vbCritical, "提示")
             RepeatSwitch.Checked = False
@@ -584,40 +603,6 @@ CX6:
     Private Sub Saver_Click_1(sender As Object, e As EventArgs) Handles Saver.Click
         Me.Hide()
         ModeEditor.Show()
-        'If ModeSelection.Items.Count > 10 Then
-        '    MsgBox("最多存在11个模式", vbOKOnly, "提示")
-        '    Exit Sub
-        'End If
-        'If lock = True Then Exit Sub
-        'ModeSelection.Items.Add(TextBox1.Text)
-        'Setting.TotalMode += 1
-        'ReDim Preserve Setting.ModeCollections(Setting.TotalMode - 1)
-        'Setting.ModeCollections(Setting.TotalMode - 1).Name = TextBox1.Text
-        'If dodata = True Then
-        '    Setting.ModeCollections(Setting.TotalMode - 1).Range = dataRange
-        '    Setting.ModeCollections(Setting.TotalMode - 1).Type = True
-        '    Select Case dorepeat
-        '        Case Is = True
-        '            Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = True
-        '        Case Else
-        '            Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = False
-        '    End Select
-        'Else
-        '    Setting.ModeCollections(Setting.TotalMode - 1).Range = ranges
-        '    Setting.ModeCollections(Setting.TotalMode - 1).Type = False
-        '    Setting.ModeCollections(Setting.TotalMode - 1).DoRepeat = False
-        'End If
-        'Setting.ModeCollections(Setting.TotalMode - 1).Times = tms
-        'If doextreme = True Then
-        '    Setting.ModeCollections(Setting.TotalMode - 1).DoExtreme = True
-        'Else
-        '    Setting.ModeCollections(Setting.TotalMode - 1).DoExtreme = False
-        'End If
-        'donew = False
-        'MsgBox("保存成功,请返回模式列表查看", vbOKOnly + vbInformation, "祝贺")
-        'DeadLocker = False
-        'Call Xs()
-        'DeadLocker = True
     End Sub
 
     '保存自定义模式

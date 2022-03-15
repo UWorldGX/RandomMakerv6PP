@@ -1,13 +1,28 @@
 ﻿Public Class ModeEditor
-    Dim DeadLocker As Boolean, setting， setting2 As Configs
+    Dim DeadLocker As Boolean = True, setting， setting2 As New Configs()
     Dim memo As Byte
     Private Sub ModeEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        setting = Form1.Setting
+        setting2 = setting
+        If Form1.TempMdName <> "" Then
+            UniversalDialog1.Label1.Text = "检测到有用户配置未保存,已自动进行保存."
+            UniversalDialog1.ShowDialog()
+            With setting.ModeCollections(setting.TotalMode)
+                .Name = Form1.TempMdName
+                .Range = Form1.pool.Value
+                .Times = Form1.timepool.Value
+                .DoRepeat = False
+                .Type = Form1.dodata
+                .DoExtreme = Form1.doextreme
+            End With
+            setting.TotalMode += 1
+        End If
         ListBox1.Items.Clear()
+        DeadLocker = True
         For i As Integer = 1 To Form1.Setting.TotalMode + 1
             ListBox1.Items.Add(Form1.Setting.ModeCollections(i - 1).Name)
         Next
-        setting = Form1.Setting
-        setting2 = setting
+        DeadLocker = False
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
@@ -15,6 +30,8 @@
         If ListBox1.SelectedIndex <= setting.TotalMode - 1 Then
             GroupBox1.Enabled = True
             DeadLocker = True
+            timepool.Enabled = True
+            pool.Enabled = True
             TextBox1.Text = setting.ModeCollections(ListBox1.SelectedIndex).Name
             timepool.Value = setting.ModeCollections(ListBox1.SelectedIndex).Times
             pool.Value = setting.ModeCollections(ListBox1.SelectedIndex).Range
@@ -23,9 +40,11 @@
             If setting.ModeCollections(ListBox1.SelectedIndex).Type = False Then
                 NumberSwitch.Checked = True
                 RepeatSwitch.Enabled = False
+                pool.Maximum = 100
             Else
                 ItemSwitch.Checked = True
                 RepeatSwitch.Enabled = True
+                pool.Maximum = setting.MaxArea
             End If
             DeadLocker = False
         Else
@@ -35,6 +54,7 @@
                 If setting.TotalMode > 10 Then
                     UniversalDialog1.Label1.Text = "最多共存11个模式,已超出模式上限"
                     UniversalDialog1.ShowDialog()
+                    setting.TotalMode -= 1
                     Exit Sub
                 End If
                 With setting.ModeCollections(ListBox1.SelectedIndex)
@@ -64,6 +84,7 @@
                     ItemSwitch.Checked = True
                     RepeatSwitch.Enabled = True
                 End If
+                ListBox1.SelectedIndex = memo
                 DeadLocker = False
                 UniversalDialog1.Label1.Text = "创建完毕。现可自定义该新模式的参数。"
                 UniversalDialog1.ShowDialog()
@@ -83,7 +104,9 @@
         If ListBox1.SelectedIndex = -1 Then Exit Sub
         If DeadLocker = True Then Exit Sub
         setting.ModeCollections(ListBox1.SelectedIndex).Name = TextBox1.Text
+        DeadLocker = True
         ListBox1.Items.Item(ListBox1.SelectedIndex) = TextBox1.Text
+        DeadLocker = False
     End Sub
 
     Private Sub NumberSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles NumberSwitch.CheckedChanged
@@ -92,15 +115,25 @@
         If setting.ModeCollections(ListBox1.SelectedIndex).Type <> False Then
             setting.ModeCollections(ListBox1.SelectedIndex).Type = False
             RepeatSwitch.Enabled = False
+            pool.Maximum = 100
         End If
     End Sub
 
     Private Sub ItemSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ItemSwitch.CheckedChanged
         If ListBox1.SelectedIndex = -1 Then Exit Sub
         If DeadLocker = True Then Exit Sub
+        If setting.MaxArea < pool.Value Then
+            MsgBox("错误!数据库模式抽取范围不应超过" & setting.MaxArea & "!", vbOKOnly + vbCritical, "错误")
+            DeadLocker = True
+            ItemSwitch.Checked = False
+            NumberSwitch.Checked = True
+            DeadLocker = False
+            Exit Sub
+        End If
         If setting.ModeCollections(ListBox1.SelectedIndex).Type <> True Then
             setting.ModeCollections(ListBox1.SelectedIndex).Type = True
             RepeatSwitch.Enabled = True
+            pool.Maximum = setting.MaxArea
         End If
     End Sub
 
@@ -112,6 +145,35 @@
     Private Sub pool_ValueChanged(sender As Object, e As EventArgs) Handles pool.ValueChanged
         If DeadLocker = True Then Exit Sub
         setting.ModeCollections(ListBox1.SelectedIndex).Range = pool.Value
+    End Sub
+
+    Private Sub ExtremeSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ExtremeSwitch.CheckedChanged
+        If DeadLocker = True Then Exit Sub
+        If setting.ModeCollections(ListBox1.SelectedIndex).DoExtreme = False Then
+            setting.ModeCollections(ListBox1.SelectedIndex).DoExtreme = True
+        Else
+            setting.ModeCollections(ListBox1.SelectedIndex).DoExtreme = False
+        End If
+
+    End Sub
+
+    Private Sub RepeatSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
+        If DeadLocker = True Then Exit Sub
+        If setting.ModeCollections(ListBox1.SelectedIndex).Type = False Then
+            MsgBox("警告!该选项仅供数据库模式使用!", vbOKOnly + vbCritical, "提示")
+            RepeatSwitch.Checked = False
+            Exit Sub
+        End If
+        If setting.ModeCollections(ListBox1.SelectedIndex).DoRepeat = False Then
+            setting.ModeCollections(ListBox1.SelectedIndex).DoRepeat = True
+        Else
+            setting.ModeCollections(ListBox1.SelectedIndex).DoRepeat = False
+        End If
+
+    End Sub
+
+    Private Sub ModeEditor_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Form1.Show()
     End Sub
 
     Sub SettingOverlay()
@@ -140,4 +202,6 @@
         End If
         DeadLocker = False
     End Sub
+
+
 End Class

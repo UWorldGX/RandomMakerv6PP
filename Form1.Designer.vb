@@ -63,7 +63,6 @@ Partial Class Form1
         Me.Logs = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Saver = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.ImportButton = New System.Windows.Forms.Button()
@@ -170,13 +169,13 @@ Partial Class Form1
         '更新记录ToolStripMenuItem
         '
         Me.更新记录ToolStripMenuItem.Name = "更新记录ToolStripMenuItem"
-        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.更新记录ToolStripMenuItem.Text = "更新记录"
         '
         '关于ToolStripMenuItem
         '
         Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
-        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.关于ToolStripMenuItem.Text = "关于"
         '
         'FontDialog1
@@ -547,7 +546,6 @@ Partial Class Form1
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.Controls.Add(Me.Saver)
-        Me.Panel2.Controls.Add(Me.TextBox1)
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.LinkLabel2)
         Me.Panel2.Controls.Add(Me.ImportButton)
@@ -569,32 +567,22 @@ Partial Class Form1
         Me.Saver.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Saver.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Saver.ForeColor = System.Drawing.Color.White
-        Me.Saver.Location = New System.Drawing.Point(335, 205)
+        Me.Saver.Location = New System.Drawing.Point(259, 205)
         Me.Saver.Name = "Saver"
         Me.Saver.Size = New System.Drawing.Size(80, 32)
         Me.Saver.TabIndex = 31
-        Me.Saver.Text = "保存"
+        Me.Saver.Text = "编辑..."
         Me.Saver.UseVisualStyleBackColor = False
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(175, 208)
-        Me.TextBox1.MaxLength = 15
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(144, 27)
-        Me.TextBox1.TabIndex = 30
-        Me.TextBox1.Text = "我的模式1"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(94, 211)
+        Me.Label12.Location = New System.Drawing.Point(139, 211)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(78, 20)
+        Me.Label12.Size = New System.Drawing.Size(114, 20)
         Me.Label12.TabIndex = 29
-        Me.Label12.Text = "保存为......"
+        Me.Label12.Text = "添加和删除模式"
         '
         'LinkLabel2
         '
@@ -1159,7 +1147,6 @@ Partial Class Form1
     Friend WithEvents pool As NumericUpDown
     Friend WithEvents Label11 As Label
     Friend WithEvents Saver As Button
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents ExtremeSwitch As CheckBox
     Friend WithEvents Label13 As Label

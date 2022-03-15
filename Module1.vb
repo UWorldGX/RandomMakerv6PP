@@ -26,7 +26,7 @@
         Else
             second = dt.Second
         End If
-        all = dt.Year & "," & month & "," & day & "," & hour & "," & minute & "," & second
+        all = dt.Year & "-" & month & "-" & day & "," & hour & "-" & minute & "-" & second
         Return all
     End Function
 End Module
