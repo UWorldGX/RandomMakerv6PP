@@ -96,6 +96,7 @@ Public Class Form1
                 ExtremeLabel.Visible = False
             End If
             TempMdName = ""
+            Setting.CurrentMode = xr
             ToolStripStatusLabel3.Text = "当前模式:" & Setting.ModeCollections(xr).Name
             Call ColorSwitch(xc:=xr)
         End If
@@ -116,7 +117,7 @@ Public Class Form1
             Case Is = 3
                 Logs.ForeColor = Color.Purple
             Case Is = 4
-                Logs.ForeColor = Color.GreenYellow
+                Logs.ForeColor = Color.MediumSeaGreen
             Case Is = 5
                 Logs.ForeColor = Color.IndianRed
             Case Is = 6
@@ -622,7 +623,7 @@ CX6:
 
 
     Private Sub LinkLabel2_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        UniversalDialog1.Label1.Text = "即将重置全部设置,自定义的配置将会丢失,确定吗?"
+        UniversalDialog1.Label1.Text = "将重置全部设置,自定义的配置将丢失,确定吗?"
         DoReadOnly = False : DoMultiLine = False
         If UniversalDialog1.ShowDialog = DialogResult.OK Then
             Initialization()

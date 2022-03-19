@@ -25,10 +25,12 @@
         Next
         DeadLocker = False
     End Sub
+    '初始化模式编辑器
+
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
         If DeadLocker = True Then Exit Sub
-        If ListBox1.SelectedIndex <= setting.TotalMode - 1 Then
+        If ListBox1.SelectedIndex <= setting.TotalMode - 1 Then '切换选定模式
             GroupBox1.Enabled = True
             DeadLocker = True
             timepool.Enabled = True
@@ -48,7 +50,7 @@
                 pool.Maximum = setting.MaxArea
             End If
             DeadLocker = False
-        Else
+        Else '新模式创建
             Form1.DoReadOnly = False : Form1.DoMultiLine = False
             UniversalDialog1.Label1.Text = "即将创建新模式,确定吗?"
             If UniversalDialog1.ShowDialog() = DialogResult.OK Then
@@ -100,6 +102,7 @@
             End If
         End If
     End Sub
+    '选定模式和创建新模式
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         For i As Integer = 0 To setting.TotalMode - 1
@@ -117,6 +120,7 @@
         Form1.Xs()
         Me.Close()
     End Sub
+    '保存并退出
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         If ListBox1.SelectedIndex = -1 Then Exit Sub
@@ -126,6 +130,7 @@
         ListBox1.Items.Item(ListBox1.SelectedIndex) = TextBox1.Text
         DeadLocker = False
     End Sub
+    '更改模式名称
 
     Private Sub NumberSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles NumberSwitch.CheckedChanged
         If ListBox1.SelectedIndex = -1 Then Exit Sub
@@ -136,6 +141,7 @@
             pool.Maximum = 100
         End If
     End Sub
+    '随机数模式
 
     Private Sub ItemSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ItemSwitch.CheckedChanged
         If ListBox1.SelectedIndex = -1 Then Exit Sub
@@ -154,16 +160,19 @@
             pool.Maximum = setting.MaxArea
         End If
     End Sub
+    '数据库模式
 
     Private Sub timepool_ValueChanged(sender As Object, e As EventArgs) Handles timepool.ValueChanged
         If DeadLocker = True Then Exit Sub
         setting.ModeCollections(ListBox1.SelectedIndex).Times = timepool.Value
     End Sub
+    '次数切换
 
     Private Sub pool_ValueChanged(sender As Object, e As EventArgs) Handles pool.ValueChanged
         If DeadLocker = True Then Exit Sub
         setting.ModeCollections(ListBox1.SelectedIndex).Range = pool.Value
     End Sub
+    '更改范围
 
     Private Sub ExtremeSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ExtremeSwitch.CheckedChanged
         If DeadLocker = True Then Exit Sub
@@ -174,6 +183,7 @@
         End If
 
     End Sub
+    '极限模式
 
     Private Sub RepeatSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
         If DeadLocker = True Then Exit Sub
@@ -189,10 +199,16 @@
         End If
 
     End Sub
+    '允许重复
 
     Private Sub ModeEditor_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Form1.Show()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Me.Close()
+    End Sub
+    '关闭窗口
 
     Sub SettingOverlay()
         Dim i As Byte = 0, j As Byte = 0
@@ -208,7 +224,7 @@
             i += 1
         Loop Until j > ListBox1.Items.Count - 1
     End Sub
-
+    '设置覆盖
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         DeadLocker = True
         Form1.DoReadOnly = False : Form1.DoMultiLine = False
@@ -221,6 +237,6 @@
         End If
         DeadLocker = False
     End Sub
-
+    '删除模式
 
 End Class

@@ -133,7 +133,7 @@ Partial Class Form1
         '
         Me.MainDialog.AutoEllipsis = True
         Me.MainDialog.BackColor = System.Drawing.Color.Transparent
-        Me.MainDialog.Cursor = System.Windows.Forms.Cursors.No
+        Me.MainDialog.Cursor = System.Windows.Forms.Cursors.Cross
         Me.MainDialog.Font = New System.Drawing.Font("方正像素12", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.MainDialog.ForeColor = System.Drawing.Color.Black
         Me.MainDialog.Image = Global.RandomMakerv6PP.My.Resources.Resources.PtDialog
@@ -169,13 +169,13 @@ Partial Class Form1
         '更新记录ToolStripMenuItem
         '
         Me.更新记录ToolStripMenuItem.Name = "更新记录ToolStripMenuItem"
-        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.更新记录ToolStripMenuItem.Text = "更新记录"
         '
         '关于ToolStripMenuItem
         '
         Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
-        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.关于ToolStripMenuItem.Text = "关于"
         '
         'FontDialog1
@@ -530,7 +530,9 @@ Partial Class Form1
         '
         'Logs
         '
+        Me.Logs.BackColor = System.Drawing.SystemColors.Info
         Me.Logs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Logs.Cursor = System.Windows.Forms.Cursors.Help
         Me.Logs.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Logs.FormattingEnabled = True
         Me.Logs.HorizontalScrollbar = True
@@ -1053,7 +1055,7 @@ Partial Class Form1
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "减速风扇抽号发生器.NET 6.0.0b"
+        Me.Text = "减速风扇抽号发生器.NET 6.0.0 ""LANDSLIDE"""
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
