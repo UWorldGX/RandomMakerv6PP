@@ -27,6 +27,7 @@ Partial Class DebugForm
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
         'DebugOutput
@@ -68,10 +69,27 @@ Partial Class DebugForm
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(242, 47)
+        Me.TextBox1.AcceptsReturn = True
+        Me.TextBox1.Location = New System.Drawing.Point(267, 22)
+        Me.TextBox1.MaxLength = 65536
+        Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(133, 23)
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
+        Me.TextBox1.Size = New System.Drawing.Size(133, 173)
         Me.TextBox1.TabIndex = 2
+        Me.TextBox1.Text = "这里将输出该程序实时的JSON配置文件。"
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.ProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.ProgressBar1.Location = New System.Drawing.Point(9, 109)
+        Me.ProgressBar1.Maximum = 10000
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(243, 18)
+        Me.ProgressBar1.Step = 1
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.ProgressBar1.TabIndex = 3
         '
         'DebugForm
         '
@@ -80,6 +98,7 @@ Partial Class DebugForm
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｈ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(432, 221)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DebugOutput)
@@ -87,8 +106,11 @@ Partial Class DebugForm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MaximizeBox = False
         Me.Name = "DebugForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DebugForm"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -98,4 +120,5 @@ Partial Class DebugForm
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

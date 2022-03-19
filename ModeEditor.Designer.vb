@@ -242,8 +242,9 @@ Partial Class ModeEditor
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(5)
+        Me.MaximizeBox = False
         Me.Name = "ModeEditor"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "模式编辑器"
         Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)

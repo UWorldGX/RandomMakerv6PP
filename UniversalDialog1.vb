@@ -23,6 +23,11 @@ Public Class UniversalDialog1
         Else
             Cancel_Button.Visible = True
         End If
+        If Form1.DoMultiLine = True Then
+            Label2.Visible = True
+        Else
+            Label2.Visible = False
+        End If
     End Sub
 
     Private Sub Anime_Tick(sender As Object, e As EventArgs) Handles Anime.Tick

@@ -132,7 +132,7 @@ Partial Class Form1
         'MainDialog
         '
         Me.MainDialog.AutoEllipsis = True
-        Me.MainDialog.BackColor = System.Drawing.Color.Black
+        Me.MainDialog.BackColor = System.Drawing.Color.Transparent
         Me.MainDialog.Cursor = System.Windows.Forms.Cursors.No
         Me.MainDialog.Font = New System.Drawing.Font("方正像素12", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.MainDialog.ForeColor = System.Drawing.Color.Black
@@ -869,7 +869,7 @@ Partial Class Form1
         '
         Me.BackGroundBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.BackGroundBase.FormattingEnabled = True
-        Me.BackGroundBase.Items.AddRange(New Object() {"天空邮件", "空间邮件", "彩嵌邮件", "青草邮件", "水蓝邮件", "暴雪邮件", "钢铁邮件", "砖块邮件", "初次邮件", "回复邮件", "喜爱邮件", "感谢邮件", "桥梁邮件W", "桥梁邮件C", "桥梁邮件V", "桥梁邮件H", "桥梁邮件S"})
+        Me.BackGroundBase.Items.AddRange(New Object() {"推荐邮件(PICK UP)", "天空邮件", "空间邮件", "彩嵌邮件", "青草邮件", "火焰邮件", "水蓝邮件", "暴雪邮件", "钢铁邮件", "砖块邮件", "隧道邮件", "绽放邮件", "甜蜜邮件", "初次邮件", "邀请邮件", "回复邮件", "喜爱邮件", "感谢邮件", "桥梁邮件W", "桥梁邮件C", "桥梁邮件V", "桥梁邮件H", "桥梁邮件S"})
         Me.BackGroundBase.Location = New System.Drawing.Point(129, 64)
         Me.BackGroundBase.Name = "BackGroundBase"
         Me.BackGroundBase.Size = New System.Drawing.Size(172, 28)
@@ -1036,7 +1036,8 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.天空邮件
+        Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.推荐邮件
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(513, 408)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)

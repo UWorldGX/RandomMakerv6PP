@@ -21,7 +21,7 @@ Public Class Form1
 
     Public Setting As New Configs()
     '核心参数
-    Public DoReadOnly As Boolean
+    Public DoReadOnly As Boolean, DoMultiLine As Boolean = False
     '控制对话框是否为单按钮
     Public JsonWord As String : Public TempMdName As String = ""
     '存储json文本和临时的模式名称
@@ -34,9 +34,9 @@ Public Class Form1
         If memo = True Then Exit Sub
         If def = True Then
             If donew = True Then
-                UniversalDialog1.Label1.Text = "该模式尚未保存,切换模式将导致配置丢失,是否继续?"
+                UniversalDialog1.Label1.Text = "该模式尚未保存,切换模式后配置丢失,是否继续?"
                 UniversalDialog1.Label2.Text = "推荐先前往[参数设置]面板保存配置。"
-                DoReadOnly = False
+                DoReadOnly = False : DoMultiLine = True
                 If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
             End If
             Dim xr As Int16
@@ -116,19 +116,19 @@ Public Class Form1
             Case Is = 3
                 Logs.ForeColor = Color.Purple
             Case Is = 4
-                Logs.ForeColor = Color.DarkGoldenrod
+                Logs.ForeColor = Color.GreenYellow
             Case Is = 5
                 Logs.ForeColor = Color.IndianRed
             Case Is = 6
                 Logs.ForeColor = Color.DarkOrange
             Case Is = 8
-                Logs.ForeColor = Color.Gray
+                Logs.ForeColor = Color.DeepSkyBlue
             Case Is = 9
                 Logs.ForeColor = Color.Olive
             Case Is = 10
-                Logs.ForeColor = Color.DarkCyan
+                Logs.ForeColor = Color.Violet
             Case Is = 7
-                Logs.ForeColor = Color.Brown
+                Logs.ForeColor = Color.Navy
         End Select
     End Sub
 
@@ -290,7 +290,7 @@ CX6:
             WriteLine(2, "一共抽取了" & Logs.Items.Count - 1 & "次")
             WriteLine(2, "使用的模式:" & Setting.ModeCollections(Setting.CurrentMode).Name)
             FileClose(2)
-            DoReadOnly = False
+            DoReadOnly = True : DoMultiLine = False
             UniversalDialog1.Label1.Text = "抽取记录保存成功！"
             UniversalDialog1.ShowDialog()
         Else
@@ -300,10 +300,13 @@ CX6:
 
     '保存抽取记录
     Private Sub ToolStripLabel5_Click(sender As Object, e As EventArgs) Handles ToolStripLabel5.Click
+        UniversalDialog1.Label1.Text = "即将清除抽取记录并重置,是否继续?"
+        DoReadOnly = False : DoMultiLine = False
+        If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
         If donew = True Then
             UniversalDialog1.Label1.Text = "该模式尚未保存,重置将导致配置丢失,是否继续?"
             UniversalDialog1.Label2.Text = "推荐先前往[参数设置]面板保存配置。"
-            DoReadOnly = False
+            DoReadOnly = False : DoMultiLine = True
             If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
         End If
         Dim xr As Integer
@@ -482,7 +485,17 @@ CX6:
         lock = True
         Dim fs As FileStream
         If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-            fs = File.Open(SaveFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.Write)
+            'If File.Exists(SaveFileDialog1.FileName) Then
+            '    Try
+            '        File.Delete(SaveFileDialog1.FileName)
+            '    Catch ex As Exception
+            '        UniversalDialog1.Label1.Text = "未知的错误..."
+            '        DoReadOnly = True : DoMultiLine = False
+            '        UniversalDialog1.ShowDialog()
+            '        Exit Sub
+            '    End Try
+            'End If
+            fs = File.Open(SaveFileDialog1.FileName, FileMode.Create, FileAccess.Write)
             Dim sw As New StreamWriter(fs, Encoding.UTF8)
             Setting.Name = SaveFileDialog1.FileName
             Dim saver As New JavaScriptSerializer
@@ -491,7 +504,7 @@ CX6:
             sw.Close()
             fs.Close()
             UniversalDialog1.Label1.Text = "用户配置保存成功！"
-            DoReadOnly = True
+            DoReadOnly = True : DoMultiLine = False
             UniversalDialog1.ShowDialog()
         End If
         lock = False
@@ -519,11 +532,11 @@ CX6:
                 lock = False
                 MadePreparation()
                 UniversalDialog1.Label1.Text = "用户配置载入成功！"
-                DoReadOnly = True
+                DoReadOnly = True : DoMultiLine = False
                 UniversalDialog1.ShowDialog()
             Catch g As Exception
                 UniversalDialog1.Label1.Text = "载入错误！配置文件不是合法的JSON文件"
-                DoReadOnly = True
+                DoReadOnly = True : DoMultiLine = False
                 UniversalDialog1.ShowDialog()
                 Exit Sub
             End Try
@@ -557,7 +570,7 @@ CX6:
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        DoReadOnly = False
+        DoReadOnly = False : DoMultiLine = False
         UniversalDialog1.Label1.Text = "这是测试按钮"
         If UniversalDialog1.ShowDialog() = DialogResult.OK Then
             'MsgBox("测试成功")
@@ -609,8 +622,8 @@ CX6:
 
 
     Private Sub LinkLabel2_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        UniversalDialog1.Label1.Text = "即将重置全部设置,未保存配置将会丢失,确定吗?"
-        DoReadOnly = False
+        UniversalDialog1.Label1.Text = "即将重置全部设置,自定义的配置将会丢失,确定吗?"
+        DoReadOnly = False : DoMultiLine = False
         If UniversalDialog1.ShowDialog = DialogResult.OK Then
             Initialization()
             Xs()
@@ -624,13 +637,13 @@ CX6:
 
     Public Sub Initialization()
         ReDim Setting.ModeCollections(10)
-        Setting.Name = "Default"
+        Setting.Name = "DefaultConfig"
         Setting.TotalMode = 4
         Setting.CurrentMode = 0
         Setting.MaxArea = 69
         Setting.Voicespeed = 25
         Setting.Version = "6.0.0"
-        Setting.BackGroundImage = "天空邮件"
+        Setting.BackGroundImage = "推荐邮件(PICK UP)"
         Setting.DialogImage = "Pt(默认)"
         Setting.CreateTime = "2022.03.02"
         Setting.ModeCollections(0).Name = "随机数模式(正常)"
@@ -680,7 +693,7 @@ CX6:
 
     Sub MadePreparation()
         ModeSelection.Items.Clear()
-        DoReadOnly = False
+        DoReadOnly = False : DoMultiLine = False
         For i As Integer = 0 To Setting.TotalMode - 1
             ModeSelection.Items.Add(Setting.ModeCollections(i).Name)
         Next
@@ -691,7 +704,7 @@ CX6:
         Timer4.Interval = Timer2.Interval
         ChangeBackGround(Setting.BackGroundImage)
         ChangeDialogStyle(Setting.DialogImage)
-        ToolStripLabel1.LinkVisited = True
+        ToolStripLabel1.LinkVisited = True : ToolStripLabel2.LinkVisited = False
         ToolStripLabel5.Enabled = False
         Panel1.Visible = True
         Panel2.Visible = False
@@ -724,9 +737,9 @@ CX6:
         End If
         doextreme = Setting.ModeCollections(Setting.CurrentMode).DoExtreme
         If Setting.ModeCollections(Setting.CurrentMode).DoExtreme = True Then
-            ExtremeLabel.Text = "极限模式警告"
+            ExtremeLabel.Visible = True
         Else
-            ExtremeLabel.Text = ""
+            ExtremeLabel.Visible = False
         End If
         memories = 0
         makesure = 0
@@ -760,6 +773,9 @@ CX6:
 
     Private Sub ChangeBackGround(ByVal a As String)
         Select Case a
+            Case Is = "推荐邮件(PICK UP)"
+                Me.BackgroundImage = My.Resources.推荐邮件
+                Call Bla()
             Case Is = "空间邮件"
                 Me.BackgroundImage = My.Resources.空间邮件
                 Call Wht()
@@ -778,6 +794,18 @@ CX6:
             Case Is = "回复邮件"
                 Me.BackgroundImage = My.Resources.回复邮件
                 Call Bla()
+            Case Is = "邀请邮件"
+                Me.BackgroundImage = My.Resources.邀请邮件
+                Call Wht()
+            Case Is = "火焰邮件"
+                Me.BackgroundImage = My.Resources.火焰邮件
+                Call Wht()
+            Case Is = "隧道邮件"
+                Me.BackgroundImage = My.Resources.隧道邮件
+                Call Bla()
+            Case Is = "绽放邮件"
+                Me.BackgroundImage = My.Resources.绽放邮件
+                Call Wht()
             Case Is = "桥梁邮件W"
                 Me.BackgroundImage = My.Resources.桥梁邮件Ｗ
                 Call Bla()
@@ -811,6 +839,9 @@ CX6:
             Case Is = "感谢邮件"
                 Me.BackgroundImage = My.Resources.感谢邮件
                 Call Bla()
+            Case Is = "甜蜜邮件"
+                Me.BackgroundImage = My.Resources.甜蜜邮件
+                Call Wht()
         End Select
     End Sub
 
@@ -886,18 +917,23 @@ CX6:
             Case Is = "E"
                 MainDialog.Image = My.Resources.EDialog
                 PreviewDialog.Image = My.Resources.EDialog
+                UniversalDialog1.BackgroundImage = My.Resources.EDialog
             Case Is = "Pt(默认)"
                 MainDialog.Image = My.Resources.PtDialog
                 PreviewDialog.Image = My.Resources.PtDialog
+                UniversalDialog1.BackgroundImage = My.Resources.PtDialog
             Case Is = "HGSS"
                 MainDialog.Image = My.Resources.hgssdialog
                 PreviewDialog.Image = My.Resources.hgssdialog
+                UniversalDialog1.BackgroundImage = My.Resources.hgssdialog
             Case Is = "DP"
                 MainDialog.Image = My.Resources.DialogDP
                 PreviewDialog.Image = My.Resources.DialogDP
+                UniversalDialog1.BackgroundImage = My.Resources.DialogDP
             Case Is = "ORAS"
                 MainDialog.Image = My.Resources.ORASDialog
                 PreviewDialog.Image = My.Resources.ORASDialog
+                UniversalDialog1.BackgroundImage = My.Resources.ORASDialog
         End Select
 
     End Sub
@@ -958,12 +994,12 @@ CX6:
     '语速
     Private Sub ReDiveP_LinkClicked_1(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ReDiveP.LinkClicked
         UniversalDialog1.Label1.Text = "即将重置本页面设置，确定吗?"
-        DoReadOnly = False
+        DoReadOnly = False : DoMultiLine = False
         If UniversalDialog1.ShowDialog = DialogResult.OK Then
-            Setting.BackGroundImage = "天空邮件"
+            Setting.BackGroundImage = "推荐邮件(PICK UP)"
             Me.BackgroundImage = My.Resources.天空邮件
             DeadLocker = False
-            BackGroundBase.SelectedItem = "天空邮件"
+            BackGroundBase.SelectedItem = "推荐邮件(PICK UP)"
             DialogBase.SelectedItem = "Pt(默认)"
             VoiceSpeedBase.SelectedItem = "中"
             Call Bla()
@@ -1067,7 +1103,7 @@ CX6:
                 File.Delete("RMNewConfig.json")
             Catch ex As Exception
                 UniversalDialog1.Label1.Text = "未知的错误..."
-                DoReadOnly = True
+                DoReadOnly = True : DoMultiLine = False
                 UniversalDialog1.ShowDialog()
                 Exit Sub
             End Try

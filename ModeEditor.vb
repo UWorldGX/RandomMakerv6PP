@@ -5,10 +5,11 @@
         setting = Form1.Setting
         setting2 = setting
         If Form1.TempMdName <> "" Then
-            UniversalDialog1.Label1.Text = "检测到有用户配置未保存,已自动进行保存."
+            Form1.DoReadOnly = True : Form1.DoMultiLine = False
+            UniversalDialog1.Label1.Text = "检测到有用户配置未保存,已自动保存."
             UniversalDialog1.ShowDialog()
             With setting.ModeCollections(setting.TotalMode)
-                .Name = Form1.TempMdName
+                .Name = "自动保存的模式"
                 .Range = Form1.pool.Value
                 .Times = Form1.timepool.Value
                 .DoRepeat = False
@@ -48,11 +49,13 @@
             End If
             DeadLocker = False
         Else
+            Form1.DoReadOnly = False : Form1.DoMultiLine = False
             UniversalDialog1.Label1.Text = "即将创建新模式,确定吗?"
             If UniversalDialog1.ShowDialog() = DialogResult.OK Then
                 setting.TotalMode += 1
                 If setting.TotalMode > 10 Then
-                    UniversalDialog1.Label1.Text = "最多共存11个模式,已超出模式上限"
+                    Form1.DoReadOnly = True : Form1.DoMultiLine = False
+                    UniversalDialog1.Label1.Text = "最多可同时创建11个模式,已超出上限。"
                     UniversalDialog1.ShowDialog()
                     setting.TotalMode -= 1
                     Exit Sub
@@ -81,18 +84,33 @@
                     NumberSwitch.Checked = True
                     RepeatSwitch.Enabled = False
                 Else
+                    If setting.ModeCollections(memo).Range > setting.MaxArea Then
+                        setting.ModeCollections(memo).Range = setting.MaxArea
+                    End If
                     ItemSwitch.Checked = True
                     RepeatSwitch.Enabled = True
                 End If
                 ListBox1.SelectedIndex = memo
                 DeadLocker = False
+                Form1.DoReadOnly = True : Form1.DoMultiLine = False
                 UniversalDialog1.Label1.Text = "创建完毕。现可自定义该新模式的参数。"
+                pool.Enabled = True
+                timepool.Enabled = True
                 UniversalDialog1.ShowDialog()
             End If
         End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        For i As Integer = 0 To setting.TotalMode - 1
+            If setting.ModeCollections(i).Name = "" Then
+                Form1.DoReadOnly = True : Form1.DoMultiLine = False
+                UniversalDialog1.Label1.Text = "检测到有无效的模式名称。保存将终止。"
+                UniversalDialog1.ShowDialog()
+                Exit Sub
+            End If
+        Next
+        Form1.donew = False
         Form1.Setting = setting
         Form1.Show()
         Form1.MadePreparation()
@@ -193,6 +211,7 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         DeadLocker = True
+        Form1.DoReadOnly = False : Form1.DoMultiLine = False
         UniversalDialog1.Label1.Text = "确定永久删除" & TextBox1.Text & "吗?"
         If UniversalDialog1.ShowDialog() = DialogResult.OK Then
             memo = ListBox1.SelectedIndex

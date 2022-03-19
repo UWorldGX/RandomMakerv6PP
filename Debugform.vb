@@ -7,9 +7,11 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Form1.makesure = 1
+        ProgressBar1.Value = 0
         Dim cir As Int16
         For cir = 1 To 10000
             Call Form1.CoreProgram()
+            ProgressBar1.Value += 1
         Next
         MsgBox("调试完成.", vbOKOnly)
 
