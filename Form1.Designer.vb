@@ -62,6 +62,7 @@ Partial Class Form1
         Me.DoMakesureSwitch = New System.Windows.Forms.CheckBox()
         Me.Logs = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Saver = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
@@ -76,7 +77,6 @@ Partial Class Form1
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pool = New System.Windows.Forms.NumericUpDown()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.timepool = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PreviewDialog = New System.Windows.Forms.Label()
@@ -108,6 +108,7 @@ Partial Class Form1
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.StudentsTableAdapter = New RandomMakerv6PP.Database1DataSetTableAdapters.StudentsTableAdapter()
         Me.StudentsTableAdapter1 = New RandomMakerv6PP.Database1DataSet1TableAdapters.StudentsTableAdapter()
+        Me.timepool = New RandomMakerv6PP.UserControl1()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -115,10 +116,10 @@ Partial Class Form1
         Me.Panel1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.pool, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.timepool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -169,13 +170,13 @@ Partial Class Form1
         '更新记录ToolStripMenuItem
         '
         Me.更新记录ToolStripMenuItem.Name = "更新记录ToolStripMenuItem"
-        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.更新记录ToolStripMenuItem.Text = "更新记录"
         '
         '关于ToolStripMenuItem
         '
         Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
-        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
         Me.关于ToolStripMenuItem.Text = "关于"
         '
         'FontDialog1
@@ -387,7 +388,7 @@ Partial Class Form1
         Me.Button8.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button8.FlatAppearance.BorderSize = 0
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button8.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button8.ForeColor = System.Drawing.Color.White
         Me.Button8.Location = New System.Drawing.Point(267, 296)
@@ -441,7 +442,7 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Label3.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(26, 58)
@@ -453,7 +454,7 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Label4.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(25, 25)
@@ -467,7 +468,7 @@ Partial Class Form1
         Me.CoreButton.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.CoreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CoreButton.FlatAppearance.BorderSize = 0
-        Me.CoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CoreButton.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CoreButton.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CoreButton.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.CoreButton.Location = New System.Drawing.Point(302, 239)
@@ -505,7 +506,7 @@ Partial Class Form1
         Me.SaveLogs.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.SaveLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.SaveLogs.FlatAppearance.BorderSize = 0
-        Me.SaveLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SaveLogs.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.SaveLogs.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.SaveLogs.ForeColor = System.Drawing.Color.White
         Me.SaveLogs.Location = New System.Drawing.Point(349, 296)
@@ -533,7 +534,7 @@ Partial Class Form1
         Me.Logs.BackColor = System.Drawing.SystemColors.Info
         Me.Logs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Logs.Cursor = System.Windows.Forms.Cursors.Help
-        Me.Logs.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Logs.Font = New System.Drawing.Font("微软雅黑", 9.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Logs.FormattingEnabled = True
         Me.Logs.HorizontalScrollbar = True
         Me.Logs.ItemHeight = 17
@@ -547,6 +548,8 @@ Partial Class Form1
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
+        Me.Panel2.Controls.Add(Me.timepool)
+        Me.Panel2.Controls.Add(Me.PictureBox1)
         Me.Panel2.Controls.Add(Me.Saver)
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.LinkLabel2)
@@ -556,9 +559,17 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Location = New System.Drawing.Point(0, 28)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(498, 355)
+        Me.Panel2.Size = New System.Drawing.Size(513, 355)
         Me.Panel2.TabIndex = 22
         Me.Panel2.Visible = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(88, 10)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(421, 23)
+        Me.PictureBox1.TabIndex = 34
+        Me.PictureBox1.TabStop = False
         '
         'Saver
         '
@@ -566,10 +577,10 @@ Partial Class Form1
         Me.Saver.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.Saver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Saver.FlatAppearance.BorderSize = 0
-        Me.Saver.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Saver.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Saver.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Saver.ForeColor = System.Drawing.Color.White
-        Me.Saver.Location = New System.Drawing.Point(259, 205)
+        Me.Saver.Location = New System.Drawing.Point(271, 241)
         Me.Saver.Name = "Saver"
         Me.Saver.Size = New System.Drawing.Size(80, 32)
         Me.Saver.TabIndex = 31
@@ -580,7 +591,7 @@ Partial Class Form1
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(139, 211)
+        Me.Label12.Location = New System.Drawing.Point(139, 249)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(114, 20)
         Me.Label12.TabIndex = 29
@@ -589,7 +600,7 @@ Partial Class Form1
         'LinkLabel2
         '
         Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(331, 286)
+        Me.LinkLabel2.Location = New System.Drawing.Point(333, 304)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(129, 20)
         Me.LinkLabel2.TabIndex = 28
@@ -602,10 +613,10 @@ Partial Class Form1
         Me.ImportButton.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.ImportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ImportButton.FlatAppearance.BorderSize = 0
-        Me.ImportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ImportButton.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.ImportButton.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ImportButton.ForeColor = System.Drawing.Color.White
-        Me.ImportButton.Location = New System.Drawing.Point(113, 280)
+        Me.ImportButton.Location = New System.Drawing.Point(119, 296)
         Me.ImportButton.Name = "ImportButton"
         Me.ImportButton.Size = New System.Drawing.Size(80, 32)
         Me.ImportButton.TabIndex = 26
@@ -618,10 +629,10 @@ Partial Class Form1
         Me.Button5.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button5.FlatAppearance.BorderSize = 0
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button5.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.White
-        Me.Button5.Location = New System.Drawing.Point(199, 280)
+        Me.Button5.Location = New System.Drawing.Point(199, 295)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(80, 32)
         Me.Button5.TabIndex = 25
@@ -636,7 +647,7 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.ItemSwitch)
         Me.GroupBox3.Controls.Add(Me.NumberSwitch)
         Me.GroupBox3.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox3.Location = New System.Drawing.Point(89, 106)
+        Me.GroupBox3.Location = New System.Drawing.Point(94, 140)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(373, 92)
         Me.GroupBox3.TabIndex = 7
@@ -661,7 +672,7 @@ Partial Class Form1
         Me.Debugselect.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.Debugselect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Debugselect.FlatAppearance.BorderSize = 0
-        Me.Debugselect.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Debugselect.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Debugselect.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Debugselect.ForeColor = System.Drawing.Color.White
         Me.Debugselect.Location = New System.Drawing.Point(241, 46)
@@ -713,10 +724,9 @@ Partial Class Form1
         '
         Me.GroupBox1.Controls.Add(Me.pool)
         Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.timepool)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox1.Location = New System.Drawing.Point(89, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(96, 48)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(373, 86)
         Me.GroupBox1.TabIndex = 1
@@ -748,20 +758,6 @@ Partial Class Form1
         Me.Label11.Size = New System.Drawing.Size(73, 20)
         Me.Label11.TabIndex = 9
         Me.Label11.Text = "抽取范围:"
-        '
-        'timepool
-        '
-        Me.timepool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.timepool.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.timepool.Location = New System.Drawing.Point(101, 38)
-        Me.timepool.Maximum = New Decimal(New Integer() {7, 0, 0, 0})
-        Me.timepool.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.timepool.Name = "timepool"
-        Me.timepool.ReadOnly = True
-        Me.timepool.Size = New System.Drawing.Size(48, 23)
-        Me.timepool.TabIndex = 8
-        Me.timepool.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.timepool.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label5
         '
@@ -891,7 +887,7 @@ Partial Class Form1
         Me.PersonalizeFonts.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.PersonalizeFonts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PersonalizeFonts.FlatAppearance.BorderSize = 0
-        Me.PersonalizeFonts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PersonalizeFonts.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.PersonalizeFonts.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.PersonalizeFonts.ForeColor = System.Drawing.SystemColors.Window
         Me.PersonalizeFonts.Location = New System.Drawing.Point(192, 23)
@@ -906,7 +902,7 @@ Partial Class Form1
         Me.PersonalizeColor.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
         Me.PersonalizeColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PersonalizeColor.FlatAppearance.BorderSize = 0
-        Me.PersonalizeColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PersonalizeColor.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.PersonalizeColor.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.PersonalizeColor.ForeColor = System.Drawing.SystemColors.Window
         Me.PersonalizeColor.Location = New System.Drawing.Point(78, 23)
@@ -932,10 +928,10 @@ Partial Class Form1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewCheckBoxColumn1})
         Me.DataGridView1.DataSource = Me.StudentsBindingSource1
-        Me.DataGridView1.Location = New System.Drawing.Point(81, 8)
+        Me.DataGridView1.Location = New System.Drawing.Point(49, 22)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(341, 288)
+        Me.DataGridView1.Size = New System.Drawing.Size(336, 278)
         Me.DataGridView1.TabIndex = 34
         '
         'DataGridViewTextBoxColumn1
@@ -971,7 +967,7 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(140, 307)
+        Me.Label2.Location = New System.Drawing.Point(88, 312)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(287, 19)
         Me.Label2.TabIndex = 22
@@ -1033,6 +1029,23 @@ Partial Class Form1
         '
         Me.StudentsTableAdapter1.ClearBeforeFill = True
         '
+        'timepool
+        '
+        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
+        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.timepool.BlueText = "抽取次数"
+        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.timepool.Location = New System.Drawing.Point(84, 10)
+        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.timepool.Maximum = 7
+        Me.timepool.Minimum = 1
+        Me.timepool.Name = "timepool"
+        Me.timepool.Size = New System.Drawing.Size(400, 46)
+        Me.timepool.TabIndex = 35
+        Me.timepool.Type = 0
+        Me.timepool.Value = 1
+        Me.timepool.Warn = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1044,10 +1057,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1069,12 +1082,12 @@ Partial Class Form1
         Me.GroupBox4.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.pool, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.timepool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1117,7 +1130,6 @@ Partial Class Form1
     Friend WithEvents Panel4 As Panel
     Friend WithEvents ToolStripLabel4 As ToolStripLabel
     Friend WithEvents Label5 As Label
-    Friend WithEvents timepool As NumericUpDown
     Friend WithEvents ItemSwitch As RadioButton
     Friend WithEvents NumberSwitch As RadioButton
     Friend WithEvents GroupBox3 As GroupBox
@@ -1176,4 +1188,6 @@ Partial Class Form1
     Friend WithEvents Database1DataSet1 As Database1DataSet1
     Friend WithEvents StudentsBindingSource1 As BindingSource
     Friend WithEvents StudentsTableAdapter1 As Database1DataSet1TableAdapters.StudentsTableAdapter
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents timepool As UserControl1
 End Class

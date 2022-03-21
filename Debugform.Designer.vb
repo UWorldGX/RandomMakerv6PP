@@ -36,7 +36,7 @@ Partial Class DebugForm
         Me.DebugOutput.BackgroundImage = CType(resources.GetObject("DebugOutput.BackgroundImage"), System.Drawing.Image)
         Me.DebugOutput.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.DebugOutput.FlatAppearance.BorderSize = 0
-        Me.DebugOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DebugOutput.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.DebugOutput.ForeColor = System.Drawing.Color.White
         Me.DebugOutput.Location = New System.Drawing.Point(151, 163)
         Me.DebugOutput.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -57,7 +57,7 @@ Partial Class DebugForm
         Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(25, 163)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -83,7 +83,7 @@ Partial Class DebugForm
         '
         Me.ProgressBar1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.ProgressBar1.Location = New System.Drawing.Point(9, 109)
+        Me.ProgressBar1.Location = New System.Drawing.Point(18, 128)
         Me.ProgressBar1.Maximum = 10000
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(243, 18)

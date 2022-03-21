@@ -45,6 +45,7 @@ Public Class Form1
             xr = ModeSelection.SelectedIndex
             tms = Setting.ModeCollections(xr).Times
             timepool.Value = tms
+            timepool.Reload()
             If Setting.ModeCollections(xr).Type = False Then
                 ranges = Setting.ModeCollections(xr).Range
                 pool.Maximum = 100
@@ -321,6 +322,7 @@ CX6:
             Case Is = False
                 circle = 1
                 timepool.Value = tms
+                timepool.Reload()
                 TimesDisplay.Text = Str(tms)
                 memories = 0
                 ranges = Setting.ModeCollections(xr).Range
@@ -342,6 +344,7 @@ CX6:
                 memories = 0
                 dataRange = Setting.ModeCollections(xr).Range
                 timepool.Value = tms
+                timepool.Reload()
                 memories = 0
                 pool.Maximum = Setting.MaxArea
                 pool.Value = dataRange
@@ -378,7 +381,7 @@ CX6:
         Form2.Show()
     End Sub
 
-    Private Sub NumericUpDown1_ValueChanged_1(sender As Object, e As EventArgs) Handles timepool.ValueChanged
+    Private Sub NumericUpDown1_ValueChanged_1(sender As Object, e As EventArgs)
         If lock = True Then Exit Sub
         tms = timepool.Value
         donew = True
@@ -401,30 +404,9 @@ CX6:
         End If
     End Sub
 
+
     '抽取次数
-    Private Sub Pool_ValueChanged_1(sender As Object, e As EventArgs) Handles pool.ValueChanged
-        If lock = True Then Exit Sub
-        donew = True
-        If dodata = False Then
-            pool.Maximum = 100
-            ranges = pool.Value
-            RangeDisplay.Text = Str(ranges)
-            TimesDisplay.Text = Str(timepool.Value)
-            Logs.ForeColor = Color.Black
-            TempMdName = "新随机数模式(未保存)"
-            ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
-            ToolStripLabel4.Enabled = False
-        Else
-            pool.Maximum = Setting.MaxArea
-            dataRange = pool.Value
-            RangeDisplay.Text = Str(dataRange)
-            TimesDisplay.Text = Str(timepool.Value)
-            TempMdName = "新数据库模式(未保存)"
-            ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
-            ToolStripLabel4.Enabled = True
-            Logs.ForeColor = Color.Chocolate
-        End If
-    End Sub
+
 
     '微调范围
 
@@ -517,7 +499,7 @@ CX6:
         If OpenFileDialog1.ShowDialog = DialogResult.OK Then
             Try
                 Dim fs As FileStream
-                fs = File.Open(OpenFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.Read)
+                fs = File.Open(OpenFileDialog1.FileName, FileMode.Open, FileAccess.Read)
                 Dim sr As New StreamReader(fs, Encoding.UTF8)
                 JsonWord = sr.ReadToEnd()
                 sr.Close()
@@ -757,6 +739,8 @@ CX6:
     Private Sub Debugselect_Click_1(sender As Object, e As EventArgs) Handles Debugselect.Click
         DebugForm.Show()
     End Sub
+
+
 
     'Debug
 

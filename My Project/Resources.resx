@@ -121,17 +121,17 @@
   <data name="STEENEE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\STEENEE.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="青草邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\青草邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MELOETTA" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MELOETTA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="空间邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\空间邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ORASDialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ORASDialog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LDING" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LDING.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PG2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PG2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PG3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PG3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,14 +151,14 @@
   <data name="PtDialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PtDialog.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="彩嵌邮件1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\彩嵌邮件1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="隧道邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>E:\下载\隧道邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bag_吃剩的东西_Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>E:\下载\Bag_吃剩的东西_Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="感谢邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\感谢邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="桥梁邮件Ｈ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\桥梁邮件Ｈ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hgssdialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hgssdialog.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,20 +187,29 @@
   <data name="DialogDP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DialogDP.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LATITWINS2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LATITWINS2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="桥梁邮件Ｗ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\桥梁邮件Ｗ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bag_讲究围巾_Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>E:\下载\Bag_讲究围巾_Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="甜蜜邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>E:\下载\甜蜜邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="推荐邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>E:\下载\推荐邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Bag_生命宝珠_Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>E:\下载\Bag_生命宝珠_Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="火焰邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>E:\下载\火焰邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="暴雪邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\暴雪邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="砖块邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\砖块邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bag_精灵球_Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>E:\下载\Bag_精灵球_Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,14 +217,11 @@
   <data name="回复邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\回复邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="空间邮件1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\空间邮件1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="PG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="初次邮件1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\初次邮件1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="邀请邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>E:\下载\邀请邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="初次邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\初次邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,46 +229,55 @@
   <data name="桥梁邮件Ｓ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\桥梁邮件Ｓ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="桥梁邮件Ｈ" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\桥梁邮件Ｈ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PG2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PG2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LATITWINS2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LATITWINS2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="彩嵌邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\彩嵌邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="青草邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\青草邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="桥梁邮件Ｗ1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\桥梁邮件Ｗ1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="砖块邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\砖块邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bag_弱点保险_Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>E:\下载\Bag_弱点保险_Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="邀请邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>E:\下载\邀请邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="推荐邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>E:\下载\推荐邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LDING" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LDING.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="绽放邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>E:\下载\绽放邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="甜蜜邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>E:\下载\甜蜜邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ORASDialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ORASDialog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="隧道邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>E:\下载\隧道邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="感谢邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\感谢邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="火焰邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>E:\下载\火焰邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="彩嵌邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\彩嵌邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="暴雪邮件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\暴雪邮件.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bag_弱点保险_Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>E:\下载\Bag_弱点保险_Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="常规选项卡" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\常规选项卡.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="返回键" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\返回键.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="关闭" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\关闭.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="设置主界面" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\设置主界面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="虚化右箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\虚化右箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="虚化左箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\虚化左箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="选定选项卡" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\选定选项卡.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="右箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\右箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="左箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>C:\Users\ZY\Desktop\左箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
