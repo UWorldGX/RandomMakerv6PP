@@ -62,8 +62,7 @@ Partial Class Form1
         Me.DoMakesureSwitch = New System.Windows.Forms.CheckBox()
         Me.Logs = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.timepool = New RandomMakerv6PP.UserControl1()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Saver = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
@@ -75,10 +74,6 @@ Partial Class Form1
         Me.ExtremeSwitch = New System.Windows.Forms.CheckBox()
         Me.ItemSwitch = New System.Windows.Forms.RadioButton()
         Me.NumberSwitch = New System.Windows.Forms.RadioButton()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.pool = New System.Windows.Forms.NumericUpDown()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PreviewDialog = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -109,7 +104,8 @@ Partial Class Form1
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.StudentsTableAdapter = New RandomMakerv6PP.Database1DataSetTableAdapters.StudentsTableAdapter()
         Me.StudentsTableAdapter1 = New RandomMakerv6PP.Database1DataSet1TableAdapters.StudentsTableAdapter()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.timepool = New RandomMakerv6PP.UserControl1()
+        Me.pool = New RandomMakerv6PP.UserControl1()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -117,10 +113,8 @@ Partial Class Form1
         Me.Panel1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.pool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -129,7 +123,6 @@ Partial Class Form1
         CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StudentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MainDialog
@@ -550,47 +543,30 @@ Partial Class Form1
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.PictureBox2)
         Me.Panel2.Controls.Add(Me.timepool)
-        Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Controls.Add(Me.pool)
+        Me.Panel2.Controls.Add(Me.PictureBox2)
         Me.Panel2.Controls.Add(Me.Saver)
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.LinkLabel2)
         Me.Panel2.Controls.Add(Me.ImportButton)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Controls.Add(Me.GroupBox3)
-        Me.Panel2.Controls.Add(Me.GroupBox1)
-        Me.Panel2.Location = New System.Drawing.Point(0, 28)
+        Me.Panel2.Location = New System.Drawing.Point(0, 25)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(513, 355)
+        Me.Panel2.Size = New System.Drawing.Size(513, 358)
         Me.Panel2.TabIndex = 22
         Me.Panel2.Visible = False
         '
-        'timepool
+        'PictureBox2
         '
-        Me.timepool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
-        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.timepool.BlueText = "抽取次数"
-        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.timepool.Location = New System.Drawing.Point(84, 10)
-        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.timepool.Maximum = 7
-        Me.timepool.Minimum = 1
-        Me.timepool.Name = "timepool"
-        Me.timepool.Size = New System.Drawing.Size(400, 46)
-        Me.timepool.TabIndex = 35
-        Me.timepool.Type = 0
-        Me.timepool.Value = 1
-        Me.timepool.Warn = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(88, 10)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(421, 23)
-        Me.PictureBox1.TabIndex = 34
-        Me.PictureBox1.TabStop = False
+        Me.PictureBox2.Image = Global.RandomMakerv6PP.My.Resources.Resources.设置主界面
+        Me.PictureBox2.Location = New System.Drawing.Point(85, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(426, 46)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 36
+        Me.PictureBox2.TabStop = False
         '
         'Saver
         '
@@ -601,7 +577,7 @@ Partial Class Form1
         Me.Saver.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Saver.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Saver.ForeColor = System.Drawing.Color.White
-        Me.Saver.Location = New System.Drawing.Point(271, 241)
+        Me.Saver.Location = New System.Drawing.Point(271, 246)
         Me.Saver.Name = "Saver"
         Me.Saver.Size = New System.Drawing.Size(80, 32)
         Me.Saver.TabIndex = 31
@@ -612,7 +588,7 @@ Partial Class Form1
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(139, 249)
+        Me.Label12.Location = New System.Drawing.Point(139, 252)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(114, 20)
         Me.Label12.TabIndex = 29
@@ -668,7 +644,7 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.ItemSwitch)
         Me.GroupBox3.Controls.Add(Me.NumberSwitch)
         Me.GroupBox3.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox3.Location = New System.Drawing.Point(94, 140)
+        Me.GroupBox3.Location = New System.Drawing.Point(98, 151)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(373, 92)
         Me.GroupBox3.TabIndex = 7
@@ -740,57 +716,6 @@ Partial Class Form1
         Me.NumberSwitch.TabStop = True
         Me.NumberSwitch.Text = "随机数"
         Me.NumberSwitch.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.pool)
-        Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox1.Location = New System.Drawing.Point(96, 48)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(373, 86)
-        Me.GroupBox1.TabIndex = 1
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "抽取相关"
-        '
-        'pool
-        '
-        Me.pool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pool.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.pool.Location = New System.Drawing.Point(301, 38)
-        Me.pool.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
-        Me.pool.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.pool.Name = "pool"
-        Me.pool.ReadOnly = True
-        Me.pool.Size = New System.Drawing.Size(48, 23)
-        Me.pool.TabIndex = 10
-        Me.pool.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.pool.Value = New Decimal(New Integer() {16, 0, 0, 0})
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(212, 38)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(73, 20)
-        Me.Label11.TabIndex = 9
-        Me.Label11.Text = "抽取范围:"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(20, 38)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(73, 20)
-        Me.Label5.TabIndex = 7
-        Me.Label5.Text = "抽取次数:"
         '
         'Panel3
         '
@@ -1050,15 +975,41 @@ Partial Class Form1
         '
         Me.StudentsTableAdapter1.ClearBeforeFill = True
         '
-        'PictureBox2
+        'timepool
         '
-        Me.PictureBox2.Image = Global.RandomMakerv6PP.My.Resources.Resources.设置主界面
-        Me.PictureBox2.Location = New System.Drawing.Point(84, 43)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(426, 46)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 36
-        Me.PictureBox2.TabStop = False
+        Me.timepool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
+        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.timepool.BlueText = "抽取次数"
+        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.timepool.Location = New System.Drawing.Point(96, 53)
+        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.timepool.Maximum = 7
+        Me.timepool.Minimum = 1
+        Me.timepool.Name = "timepool"
+        Me.timepool.Size = New System.Drawing.Size(400, 46)
+        Me.timepool.TabIndex = 35
+        Me.timepool.Type = 0
+        Me.timepool.Value = 1
+        Me.timepool.Warn = False
+        '
+        'pool
+        '
+        Me.pool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.pool.BackgroundImage = CType(resources.GetObject("pool.BackgroundImage"), System.Drawing.Image)
+        Me.pool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pool.BlueText = "抽取范围"
+        Me.pool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.pool.Location = New System.Drawing.Point(98, 98)
+        Me.pool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.pool.Maximum = 100
+        Me.pool.Minimum = 1
+        Me.pool.Name = "pool"
+        Me.pool.Size = New System.Drawing.Size(400, 46)
+        Me.pool.TabIndex = 37
+        Me.pool.Type = 1
+        Me.pool.Value = 16
+        Me.pool.Warn = False
         '
         'Form1
         '
@@ -1096,12 +1047,9 @@ Partial Class Form1
         Me.GroupBox4.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.pool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1112,7 +1060,6 @@ Partial Class Form1
         CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StudentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1140,11 +1087,9 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Logs As ListBox
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents ToolStripLabel4 As ToolStripLabel
-    Friend WithEvents Label5 As Label
     Friend WithEvents ItemSwitch As RadioButton
     Friend WithEvents NumberSwitch As RadioButton
     Friend WithEvents GroupBox3 As GroupBox
@@ -1174,8 +1119,6 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents ReDiveP As LinkLabel
     Friend WithEvents LinkLabel2 As LinkLabel
-    Friend WithEvents pool As NumericUpDown
-    Friend WithEvents Label11 As Label
     Friend WithEvents Saver As Button
     Friend WithEvents Label12 As Label
     Friend WithEvents ExtremeSwitch As CheckBox
@@ -1203,7 +1146,7 @@ Partial Class Form1
     Friend WithEvents Database1DataSet1 As Database1DataSet1
     Friend WithEvents StudentsBindingSource1 As BindingSource
     Friend WithEvents StudentsTableAdapter1 As Database1DataSet1TableAdapters.StudentsTableAdapter
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents timepool As UserControl1
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents pool As UserControl1
 End Class

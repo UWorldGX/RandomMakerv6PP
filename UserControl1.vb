@@ -39,6 +39,29 @@
                 Form1.TempMdName = "新数据库模式(未保存)"
                 Form1.ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
             End If
+        ElseIf Type = 1 Then
+            Form1.pool.Reload()
+            Form1.donew = True
+            If Form1.dodata = False Then
+                Form1.NumberSwitch.Checked = True
+                Form1.ItemSwitch.Checked = False
+                Form1.ranges = Form1.pool.Value
+                Form1.RangeDisplay.Text = Str(Form1.ranges)
+                Form1.TimesDisplay.Text = Str(Form1.tms)
+                Form1.Logs.ForeColor = Color.Black
+                Form1.ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
+                Form1.TempMdName = "新随机数模式(未保存)"
+            Else
+                Form1.NumberSwitch.Checked = False
+                Form1.ItemSwitch.Checked = True
+                Form1.dataRange = Form1.pool.Value
+                Form1.RangeDisplay.Text = Str(Form1.dataRange)
+                Form1.TimesDisplay.Text = Str(Form1.tms)
+                Form1.Logs.ForeColor = Color.Chocolate
+                Form1.TempMdName = "新数据库模式(未保存)"
+                Form1.ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
+            End If
+
         End If
 
     End Sub
@@ -88,6 +111,29 @@
                 Form1.TempMdName = "新数据库模式(未保存)"
                 Form1.ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
             End If
+        ElseIf Type = 1 Then
+            Form1.pool.Reload()
+            Form1.donew = True
+            If Form1.dodata = False Then
+                Form1.NumberSwitch.Checked = True
+                Form1.ItemSwitch.Checked = False
+                Form1.ranges = Form1.pool.Value
+                Form1.RangeDisplay.Text = Str(Form1.ranges)
+                Form1.TimesDisplay.Text = Str(Form1.tms)
+                Form1.Logs.ForeColor = Color.Black
+                Form1.ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
+                Form1.TempMdName = "新随机数模式(未保存)"
+            Else
+                Form1.NumberSwitch.Checked = False
+                Form1.ItemSwitch.Checked = True
+                Form1.dataRange = Form1.pool.Value
+                Form1.RangeDisplay.Text = Str(Form1.dataRange)
+                Form1.TimesDisplay.Text = Str(Form1.tms)
+                Form1.Logs.ForeColor = Color.Chocolate
+                Form1.TempMdName = "新数据库模式(未保存)"
+                Form1.ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
+            End If
+
         End If
     End Sub
 

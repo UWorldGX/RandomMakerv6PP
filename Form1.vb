@@ -26,6 +26,7 @@ Public Class Form1
     Public JsonWord As String : Public TempMdName As String = ""
     '存储json文本和临时的模式名称
     Public reader As New JavaScriptSerializer
+    Private doless As Boolean
 
     '内部存储
 
@@ -50,6 +51,7 @@ Public Class Form1
                 ranges = Setting.ModeCollections(xr).Range
                 pool.Maximum = 100
                 pool.Value = ranges
+                pool.Reload()
                 NumberSwitch.Checked = True
                 ItemSwitch.Checked = False
                 dodata = False
@@ -67,6 +69,7 @@ Public Class Form1
                 dataRange = Setting.ModeCollections(xr).Range
                 pool.Maximum = Setting.MaxArea
                 pool.Value = dataRange
+                pool.Reload()
                 ToolStripLabel4.Enabled = True
                 dodata = True
                 NumberSwitch.Checked = False
@@ -328,6 +331,7 @@ CX6:
                 ranges = Setting.ModeCollections(xr).Range
                 pool.Maximum = 100
                 pool.Value = ranges
+                pool.Reload()
                 dataRange = Nothing
                 RangeDisplay.Text = Str(ranges)
                 MainDialog.ForeColor = Color.Black
@@ -348,6 +352,7 @@ CX6:
                 memories = 0
                 pool.Maximum = Setting.MaxArea
                 pool.Value = dataRange
+                pool.Reload()
                 MainDialog.ForeColor = Color.Black
                 ToolStripLabel4.Enabled = True
                 RangeDisplay.Text = Str(dataRange)
@@ -437,6 +442,7 @@ CX6:
             ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
             ToolStripLabel4.Enabled = False
             ranges = pool.Value
+            pool.Reload()
         End If
     End Sub
 
@@ -459,6 +465,7 @@ CX6:
             ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
             ToolStripLabel4.Enabled = True
             dataRange = pool.Value
+            pool.Reload()
         End If
     End Sub
 
@@ -681,6 +688,7 @@ CX6:
             ModeSelection.Items.Add(Setting.ModeCollections(i).Name)
         Next
         ModeSelection.SelectedItem = Setting.ModeCollections(Setting.CurrentMode).Name
+        doless = True
         ColorSwitch(Setting.CurrentMode)
         BackGroundBase.Text = Setting.ModeCollections(Setting.CurrentMode).Name
         Timer2.Interval = Setting.Voicespeed
@@ -694,6 +702,8 @@ CX6:
         Panel3.Visible = False
         Panel4.Visible = False
         tms = Setting.ModeCollections(Setting.CurrentMode).Times
+        timepool.Value = tms
+        timepool.Reload()
         BackGroundBase.SelectedItem = Setting.BackGroundImage
         DialogBase.SelectedItem = Setting.DialogImage
         Select Case Setting.Voicespeed
@@ -707,17 +717,23 @@ CX6:
                 MsgBox("错误！无效的语速数据！"， vbOKOnly, "错误")
                 End
         End Select
+        doless = False
         TimesDisplay.Text = Str(tms)
         RangeDisplay.Text = Setting.ModeCollections(Setting.CurrentMode).Range
         If Setting.ModeCollections(Setting.CurrentMode).Type = False Then
+            pool.Maximum = 100
             ranges = Setting.ModeCollections(Setting.CurrentMode).Range
             ToolStripLabel4.Enabled = False
             RepeatSwitch.Enabled = False
+            pool.Reload()
         Else
+            pool.Maximum = Setting.MaxArea
             dataRange = Setting.ModeCollections(Setting.CurrentMode).Range
             ToolStripLabel4.Enabled = True
             RepeatSwitch.Enabled = True
+            pool.Reload()
         End If
+
         doextreme = Setting.ModeCollections(Setting.CurrentMode).DoExtreme
         If Setting.ModeCollections(Setting.CurrentMode).DoExtreme = True Then
             ExtremeLabel.Visible = True
@@ -838,17 +854,14 @@ CX6:
         ToolStripLabel3.LinkColor = Color.White
         ToolStripLabel4.LinkColor = Color.White
         ToolStripLabel5.LinkColor = Color.White
-        GroupBox1.ForeColor = Color.White
         GroupBox2.ForeColor = Color.White
         GroupBox3.ForeColor = Color.White
         Label2.ForeColor = Color.White
         Label3.ForeColor = Color.White
         Label4.ForeColor = Color.White
-        Label5.ForeColor = Color.White
         Label8.ForeColor = Color.White
         Label13.ForeColor = Color.White
         Label10.ForeColor = Color.White
-        Label11.ForeColor = Color.White
         Label12.ForeColor = Color.White
         DoMakesureSwitch.ForeColor = Color.White
         NumberSwitch.ForeColor = Color.White
@@ -865,17 +878,14 @@ CX6:
         ToolStripLabel3.LinkColor = Color.Black
         ToolStripLabel4.LinkColor = Color.Black
         ToolStripLabel5.LinkColor = Color.Black
-        GroupBox1.ForeColor = Color.Black
         GroupBox2.ForeColor = Color.Black
         GroupBox3.ForeColor = Color.Black
         Label2.ForeColor = Color.Black
         Label3.ForeColor = Color.Black
         Label4.ForeColor = Color.Black
-        Label5.ForeColor = Color.Black
         Label8.ForeColor = Color.Black
         Label13.ForeColor = Color.Black
         Label10.ForeColor = Color.Black
-        Label11.ForeColor = Color.Black
         Label12.ForeColor = Color.Black
         DoMakesureSwitch.ForeColor = Color.Black
         NumberSwitch.ForeColor = Color.Black
@@ -1081,6 +1091,7 @@ CX6:
 
     '预览
     Public Sub Xs()
+        If doless = True Then Exit Sub
         Dim te As String
         te = reader.Serialize(Setting)
         If File.Exists("RMNewConfig.json") Then

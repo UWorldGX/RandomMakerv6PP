@@ -28,6 +28,7 @@ Partial Class DebugForm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'DebugOutput
@@ -43,7 +44,7 @@ Partial Class DebugForm
         Me.DebugOutput.Name = "DebugOutput"
         Me.DebugOutput.Size = New System.Drawing.Size(93, 45)
         Me.DebugOutput.TabIndex = 0
-        Me.DebugOutput.Text = "输出崩溃日志"
+        Me.DebugOutput.Text = "输出JSON"
         Me.DebugOutput.UseVisualStyleBackColor = False
         '
         'SaveFileDialog1
@@ -64,18 +65,18 @@ Partial Class DebugForm
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 45)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "输出10000次"
+        Me.Button1.Text = "一键批量输出"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'TextBox1
         '
         Me.TextBox1.AcceptsReturn = True
-        Me.TextBox1.Location = New System.Drawing.Point(267, 22)
+        Me.TextBox1.Location = New System.Drawing.Point(25, 21)
         Me.TextBox1.MaxLength = 65536
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(133, 173)
+        Me.TextBox1.Size = New System.Drawing.Size(236, 90)
         Me.TextBox1.TabIndex = 2
         Me.TextBox1.Text = "这里将输出该程序实时的JSON配置文件。"
         '
@@ -91,13 +92,23 @@ Partial Class DebugForm
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.ProgressBar1.TabIndex = 3
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(112, 149)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 17)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Label1"
+        '
         'DebugForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｈ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(432, 221)
+        Me.ClientSize = New System.Drawing.Size(297, 221)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
@@ -109,8 +120,7 @@ Partial Class DebugForm
         Me.MaximizeBox = False
         Me.Name = "DebugForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "DebugForm"
-        Me.TopMost = True
+        Me.Text = "调试窗口"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -121,4 +131,5 @@ Partial Class DebugForm
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Label1 As Label
 End Class
