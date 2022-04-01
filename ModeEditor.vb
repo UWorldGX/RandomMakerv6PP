@@ -79,12 +79,14 @@
                 DeadLocker = True
                 TextBox1.Text = setting.ModeCollections(memo).Name
                 timepool.Value = setting.ModeCollections(memo).Times
-                pool.Value = setting.ModeCollections(memo).Range
                 ExtremeSwitch.Checked = setting.ModeCollections(memo).DoExtreme
                 RepeatSwitch.Checked = setting.ModeCollections(memo).DoRepeat
                 If setting.ModeCollections(memo).Type = False Then
                     NumberSwitch.Checked = True
                     RepeatSwitch.Enabled = False
+                    If setting.ModeCollections(memo).Range > setting.MaxArea Then
+                        setting.ModeCollections(memo).Range = setting.MaxArea
+                    End If
                 Else
                     If setting.ModeCollections(memo).Range > setting.MaxArea Then
                         setting.ModeCollections(memo).Range = setting.MaxArea
@@ -92,6 +94,7 @@
                     ItemSwitch.Checked = True
                     RepeatSwitch.Enabled = True
                 End If
+                pool.Value = setting.ModeCollections(memo).Range
                 ListBox1.SelectedIndex = memo
                 DeadLocker = False
                 Form1.DoReadOnly = True : Form1.DoMultiLine = False

@@ -1,7 +1,7 @@
-﻿Imports System.Web.Script.Serialization
+﻿Imports System.Data.OleDb
 Imports System.IO
-Imports System.Data.OleDb
 Imports System.Text
+Imports System.Web.Script.Serialization
 Public Class Form1
 
     '=========定义公用变量=========
@@ -27,6 +27,7 @@ Public Class Form1
     '存储json文本和临时的模式名称
     Public reader As New JavaScriptSerializer
     Private doless As Boolean
+    Dim rand As New Random()
 
     '内部存储
 
@@ -121,7 +122,7 @@ Public Class Form1
             Case Is = 3
                 Logs.ForeColor = Color.Purple
             Case Is = 4
-                Logs.ForeColor = Color.MediumSeaGreen
+                Logs.ForeColor = Color.ForestGreen
             Case Is = 5
                 Logs.ForeColor = Color.IndianRed
             Case Is = 6
@@ -165,16 +166,14 @@ CX8:
         If dodata = False Then
             Dim repeat(6) As Int16
 CX1:
-            Randomize()
-            datas = Rnd() * ranges
+            datas = rand.Next(1, ranges)
             If datas = 0 Then GoTo CX1
             DialogText = "抽出数值:" & Str(datas)
             temp = "第" & Str(memories) & "次:" & Str(datas)
             ProgressBar1.Value = 50
             For circle = 1 To tmsreal
 CX2:
-                Randomize()
-                datas = Rnd() * ranges
+                datas = rand.Next(1, ranges)
                 If datas = 0 Then GoTo CX2
                 If dorepeat = False Then
                     repeat(circle) = datas

@@ -1,14 +1,14 @@
 ﻿
 Public Class Configs
-    Public Name As String
-    Public CurrentMode As Integer
-    Public TotalMode As Integer
-    Public MaxArea As Integer
-    Public Voicespeed As Integer
-    Public BackGroundImage As String
-    Public DialogImage As String
-    Public CreateTime As String
-    Public Version As String
+    Public Property Name As String
+    Public Property CurrentMode As Integer
+    Public Property TotalMode As Integer
+    Public Property MaxArea As Integer
+    Public Property Voicespeed As Integer
+    Public Property BackGroundImage As String
+    Public Property DialogImage As String
+    Public Property CreateTime As String
+    Public Property Version As String
     Public Structure Mode
         Public Property Name As String
         Public Property Type As Boolean
