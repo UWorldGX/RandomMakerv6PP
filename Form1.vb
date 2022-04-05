@@ -166,14 +166,14 @@ CX8:
         If dodata = False Then
             Dim repeat(6) As Int16
 CX1:
-            datas = rand.Next(1, ranges)
+            datas = rand.Next(1, ranges + 1)
             If datas = 0 Then GoTo CX1
             DialogText = "抽出数值:" & Str(datas)
             temp = "第" & Str(memories) & "次:" & Str(datas)
             ProgressBar1.Value = 50
             For circle = 1 To tmsreal
 CX2:
-                datas = rand.Next(1, ranges)
+                datas = rand.Next(1, ranges + 1)
                 If datas = 0 Then GoTo CX2
                 If dorepeat = False Then
                     repeat(circle) = datas
@@ -212,8 +212,7 @@ CX2:
                 '监测范围内是否有可用项
 CX7:
                 ProgressBar1.Value = 50
-                Randomize()
-                datas = Rnd() * (dataRange - 1)
+                datas = rand.Next(1, dataRange)
                 If datas > Setting.MaxArea Then GoTo CX7
                 repeat(0) = datas
                 selCell = DataGridView1(1, datas)
@@ -226,8 +225,7 @@ CX7:
                     ProgressBar1.Value = 60
                     For circle = 1 To tmsreal Step 1
 CX6:
-                        Randomize()
-                        datas = Rnd() * (dataRange - 1)
+                        datas = rand.Next(1, dataRange)
                         selCell = DataGridView1(1, datas)
                         ProgressBar1.Value = 70
                         selCell = DataGridView1(2, datas)
@@ -385,7 +383,8 @@ CX6:
         Form2.Show()
     End Sub
 
-    Private Sub NumericUpDown1_ValueChanged_1(sender As Object, e As EventArgs)
+
+    Public Sub TimesChanged()
         If lock = True Then Exit Sub
         tms = timepool.Value
         donew = True
@@ -406,11 +405,42 @@ CX6:
             TempMdName = "新数据库模式(未保存)"
             ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
         End If
+
     End Sub
 
-
     '抽取次数
+    Public Sub RangeChanged()
+        If lock = True Then Exit Sub
+        donew = True
+        If dodata = False Then
+            ranges = pool.Value
+            NumberSwitch.Checked = True
+            ItemSwitch.Checked = False
+            RangeDisplay.Text = Str(ranges)
+            TimesDisplay.Text = Str(tms)
+            Logs.ForeColor = Color.Black
+            ToolStripStatusLabel3.Text = "当前模式:新随机数模式(未保存)"
+            TempMdName = "新随机数模式(未保存)"
+        Else
+            If pool.Value > Setting.MaxArea Then
+                MsgBox("错误!数据库模式抽取范围不应超过" & Setting.MaxArea & "!", vbOKOnly + vbCritical, "错误")
+                lock = True
+                ItemSwitch.Checked = False
+                NumberSwitch.Checked = True
+                lock = False
+                Exit Sub
+            End If
+            dataRange = pool.Value
+            NumberSwitch.Checked = False
+            ItemSwitch.Checked = True
+            RangeDisplay.Text = Str(dataRange)
+            TimesDisplay.Text = Str(tms)
+            Logs.ForeColor = Color.Chocolate
+            TempMdName = "新数据库模式(未保存)"
+            ToolStripStatusLabel3.Text = "当前模式:" & "新数据库模式(未保存)"
+        End If
 
+    End Sub
 
     '微调范围
 
@@ -1097,7 +1127,7 @@ CX6:
             Try
                 File.Delete("RMNewConfig.json")
             Catch ex As Exception
-                UniversalDialog1.Label1.Text = "未知的错误..."
+                UniversalDialog1.Label1.Text = "不存在默认配置文件.."
                 DoReadOnly = True : DoMultiLine = False
                 UniversalDialog1.ShowDialog()
                 Exit Sub
