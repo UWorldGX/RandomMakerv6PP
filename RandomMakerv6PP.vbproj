@@ -203,6 +203,12 @@
     <Compile Include="UserControl2.xaml.vb">
       <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl3.Designer.vb">
+      <DependentUpon>UserControl3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl3.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DebugForm.resx">
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl3.resx">
+      <DependentUpon>UserControl3.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
