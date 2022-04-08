@@ -85,6 +85,9 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HZH_Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\HZH_Controls.1.0.14\lib\net40\HZH_Controls.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
@@ -235,6 +238,7 @@
     <EmbeddedResource Include="SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCBtnExt.resx" />
     <EmbeddedResource Include="UniversalDialog1.resx">
       <DependentUpon>UniversalDialog1.vb</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +283,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="RandomMakerv6PP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +291,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="S9.ico" />
+    <Content Include="UCBtnExt.cs" />
+    <Content Include="UCBtnExt.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

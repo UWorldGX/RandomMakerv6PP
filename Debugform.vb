@@ -5,7 +5,6 @@
         TextBox1.Text = c
     End Sub
     Private Sub Anime(e As Integer, f As Integer)
-        Label1.Text = "Loading...进度" & e & "/" & f
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -23,15 +22,14 @@
             MsgBox("无效的数据!", vbOKOnly + vbCritical)
             Exit Sub
         End If
-        Label1.Visible = True
 
         For cir = 1 To d
-            Call Form1.CoreProgram()
+            Dim a As New Random()
+            Call Form1.CoreProgram(a)
             ProgressBar1.Value += 1
             Anime(cir, d)
         Next
         MsgBox("调试完成...累死喵了..." & Chr(13) & Chr(10) & "快去主界面查看下劳动成果吧...~o( =∩ω∩= )m", vbOKOnly)
-        Label1.Visible = False
 
     End Sub
 

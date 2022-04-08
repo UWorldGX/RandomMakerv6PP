@@ -27,7 +27,6 @@ Public Class Form1
     '存储json文本和临时的模式名称
     Public reader As New JavaScriptSerializer
     Private doless As Boolean
-    Dim rand As New Random()
 
     '内部存储
 
@@ -141,21 +140,22 @@ Public Class Form1
     '颜色切换核心程序
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CoreButton.Click
-        Call CoreProgram()
+        Dim nand As New Random()
+        Call CoreProgram(nand)
     End Sub
 
     '核心程序触发
 
-    Public Sub CoreProgram()
+    Public Function CoreProgram(nand As Random)
         Dim datas, tmsreal As Integer, temp As String
         Dim selCell As DataGridViewCell
         If makesure = 0 Then
 CX8:
             If doextreme = False Then
-                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & Setting.ModeCollections(Setting.CurrentMode).Name & Chr(13) & Chr(10) & "抽取次数:" & Str(tms), vbOKCancel + vbQuestion, "确认对话框") <> MsgBoxResult.Ok Then Exit Sub
+                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & Setting.ModeCollections(Setting.CurrentMode).Name & Chr(13) & Chr(10) & "抽取次数:" & Str(tms), vbOKCancel + vbQuestion, "确认对话框") <> MsgBoxResult.Ok Then Exit Function
             Else
                 If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & Setting.ModeCollections(Setting.CurrentMode).Name & Chr(13) & Chr(10) & "抽取次数:" & Str(tms) & Chr(13) & Chr(10) & "警告!该模式为极限模式,抽取后将无法重复,确定吗?", vbOKCancel + vbCritical, "确认对话框") <> MsgBoxResult.Ok Then
-                    Exit Sub
+                    Exit Function
                 End If
             End If
         End If
@@ -166,14 +166,14 @@ CX8:
         If dodata = False Then
             Dim repeat(6) As Int16
 CX1:
-            datas = rand.Next(1, ranges + 1)
+            datas = nand.Next(1, ranges + 1)
             If datas = 0 Then GoTo CX1
             DialogText = "抽出数值:" & Str(datas)
             temp = "第" & Str(memories) & "次:" & Str(datas)
             ProgressBar1.Value = 50
             For circle = 1 To tmsreal
 CX2:
-                datas = rand.Next(1, ranges + 1)
+                datas = nand.Next(1, ranges + 1)
                 If datas = 0 Then GoTo CX2
                 If dorepeat = False Then
                     repeat(circle) = datas
@@ -202,7 +202,7 @@ CX2:
                 Dim repeat(6), errortimes As Integer, trigger As Integer = 1
                 If errortimes = 1 Then
                     MsgBox("警告:" & "请检查数据库中是否存在可以抽出的项！", vbCritical + vbOKOnly, "错误")
-                    Exit Sub
+                    Exit Function
                 End If
                 '一次监测
                 Do
@@ -212,7 +212,7 @@ CX2:
                 '监测范围内是否有可用项
 CX7:
                 ProgressBar1.Value = 50
-                datas = rand.Next(1, dataRange)
+                datas = nand.Next(1, dataRange)
                 If datas > Setting.MaxArea Then GoTo CX7
                 repeat(0) = datas
                 selCell = DataGridView1(1, datas)
@@ -225,7 +225,7 @@ CX7:
                     ProgressBar1.Value = 60
                     For circle = 1 To tmsreal Step 1
 CX6:
-                        datas = rand.Next(1, dataRange)
+                        datas = nand.Next(1, dataRange)
                         selCell = DataGridView1(1, datas)
                         ProgressBar1.Value = 70
                         selCell = DataGridView1(2, datas)
@@ -262,7 +262,7 @@ CX6:
         SaveLogs.Visible = True
         Timer2.Enabled = True
         ToolStripLabel5.Enabled = True
-    End Sub
+    End Function
 
     '核心程序
 
