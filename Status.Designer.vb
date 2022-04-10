@@ -43,6 +43,11 @@ Partial Class Status
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.RangeDisplay2 = New Sunny.UI.UILabel()
+        Me.TimesDisplay2 = New Sunny.UI.UILabel()
+        Me.RoundDisplay2 = New Sunny.UI.UILabel()
+        Me.UiLabel1 = New Sunny.UI.UILabel()
+        Me.UiLabel2 = New Sunny.UI.UILabel()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -173,6 +178,8 @@ Partial Class Status
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.UiLabel2)
+        Me.GroupBox1.Controls.Add(Me.UiLabel1)
         Me.GroupBox1.Controls.Add(Me.UiLedDisplay2)
         Me.GroupBox1.Controls.Add(Me.UiLedDisplay1)
         Me.GroupBox1.Controls.Add(Me.Label7)
@@ -241,6 +248,73 @@ Partial Class Status
         Me.ComboBox1.Sorted = True
         Me.ComboBox1.TabIndex = 0
         '
+        'RangeDisplay2
+        '
+        Me.RangeDisplay2.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RangeDisplay2.ForeColor = System.Drawing.Color.Red
+        Me.RangeDisplay2.Location = New System.Drawing.Point(90, 12)
+        Me.RangeDisplay2.Name = "RangeDisplay2"
+        Me.RangeDisplay2.Size = New System.Drawing.Size(67, 25)
+        Me.RangeDisplay2.Style = Sunny.UI.UIStyle.Custom
+        Me.RangeDisplay2.TabIndex = 45
+        Me.RangeDisplay2.Text = "UiLabel1"
+        Me.RangeDisplay2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.RangeDisplay2.Visible = False
+        '
+        'TimesDisplay2
+        '
+        Me.TimesDisplay2.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TimesDisplay2.ForeColor = System.Drawing.Color.Red
+        Me.TimesDisplay2.Location = New System.Drawing.Point(243, 12)
+        Me.TimesDisplay2.Name = "TimesDisplay2"
+        Me.TimesDisplay2.Size = New System.Drawing.Size(67, 25)
+        Me.TimesDisplay2.Style = Sunny.UI.UIStyle.Custom
+        Me.TimesDisplay2.TabIndex = 46
+        Me.TimesDisplay2.Text = "UiLabel1"
+        Me.TimesDisplay2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.TimesDisplay2.Visible = False
+        '
+        'RoundDisplay2
+        '
+        Me.RoundDisplay2.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RoundDisplay2.ForeColor = System.Drawing.Color.Red
+        Me.RoundDisplay2.Location = New System.Drawing.Point(406, 12)
+        Me.RoundDisplay2.Name = "RoundDisplay2"
+        Me.RoundDisplay2.Size = New System.Drawing.Size(67, 25)
+        Me.RoundDisplay2.Style = Sunny.UI.UIStyle.Custom
+        Me.RoundDisplay2.TabIndex = 47
+        Me.RoundDisplay2.Text = "UiLabel1"
+        Me.RoundDisplay2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.RoundDisplay2.Visible = False
+        '
+        'UiLabel1
+        '
+        Me.UiLabel1.BackColor = System.Drawing.Color.White
+        Me.UiLabel1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.UiLabel1.ForeColor = System.Drawing.Color.Red
+        Me.UiLabel1.Location = New System.Drawing.Point(27, 72)
+        Me.UiLabel1.Name = "UiLabel1"
+        Me.UiLabel1.Size = New System.Drawing.Size(67, 25)
+        Me.UiLabel1.Style = Sunny.UI.UIStyle.Custom
+        Me.UiLabel1.TabIndex = 47
+        Me.UiLabel1.Text = "UiLabel1"
+        Me.UiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.UiLabel1.Visible = False
+        '
+        'UiLabel2
+        '
+        Me.UiLabel2.BackColor = System.Drawing.Color.White
+        Me.UiLabel2.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.UiLabel2.ForeColor = System.Drawing.Color.Red
+        Me.UiLabel2.Location = New System.Drawing.Point(180, 72)
+        Me.UiLabel2.Name = "UiLabel2"
+        Me.UiLabel2.Size = New System.Drawing.Size(67, 25)
+        Me.UiLabel2.Style = Sunny.UI.UIStyle.Custom
+        Me.UiLabel2.TabIndex = 48
+        Me.UiLabel2.Text = "UiLabel1"
+        Me.UiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.UiLabel2.Visible = False
+        '
         'Status
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -248,6 +322,9 @@ Partial Class Status
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｗ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(520, 370)
+        Me.Controls.Add(Me.RoundDisplay2)
+        Me.Controls.Add(Me.TimesDisplay2)
+        Me.Controls.Add(Me.RangeDisplay2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
@@ -265,6 +342,7 @@ Partial Class Status
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "Status"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Status"
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -290,4 +368,9 @@ Partial Class Status
     Friend WithEvents UiLedDisplay1 As Sunny.UI.UILedDisplay
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents UiLabel2 As Sunny.UI.UILabel
+    Friend WithEvents UiLabel1 As Sunny.UI.UILabel
+    Friend WithEvents RangeDisplay2 As Sunny.UI.UILabel
+    Friend WithEvents TimesDisplay2 As Sunny.UI.UILabel
+    Friend WithEvents RoundDisplay2 As Sunny.UI.UILabel
 End Class

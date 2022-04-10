@@ -31,6 +31,9 @@
         RangeDisplay.Text = Form1.RangeDisplay.Text
         TimesDisplay.Text = Form1.TimesDisplay.Text
         RoundDisplay.Text = Form1.RoundDisplay.Text
+        RangeDisplay2.Text = Form1.RangeDisplay.Text
+        TimesDisplay2.Text = Form1.TimesDisplay.Text
+        RoundDisplay2.Text = Form1.RoundDisplay.Text
         Label5.Text = Form1.Statistics.Statistics.Item(a.IndexOf(a.Max))
     End Sub
 
@@ -48,12 +51,16 @@
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Label6.Visible = True
         Label7.Visible = True
-        UiLedDisplay1.Visible = True
-        UiLedDisplay2.Visible = True
+        'UiLedDisplay1.Visible = True
+        'UiLedDisplay2.Visible = True
+        UiLabel1.Visible = True
+        UiLabel2.Visible = True
         UiLedDisplay1.Text = Form1.Statistics.StaCounts.Item(Form1.Statistics.Statistics.IndexOf(ComboBox1.SelectedItem))
         Dim b As Decimal = Form1.Statistics.StaCounts.Item(Form1.Statistics.Statistics.IndexOf(ComboBox1.SelectedItem)) / Form1.memories
-        b = b * 100
+        b *= 100
         UiLedDisplay2.Text = b
         UiLedDisplay2.Text = UiLedDisplay2.Text.Substring(0, 4) & "%"
+        UiLabel1.Text = UiLedDisplay1.Text
+        UiLabel2.Text = UiLedDisplay2.Text
     End Sub
 End Class

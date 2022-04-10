@@ -65,8 +65,6 @@ Partial Class Form1
         Me.Logs = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.timepool = New RandomMakerv6PP.UserControl1()
-        Me.pool = New RandomMakerv6PP.UserControl1()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
@@ -110,6 +108,8 @@ Partial Class Form1
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.StudentsTableAdapter = New RandomMakerv6PP.Database1DataSetTableAdapters.StudentsTableAdapter()
         Me.StudentsTableAdapter1 = New RandomMakerv6PP.Database1DataSet1TableAdapters.StudentsTableAdapter()
+        Me.timepool = New RandomMakerv6PP.UserControl1()
+        Me.pool = New RandomMakerv6PP.UserControl1()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -393,7 +393,7 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(75, 298)
+        Me.Label1.Location = New System.Drawing.Point(64, 301)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(69, 19)
         Me.Label1.TabIndex = 35
@@ -405,7 +405,7 @@ Partial Class Form1
         Me.RoundDisplay.CharCount = 5
         Me.RoundDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.RoundDisplay.ForeColor = System.Drawing.Color.Lime
-        Me.RoundDisplay.Location = New System.Drawing.Point(150, 291)
+        Me.RoundDisplay.Location = New System.Drawing.Point(136, 294)
         Me.RoundDisplay.Name = "RoundDisplay"
         Me.RoundDisplay.Size = New System.Drawing.Size(100, 34)
         Me.RoundDisplay.TabIndex = 34
@@ -588,41 +588,6 @@ Partial Class Form1
         Me.Button1.TabIndex = 38
         Me.Button1.Text = "模式编辑器..."
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'timepool
-        '
-        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
-        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.timepool.BlueText = "抽取次数"
-        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.timepool.Location = New System.Drawing.Point(94, 53)
-        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.timepool.Maximum = 7
-        Me.timepool.Minimum = 1
-        Me.timepool.Name = "timepool"
-        Me.timepool.Size = New System.Drawing.Size(417, 51)
-        Me.timepool.TabIndex = 35
-        Me.timepool.Type = 0
-        Me.timepool.Value = 1
-        Me.timepool.Warn = False
-        '
-        'pool
-        '
-        Me.pool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.pool.BackgroundImage = CType(resources.GetObject("pool.BackgroundImage"), System.Drawing.Image)
-        Me.pool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pool.BlueText = "抽取范围"
-        Me.pool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.pool.Location = New System.Drawing.Point(94, 102)
-        Me.pool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.pool.Maximum = 100
-        Me.pool.Minimum = 1
-        Me.pool.Name = "pool"
-        Me.pool.Size = New System.Drawing.Size(417, 51)
-        Me.pool.TabIndex = 37
-        Me.pool.Type = 1
-        Me.pool.Value = 16
-        Me.pool.Warn = False
         '
         'PictureBox2
         '
@@ -1052,6 +1017,41 @@ Partial Class Form1
         'StudentsTableAdapter1
         '
         Me.StudentsTableAdapter1.ClearBeforeFill = True
+        '
+        'timepool
+        '
+        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
+        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.timepool.BlueText = "抽取次数"
+        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.timepool.Location = New System.Drawing.Point(94, 53)
+        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.timepool.Maximum = 7
+        Me.timepool.Minimum = 1
+        Me.timepool.Name = "timepool"
+        Me.timepool.Size = New System.Drawing.Size(417, 51)
+        Me.timepool.TabIndex = 35
+        Me.timepool.Type = 0
+        Me.timepool.Value = 1
+        Me.timepool.Warn = False
+        '
+        'pool
+        '
+        Me.pool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.pool.BackgroundImage = CType(resources.GetObject("pool.BackgroundImage"), System.Drawing.Image)
+        Me.pool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pool.BlueText = "抽取范围"
+        Me.pool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.pool.Location = New System.Drawing.Point(94, 102)
+        Me.pool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.pool.Maximum = 100
+        Me.pool.Minimum = 1
+        Me.pool.Name = "pool"
+        Me.pool.Size = New System.Drawing.Size(417, 51)
+        Me.pool.TabIndex = 37
+        Me.pool.Type = 1
+        Me.pool.Value = 16
+        Me.pool.Warn = False
         '
         'Form1
         '
