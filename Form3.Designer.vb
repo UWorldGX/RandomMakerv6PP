@@ -33,15 +33,15 @@ Partial Class Form3
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Location = New System.Drawing.Point(14, 14)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(179, 119)
+        Me.Label1.Size = New System.Drawing.Size(179, 153)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "v4.0 大幅度修复bug" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v5.0  正式版发布" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v5.1  修复了一些致命bug" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v6.0  全新发布版:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         ·采用全新JSON配置文" &
-    "件" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         ·全新加入自由的模式编辑" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         ·新增数幅精美背景"
+    "件" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         ·全新加入自由的模式编辑" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "         ·新增数幅精美背景" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "v6.1 界面大修" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       增加统计数据功能"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 142)
+        Me.Label2.Location = New System.Drawing.Point(12, 189)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 17)
         Me.Label2.TabIndex = 1
@@ -50,7 +50,7 @@ Partial Class Form3
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(70, 142)
+        Me.LinkLabel1.Location = New System.Drawing.Point(68, 189)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(301, 17)
         Me.LinkLabel1.TabIndex = 2
@@ -61,7 +61,7 @@ Partial Class Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(381, 181)
+        Me.ClientSize = New System.Drawing.Size(381, 226)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)

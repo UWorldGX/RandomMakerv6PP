@@ -1079,7 +1079,7 @@ Partial Class Form1
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "减速风扇抽号发生器.NET 6.0.0 ""LANDSLIDE"""
+        Me.Text = "减速风扇抽号发生器.NET 6.1.0 ""Judgment Jolt"""
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)

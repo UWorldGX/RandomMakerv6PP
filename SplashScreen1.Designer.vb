@@ -37,11 +37,11 @@ Partial Class SplashScreen1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("等线", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Lucida Sans Typewriter", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.Window
-        Me.Label1.Location = New System.Drawing.Point(224, 74)
+        Me.Label1.Location = New System.Drawing.Point(209, 77)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(137, 19)
+        Me.Label1.Size = New System.Drawing.Size(164, 22)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Now Loading..."
         '
@@ -81,9 +81,9 @@ Partial Class SplashScreen1
         Me.Label3.ForeColor = System.Drawing.SystemColors.Window
         Me.Label3.Location = New System.Drawing.Point(8, 82)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(163, 17)
+        Me.Label3.Size = New System.Drawing.Size(178, 17)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Version 6.0.2 ""LANDSLIDE"""
+        Me.Label3.Text = "Version 6.1.0 ""Judgment Jolt"""
         '
         'UiProcessBar1
         '
@@ -120,6 +120,7 @@ Partial Class SplashScreen1
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
+        Me.TransparencyKey = System.Drawing.SystemColors.Control
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
