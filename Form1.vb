@@ -28,6 +28,9 @@ Public Class Form1
     Public reader As New JavaScriptSerializer
     Private doless As Boolean
 
+    Public Statistics As New List(Of String)
+    '统计数据,新加入的功能
+
     '内部存储
 
     '=======Page 1 of 4,主页=======
@@ -40,6 +43,7 @@ Public Class Form1
                 DoReadOnly = False : DoMultiLine = True
                 If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
             End If
+            Statistics.Clear()
             Dim xr As Int16
             lock = True
             donew = False
@@ -106,6 +110,7 @@ Public Class Form1
         End If
         ToolStripLabel5.Enabled = True
         Timer2.Enabled = True
+        RoundDisplay.Text = memories
         lock = False
     End Sub
 
@@ -161,7 +166,7 @@ CX8:
         End If
         tmsreal = tms - 1
         memories = 1 + memories
-        ProgressBar1.Value = 10
+        RoundDisplay.Text = memories
         '随机数模式
         If dodata = False Then
             Dim repeat(6) As Int16
@@ -170,7 +175,6 @@ CX1:
             If datas = 0 Then GoTo CX1
             DialogText = "抽出数值:" & Str(datas)
             temp = "第" & Str(memories) & "次:" & Str(datas)
-            ProgressBar1.Value = 50
             For circle = 1 To tmsreal
 CX2:
                 datas = nand.Next(1, ranges + 1)
@@ -185,20 +189,16 @@ CX2:
                 DialogText = DialogText & "/" & Str(datas)
                 temp = temp & "/" & Str(datas)
             Next
-            ProgressBar1.Value = 75
             Logs.Items.Add(temp)
             If doextreme = True Then
                 Logs.Items.Add("极限模式抽取已结束!")
                 CoreButton.Enabled = False
-                ProgressBar1.Value = 99
             End If
             SaveLogs.Visible = True
-            ProgressBar1.Value = 100
             Timer2.Enabled = True
         ElseIf dodata = True Then
             '数据模式1
             Try
-                ProgressBar1.Value = 30
                 Dim repeat(6), errortimes As Integer, trigger As Integer = 1
                 If errortimes = 1 Then
                     MsgBox("警告:" & "请检查数据库中是否存在可以抽出的项！", vbCritical + vbOKOnly, "错误")
@@ -211,7 +211,6 @@ CX2:
                 Loop Until selCell.Value = False
                 '监测范围内是否有可用项
 CX7:
-                ProgressBar1.Value = 50
                 datas = nand.Next(1, dataRange)
                 If datas > Setting.MaxArea Then GoTo CX7
                 repeat(0) = datas
@@ -222,12 +221,10 @@ CX7:
                 If selCell.Value = False Then
                     DialogText = "抽取对象:" & temp
                     temp = "第" & Str(memories) & "次:" & temp
-                    ProgressBar1.Value = 60
                     For circle = 1 To tmsreal Step 1
 CX6:
                         datas = nand.Next(1, dataRange)
                         selCell = DataGridView1(1, datas)
-                        ProgressBar1.Value = 70
                         selCell = DataGridView1(2, datas)
                         If selCell.Value = False Then
                             If dorepeat = False Then
@@ -244,7 +241,6 @@ CX6:
                         DialogText += "/" & selCell.Value
                         temp = temp & "/" & selCell.Value
                     Next
-                    ProgressBar1.Value = 90
                     Logs.Items.Add(temp)
                 Else
                     GoTo CX7
@@ -252,13 +248,11 @@ CX6:
                 If doextreme = True Then
                     Logs.Items.Add("极限模式抽取已结束!")
                     CoreButton.Enabled = False
-                    ProgressBar1.Value = 80
                 End If
             Catch ex As Exception
                 MsgBox("警告:" & Err.Description, vbCritical + vbOKOnly, "错误")
             End Try
         End If
-        ProgressBar1.Value = 100
         SaveLogs.Visible = True
         Timer2.Enabled = True
         ToolStripLabel5.Enabled = True
@@ -325,6 +319,7 @@ CX6:
                 timepool.Reload()
                 TimesDisplay.Text = Str(tms)
                 memories = 0
+                RoundDisplay.Text = memories
                 ranges = Setting.ModeCollections(xr).Range
                 pool.Maximum = 100
                 pool.Value = ranges
@@ -343,6 +338,7 @@ CX6:
             Case Is = True
                 circle = 1
                 memories = 0
+                RoundDisplay.Text = memories
                 dataRange = Setting.ModeCollections(xr).Range
                 timepool.Value = tms
                 timepool.Reload()
@@ -770,6 +766,7 @@ CX6:
             ExtremeLabel.Visible = False
         End If
         memories = 0
+        RoundDisplay.Text = memories
         makesure = 0
         lock = True
         DoMakesureSwitch.Checked = False
@@ -784,6 +781,7 @@ CX6:
     Private Sub Debugselect_Click_1(sender As Object, e As EventArgs) Handles Debugselect.Click
         DebugForm.Show()
     End Sub
+
 
 
 

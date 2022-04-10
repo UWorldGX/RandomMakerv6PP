@@ -51,13 +51,12 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.TimesDisplay = New System.Windows.Forms.Label()
-        Me.RangeDisplay = New System.Windows.Forms.Label()
+        Me.TimesDisplay = New Sunny.UI.UILedDisplay()
+        Me.RangeDisplay = New Sunny.UI.UILedDisplay()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CoreButton = New System.Windows.Forms.Button()
         Me.ExtremeLabel = New System.Windows.Forms.Label()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.SaveLogs = New System.Windows.Forms.Button()
         Me.DoMakesureSwitch = New System.Windows.Forms.CheckBox()
         Me.Logs = New System.Windows.Forms.ListBox()
@@ -106,6 +105,8 @@ Partial Class Form1
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.StudentsTableAdapter = New RandomMakerv6PP.Database1DataSetTableAdapters.StudentsTableAdapter()
         Me.StudentsTableAdapter1 = New RandomMakerv6PP.Database1DataSet1TableAdapters.StudentsTableAdapter()
+        Me.RoundDisplay = New Sunny.UI.UILedDisplay()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -362,11 +363,12 @@ Partial Class Form1
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.RoundDisplay)
         Me.Panel1.Controls.Add(Me.Button8)
         Me.Panel1.Controls.Add(Me.GroupBox4)
         Me.Panel1.Controls.Add(Me.CoreButton)
         Me.Panel1.Controls.Add(Me.ExtremeLabel)
-        Me.Panel1.Controls.Add(Me.ProgressBar1)
         Me.Panel1.Controls.Add(Me.SaveLogs)
         Me.Panel1.Controls.Add(Me.DoMakesureSwitch)
         Me.Panel1.Controls.Add(Me.MainDialog)
@@ -410,29 +412,29 @@ Partial Class Form1
         '
         'TimesDisplay
         '
-        Me.TimesDisplay.AutoSize = True
-        Me.TimesDisplay.BackColor = System.Drawing.Color.Transparent
-        Me.TimesDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TimesDisplay.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TimesDisplay.ForeColor = System.Drawing.Color.Red
-        Me.TimesDisplay.Location = New System.Drawing.Point(106, 58)
+        Me.TimesDisplay.BackColor = System.Drawing.Color.Black
+        Me.TimesDisplay.CharCount = 3
+        Me.TimesDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TimesDisplay.ForeColor = System.Drawing.Color.Lime
+        Me.TimesDisplay.IntervalOn = 1
+        Me.TimesDisplay.Location = New System.Drawing.Point(105, 55)
         Me.TimesDisplay.Name = "TimesDisplay"
-        Me.TimesDisplay.Size = New System.Drawing.Size(62, 21)
-        Me.TimesDisplay.TabIndex = 22
-        Me.TimesDisplay.Text = "Invalid"
+        Me.TimesDisplay.Size = New System.Drawing.Size(45, 27)
+        Me.TimesDisplay.TabIndex = 33
+        Me.TimesDisplay.Text = "90002"
         '
         'RangeDisplay
         '
-        Me.RangeDisplay.AutoSize = True
-        Me.RangeDisplay.BackColor = System.Drawing.Color.Transparent
-        Me.RangeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.RangeDisplay.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.RangeDisplay.ForeColor = System.Drawing.Color.Red
-        Me.RangeDisplay.Location = New System.Drawing.Point(106, 25)
+        Me.RangeDisplay.BackColor = System.Drawing.Color.Black
+        Me.RangeDisplay.CharCount = 3
+        Me.RangeDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RangeDisplay.ForeColor = System.Drawing.Color.Lime
+        Me.RangeDisplay.IntervalOn = 1
+        Me.RangeDisplay.Location = New System.Drawing.Point(104, 22)
         Me.RangeDisplay.Name = "RangeDisplay"
-        Me.RangeDisplay.Size = New System.Drawing.Size(62, 21)
-        Me.RangeDisplay.TabIndex = 21
-        Me.RangeDisplay.Text = "Invalid"
+        Me.RangeDisplay.Size = New System.Drawing.Size(45, 27)
+        Me.RangeDisplay.TabIndex = 32
+        Me.RangeDisplay.Text = "90002"
         '
         'Label3
         '
@@ -477,23 +479,15 @@ Partial Class Form1
         '
         Me.ExtremeLabel.AutoSize = True
         Me.ExtremeLabel.BackColor = System.Drawing.Color.Transparent
+        Me.ExtremeLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ExtremeLabel.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ExtremeLabel.ForeColor = System.Drawing.Color.Red
-        Me.ExtremeLabel.Location = New System.Drawing.Point(162, 304)
+        Me.ExtremeLabel.Location = New System.Drawing.Point(164, 328)
         Me.ExtremeLabel.Name = "ExtremeLabel"
-        Me.ExtremeLabel.Size = New System.Drawing.Size(99, 19)
+        Me.ExtremeLabel.Size = New System.Drawing.Size(101, 21)
         Me.ExtremeLabel.TabIndex = 27
         Me.ExtremeLabel.Text = "极限模式警告"
         Me.ExtremeLabel.Visible = False
-        '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.BackColor = System.Drawing.Color.White
-        Me.ProgressBar1.Location = New System.Drawing.Point(41, 341)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(404, 19)
-        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
-        Me.ProgressBar1.TabIndex = 23
         '
         'SaveLogs
         '
@@ -517,7 +511,7 @@ Partial Class Form1
         Me.DoMakesureSwitch.AutoSize = True
         Me.DoMakesureSwitch.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.DoMakesureSwitch.ForeColor = System.Drawing.Color.Black
-        Me.DoMakesureSwitch.Location = New System.Drawing.Point(39, 304)
+        Me.DoMakesureSwitch.Location = New System.Drawing.Point(35, 328)
         Me.DoMakesureSwitch.Name = "DoMakesureSwitch"
         Me.DoMakesureSwitch.Size = New System.Drawing.Size(123, 21)
         Me.DoMakesureSwitch.TabIndex = 25
@@ -536,7 +530,6 @@ Partial Class Form1
         Me.Logs.Items.AddRange(New Object() {"这里显示抽取结果的历史记录"})
         Me.Logs.Location = New System.Drawing.Point(43, 84)
         Me.Logs.Name = "Logs"
-        Me.Logs.ScrollAlwaysVisible = True
         Me.Logs.Size = New System.Drawing.Size(207, 206)
         Me.Logs.TabIndex = 15
         '
@@ -560,17 +553,16 @@ Partial Class Form1
         '
         'timepool
         '
-        Me.timepool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
         Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.timepool.BlueText = "抽取次数"
         Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.timepool.Location = New System.Drawing.Point(98, 53)
+        Me.timepool.Location = New System.Drawing.Point(94, 53)
         Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.timepool.Maximum = 7
         Me.timepool.Minimum = 1
         Me.timepool.Name = "timepool"
-        Me.timepool.Size = New System.Drawing.Size(400, 46)
+        Me.timepool.Size = New System.Drawing.Size(417, 51)
         Me.timepool.TabIndex = 35
         Me.timepool.Type = 0
         Me.timepool.Value = 1
@@ -583,12 +575,12 @@ Partial Class Form1
         Me.pool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pool.BlueText = "抽取范围"
         Me.pool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.pool.Location = New System.Drawing.Point(98, 98)
+        Me.pool.Location = New System.Drawing.Point(94, 102)
         Me.pool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pool.Maximum = 100
         Me.pool.Minimum = 1
         Me.pool.Name = "pool"
-        Me.pool.Size = New System.Drawing.Size(400, 46)
+        Me.pool.Size = New System.Drawing.Size(417, 51)
         Me.pool.TabIndex = 37
         Me.pool.Type = 1
         Me.pool.Value = 16
@@ -790,7 +782,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.PersonalizeFonts)
         Me.GroupBox2.Controls.Add(Me.PersonalizeColor)
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox2.Location = New System.Drawing.Point(58, 91)
+        Me.GroupBox2.Location = New System.Drawing.Point(58, 99)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(371, 225)
         Me.GroupBox2.TabIndex = 9
@@ -910,7 +902,7 @@ Partial Class Form1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewCheckBoxColumn1})
         Me.DataGridView1.DataSource = Me.StudentsBindingSource1
-        Me.DataGridView1.Location = New System.Drawing.Point(49, 22)
+        Me.DataGridView1.Location = New System.Drawing.Point(97, 18)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
         Me.DataGridView1.Size = New System.Drawing.Size(336, 278)
@@ -949,7 +941,7 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(88, 312)
+        Me.Label2.Location = New System.Drawing.Point(153, 307)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(287, 19)
         Me.Label2.TabIndex = 22
@@ -1011,6 +1003,29 @@ Partial Class Form1
         '
         Me.StudentsTableAdapter1.ClearBeforeFill = True
         '
+        'RoundDisplay
+        '
+        Me.RoundDisplay.BackColor = System.Drawing.Color.Black
+        Me.RoundDisplay.CharCount = 5
+        Me.RoundDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RoundDisplay.ForeColor = System.Drawing.Color.Lime
+        Me.RoundDisplay.IntervalOn = 1
+        Me.RoundDisplay.Location = New System.Drawing.Point(150, 295)
+        Me.RoundDisplay.Name = "RoundDisplay"
+        Me.RoundDisplay.Size = New System.Drawing.Size(69, 27)
+        Me.RoundDisplay.TabIndex = 34
+        Me.RoundDisplay.Text = "90002"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label1.Location = New System.Drawing.Point(75, 298)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(69, 19)
+        Me.Label1.TabIndex = 35
+        Me.Label1.Text = "抽取回数:"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1022,10 +1037,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel4)
-        Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1097,11 +1112,8 @@ Partial Class Form1
     Friend WithEvents PersonalizeFonts As Button
     Friend WithEvents PersonalizeColor As Button
     Friend WithEvents Label2 As Label
-    Friend WithEvents TimesDisplay As Label
-    Friend WithEvents RangeDisplay As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents BackGroundBase As ComboBox
     Friend WithEvents Label8 As Label
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
@@ -1149,4 +1161,8 @@ Partial Class Form1
     Friend WithEvents timepool As UserControl1
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents pool As UserControl1
+    Friend WithEvents RangeDisplay As Sunny.UI.UILedDisplay
+    Friend WithEvents TimesDisplay As Sunny.UI.UILedDisplay
+    Friend WithEvents Label1 As Label
+    Friend WithEvents RoundDisplay As Sunny.UI.UILedDisplay
 End Class
