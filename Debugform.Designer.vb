@@ -27,7 +27,7 @@ Partial Class DebugForm
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.ProgressBar1 = New HZH_Controls.Controls.UCProcessLineExt()
         Me.SuspendLayout()
         '
         'DebugOutput
@@ -81,15 +81,17 @@ Partial Class DebugForm
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.ProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.ProgressBar1.Location = New System.Drawing.Point(18, 128)
-        Me.ProgressBar1.Maximum = 10000
+        Me.ProgressBar1.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressBar1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(237, Byte), Integer))
+        Me.ProgressBar1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(77, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.ProgressBar1.Location = New System.Drawing.Point(16, 125)
+        Me.ProgressBar1.MaxValue = 100
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(243, 18)
-        Me.ProgressBar1.Step = 1
-        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.ProgressBar1.Size = New System.Drawing.Size(261, 28)
         Me.ProgressBar1.TabIndex = 3
+        Me.ProgressBar1.Value = 0
+        Me.ProgressBar1.ValueBGColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(237, Byte), Integer))
+        Me.ProgressBar1.ValueColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(77, Byte), Integer), CType(CType(59, Byte), Integer))
         '
         'DebugForm
         '
@@ -119,5 +121,5 @@ Partial Class DebugForm
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents ProgressBar1 As HZH_Controls.Controls.UCProcessLineExt
 End Class

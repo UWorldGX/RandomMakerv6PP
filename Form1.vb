@@ -154,6 +154,12 @@ Public Class Form1
     '核心程序触发
 
     Public Sub CoreProgram(nand As Random)
+        If memories > 99999 Then
+            UniversalDialog1.Label1.Text = "已达到抽取次数最大值."
+            DoReadOnly = True : DoMultiLine = False
+            UniversalDialog1.ShowDialog()
+            Exit Sub
+        End If
         Dim datas, tmsreal As Integer, temp As String
         Dim selCell As DataGridViewCell
         If makesure = 0 Then
@@ -804,6 +810,10 @@ CX6:
 
     Private Sub 统计数据ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 统计数据ToolStripMenuItem.Click
         Status.Show()
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Form4.Show()
     End Sub
     'Debug
 

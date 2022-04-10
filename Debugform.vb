@@ -13,7 +13,11 @@
         Dim cir As Integer， d As Integer
         Try
             d = Val(InputBox("请输入要一键抽取的次数:", "提示"))
-            ProgressBar1.Maximum = d
+            If d > 99999 Then
+                MsgBox("抽取次数过大!", vbOKOnly + vbCritical)
+                Exit Sub
+            End If
+            ProgressBar1.MaxValue = d
         Catch f As InvalidCastException
             MsgBox("无效的数据!", vbOKOnly + vbCritical)
             Exit Sub

@@ -38,11 +38,11 @@ Partial Class Status
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.UiLedDisplay1 = New Sunny.UI.UILedDisplay()
         Me.UiLedDisplay2 = New Sunny.UI.UILedDisplay()
+        Me.UiLedDisplay1 = New Sunny.UI.UILedDisplay()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -85,10 +85,9 @@ Partial Class Status
         Me.RoundDisplay.CharCount = 5
         Me.RoundDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.RoundDisplay.ForeColor = System.Drawing.Color.Lime
-        Me.RoundDisplay.IntervalOn = 1
-        Me.RoundDisplay.Location = New System.Drawing.Point(369, 8)
+        Me.RoundDisplay.Location = New System.Drawing.Point(403, 8)
         Me.RoundDisplay.Name = "RoundDisplay"
-        Me.RoundDisplay.Size = New System.Drawing.Size(69, 27)
+        Me.RoundDisplay.Size = New System.Drawing.Size(100, 34)
         Me.RoundDisplay.TabIndex = 40
         Me.RoundDisplay.Text = "90002"
         '
@@ -98,10 +97,9 @@ Partial Class Status
         Me.TimesDisplay.CharCount = 3
         Me.TimesDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TimesDisplay.ForeColor = System.Drawing.Color.Lime
-        Me.TimesDisplay.IntervalOn = 1
         Me.TimesDisplay.Location = New System.Drawing.Point(243, 8)
         Me.TimesDisplay.Name = "TimesDisplay"
-        Me.TimesDisplay.Size = New System.Drawing.Size(45, 27)
+        Me.TimesDisplay.Size = New System.Drawing.Size(64, 34)
         Me.TimesDisplay.TabIndex = 39
         Me.TimesDisplay.Text = "90002"
         '
@@ -111,10 +109,9 @@ Partial Class Status
         Me.RangeDisplay.CharCount = 3
         Me.RangeDisplay.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.RangeDisplay.ForeColor = System.Drawing.Color.Lime
-        Me.RangeDisplay.IntervalOn = 1
-        Me.RangeDisplay.Location = New System.Drawing.Point(113, 8)
+        Me.RangeDisplay.Location = New System.Drawing.Point(94, 8)
         Me.RangeDisplay.Name = "RangeDisplay"
-        Me.RangeDisplay.Size = New System.Drawing.Size(45, 27)
+        Me.RangeDisplay.Size = New System.Drawing.Size(64, 34)
         Me.RangeDisplay.TabIndex = 38
         Me.RangeDisplay.Text = "90002"
         '
@@ -135,7 +132,7 @@ Partial Class Status
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(294, 12)
+        Me.Label1.Location = New System.Drawing.Point(313, 12)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(69, 19)
         Me.Label1.TabIndex = 41
@@ -147,7 +144,7 @@ Partial Class Status
         Me.Label4.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Label4.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(34, 12)
+        Me.Label4.Location = New System.Drawing.Point(12, 12)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(73, 19)
         Me.Label4.TabIndex = 36
@@ -183,54 +180,10 @@ Partial Class Status
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(63, 246)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(318, 99)
+        Me.GroupBox1.Size = New System.Drawing.Size(318, 112)
         Me.GroupBox1.TabIndex = 44
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "查询"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(83, 22)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(141, 25)
-        Me.ComboBox1.Sorted = True
-        Me.ComboBox1.TabIndex = 0
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(22, 66)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 17)
-        Me.Label6.TabIndex = 43
-        Me.Label6.Text = "抽取次数:"
-        Me.Label6.Visible = False
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(154, 66)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(59, 17)
-        Me.Label7.TabIndex = 44
-        Me.Label7.Text = "抽取概率:"
-        Me.Label7.Visible = False
-        '
-        'UiLedDisplay1
-        '
-        Me.UiLedDisplay1.BackColor = System.Drawing.Color.Black
-        Me.UiLedDisplay1.CharCount = 3
-        Me.UiLedDisplay1.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.UiLedDisplay1.ForeColor = System.Drawing.Color.Lime
-        Me.UiLedDisplay1.IntervalOn = 1
-        Me.UiLedDisplay1.Location = New System.Drawing.Point(87, 63)
-        Me.UiLedDisplay1.Name = "UiLedDisplay1"
-        Me.UiLedDisplay1.Size = New System.Drawing.Size(45, 27)
-        Me.UiLedDisplay1.TabIndex = 45
-        Me.UiLedDisplay1.Text = "90002"
-        Me.UiLedDisplay1.Visible = False
         '
         'UiLedDisplay2
         '
@@ -238,13 +191,55 @@ Partial Class Status
         Me.UiLedDisplay2.CharCount = 6
         Me.UiLedDisplay2.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.UiLedDisplay2.ForeColor = System.Drawing.Color.Lime
-        Me.UiLedDisplay2.IntervalOn = 1
-        Me.UiLedDisplay2.Location = New System.Drawing.Point(219, 63)
+        Me.UiLedDisplay2.Location = New System.Drawing.Point(157, 65)
         Me.UiLedDisplay2.Name = "UiLedDisplay2"
-        Me.UiLedDisplay2.Size = New System.Drawing.Size(81, 27)
+        Me.UiLedDisplay2.Size = New System.Drawing.Size(121, 34)
         Me.UiLedDisplay2.TabIndex = 46
         Me.UiLedDisplay2.Text = "90002"
         Me.UiLedDisplay2.Visible = False
+        '
+        'UiLedDisplay1
+        '
+        Me.UiLedDisplay1.BackColor = System.Drawing.Color.Black
+        Me.UiLedDisplay1.CharCount = 5
+        Me.UiLedDisplay1.Font = New System.Drawing.Font("微软雅黑", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.UiLedDisplay1.ForeColor = System.Drawing.Color.Lime
+        Me.UiLedDisplay1.Location = New System.Drawing.Point(9, 63)
+        Me.UiLedDisplay1.Name = "UiLedDisplay1"
+        Me.UiLedDisplay1.Size = New System.Drawing.Size(100, 34)
+        Me.UiLedDisplay1.TabIndex = 45
+        Me.UiLedDisplay1.Text = "90002"
+        Me.UiLedDisplay1.Visible = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(154, 49)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(59, 17)
+        Me.Label7.TabIndex = 44
+        Me.Label7.Text = "抽取概率:"
+        Me.Label7.Visible = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 48)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(59, 17)
+        Me.Label6.TabIndex = 43
+        Me.Label6.Text = "抽取次数:"
+        Me.Label6.Visible = False
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(84, 21)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(141, 25)
+        Me.ComboBox1.Sorted = True
+        Me.ComboBox1.TabIndex = 0
         '
         'Status
         '
@@ -252,7 +247,7 @@ Partial Class Status
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｗ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(520, 358)
+        Me.ClientSize = New System.Drawing.Size(520, 370)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
@@ -265,6 +260,7 @@ Partial Class Status
         Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.Button1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False

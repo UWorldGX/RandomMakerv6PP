@@ -1,6 +1,9 @@
 ﻿Public Class Status
     Private Sub Status_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.memories = 0 Then Exit Sub
+        If Form1.memories = 0 Then
+            Me.Close()
+            Exit Sub
+        End If
         If Form1.tms > 1 Then
             UniversalDialog1.Label1.Text = "统计连续抽取的数据没有意义."
             UniversalDialog1.Label2.Text = "将退出统计。"
