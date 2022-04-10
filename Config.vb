@@ -21,3 +21,8 @@ Public Class Configs
     Public ModeCollections(10) As Mode
 End Class
 
+Public Class Stat
+    Public Property Statistics As List(Of String)
+    Public Property StaCounts As List(Of Integer)
+End Class
+

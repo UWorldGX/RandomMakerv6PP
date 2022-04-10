@@ -30,6 +30,7 @@ Partial Class SplashScreen1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.UiProcessBar1 = New Sunny.UI.UIProcessBar()
         Me.SuspendLayout()
         '
         'Label1
@@ -84,6 +85,23 @@ Partial Class SplashScreen1
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Version 6.0.2 ""LANDSLIDE"""
         '
+        'UiProcessBar1
+        '
+        Me.UiProcessBar1.BackColor = System.Drawing.Color.Transparent
+        Me.UiProcessBar1.FillColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(250, Byte), Integer))
+        Me.UiProcessBar1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.UiProcessBar1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(190, Byte), Integer), CType(CType(172, Byte), Integer))
+        Me.UiProcessBar1.Location = New System.Drawing.Point(24, 24)
+        Me.UiProcessBar1.MinimumSize = New System.Drawing.Size(70, 3)
+        Me.UiProcessBar1.Name = "UiProcessBar1"
+        Me.UiProcessBar1.Radius = 15
+        Me.UiProcessBar1.RectColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(190, Byte), Integer), CType(CType(172, Byte), Integer))
+        Me.UiProcessBar1.Size = New System.Drawing.Size(336, 31)
+        Me.UiProcessBar1.Style = Sunny.UI.UIStyle.Colorful
+        Me.UiProcessBar1.TabIndex = 4
+        Me.UiProcessBar1.Text = "UiProcessBar1"
+        Me.UiProcessBar1.Value = 100
+        '
         'SplashScreen1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -91,6 +109,7 @@ Partial Class SplashScreen1
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.PG0
         Me.ClientSize = New System.Drawing.Size(373, 108)
         Me.ControlBox = False
+        Me.Controls.Add(Me.UiProcessBar1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -113,4 +132,5 @@ Partial Class SplashScreen1
     Friend WithEvents Label2 As Label
     Friend WithEvents Timer4 As Timer
     Friend WithEvents Label3 As Label
+    Friend WithEvents UiProcessBar1 As Sunny.UI.UIProcessBar
 End Class

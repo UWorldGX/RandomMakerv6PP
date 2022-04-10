@@ -28,7 +28,7 @@ Public Class Form1
     Public reader As New JavaScriptSerializer
     Private doless As Boolean
 
-    Public Statistics As New List(Of String)
+    Public Statistics As New Stat
     '统计数据,新加入的功能
 
     '内部存储
@@ -43,7 +43,8 @@ Public Class Form1
                 DoReadOnly = False : DoMultiLine = True
                 If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
             End If
-            Statistics.Clear()
+            Statistics.Statistics.Clear()
+            Statistics.StaCounts.Clear()
             Dim xr As Int16
             lock = True
             donew = False
@@ -140,6 +141,7 @@ Public Class Form1
             Case Is = 7
                 Logs.ForeColor = Color.Navy
         End Select
+        ToolStripStatusLabel3.ForeColor = Logs.ForeColor
     End Sub
 
     '颜色切换核心程序
@@ -173,6 +175,15 @@ CX8:
 CX1:
             datas = nand.Next(1, ranges + 1)
             If datas = 0 Then GoTo CX1
+            If tms < 2 Then
+                If Statistics.Statistics.Contains(datas) = True Then
+                    Dim h As Int16 = Str(datas).Length
+                    Statistics.StaCounts.Item(Statistics.Statistics.IndexOf(Str(datas).Substring(1, h - 1))) += 1
+                Else
+                    Statistics.Statistics.Add(datas)
+                    Statistics.StaCounts.Add(1)
+                End If
+            End If
             DialogText = "抽出数值:" & Str(datas)
             temp = "第" & Str(memories) & "次:" & Str(datas)
             For circle = 1 To tmsreal
@@ -217,6 +228,14 @@ CX7:
                 selCell = DataGridView1(1, datas)
                 temp = selCell.Value
                 If temp = "" Then GoTo CX7
+                If tms < 2 Then
+                    If Statistics.Statistics.Contains(temp) = True Then
+                        Statistics.StaCounts.Item(Statistics.Statistics.IndexOf(temp)) += 1
+                    Else
+                        Statistics.Statistics.Add(temp)
+                        Statistics.StaCounts.Add(1)
+                    End If
+                End If
                 selCell = DataGridView1(2, datas)
                 If selCell.Value = False Then
                     DialogText = "抽取对象:" & temp
@@ -299,6 +318,7 @@ CX6:
         UniversalDialog1.Label1.Text = "即将清除抽取记录并重置,是否继续?"
         DoReadOnly = False : DoMultiLine = False
         If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
+        Dim mdonew As Boolean = donew
         If donew = True Then
             UniversalDialog1.Label1.Text = "该模式尚未保存,重置将导致配置丢失,是否继续?"
             UniversalDialog1.Label2.Text = "推荐先前往[参数设置]面板保存配置。"
@@ -355,6 +375,7 @@ CX6:
                 DialogText = "数据库模式已初始化完毕."
                 ToolStripStatusLabel3.Text = "当前模式:" & Setting.ModeCollections(xr).Name
         End Select
+        lock = True
         If Setting.ModeCollections(xr).DoExtreme = True Then
             doextreme = True
             ExtremeLabel.Visible = True
@@ -366,6 +387,7 @@ CX6:
             CoreButton.Enabled = True
             ExtremeSwitch.Checked = False
         End If
+        lock = False
         Call ColorSwitch(xc:=xr)
         donew = False
         Timer2.Enabled = True
@@ -440,7 +462,8 @@ CX6:
 
     '微调范围
 
-    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles ExtremeSwitch.CheckedChanged
+
+    Private Sub ExtremeSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ExtremeSwitch.CheckedChanged
         If lock = True Then Exit Sub
         donew = True
         If doextreme = False Then
@@ -452,9 +475,7 @@ CX6:
             CoreButton.Enabled = True
             ExtremeLabel.Visible = False
         End If
-
     End Sub
-
     '极限模式开关
 
     Private Sub NumberSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles NumberSwitch.CheckedChanged
@@ -569,7 +590,8 @@ CX6:
 
     '载入配置
 
-    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
+
+    Private Sub RepeatSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
         If lock = True Then Exit Sub
         donew = True
         If dodata = False Then
@@ -583,17 +605,9 @@ CX6:
             dorepeat = False
         End If
     End Sub
+    '允许重复开关
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        DoReadOnly = False : DoMultiLine = False
-        UniversalDialog1.Label1.Text = "这是测试按钮"
-        If UniversalDialog1.ShowDialog() = DialogResult.OK Then
-            'MsgBox("测试成功")
-            DialogText = "测试成功"
-            Timer2.Enabled = True
-        End If
-    End Sub
-    '测试按钮
+
     Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         Dim selCell As DataGridViewCell, lblCellInfoColIndex, lblCellInfoRowIndex As Byte
         selCell = DataGridView1.CurrentCell
@@ -628,11 +642,10 @@ CX6:
 
 
     '是否允许重复抽取
-    Private Sub Saver_Click_1(sender As Object, e As EventArgs) Handles Saver.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Hide()
         ModeEditor.Show()
     End Sub
-
     '保存自定义模式
 
 
@@ -782,9 +795,9 @@ CX6:
         DebugForm.Show()
     End Sub
 
-
-
-
+    Private Sub 统计数据ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 统计数据ToolStripMenuItem.Click
+        Status.Show()
+    End Sub
     'Debug
 
     '=======Page 3 of 4,个性化=======
@@ -886,6 +899,8 @@ CX6:
         Label2.ForeColor = Color.White
         Label3.ForeColor = Color.White
         Label4.ForeColor = Color.White
+        Label5.ForeColor = Color.White
+        Label6.ForeColor = Color.White
         Label8.ForeColor = Color.White
         Label13.ForeColor = Color.White
         Label10.ForeColor = Color.White
@@ -910,6 +925,8 @@ CX6:
         Label2.ForeColor = Color.Black
         Label3.ForeColor = Color.Black
         Label4.ForeColor = Color.Black
+        Label5.ForeColor = Color.Black
+        Label6.ForeColor = Color.Black
         Label8.ForeColor = Color.Black
         Label13.ForeColor = Color.Black
         Label10.ForeColor = Color.Black
@@ -1184,27 +1201,21 @@ CX6:
             .ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
         }
         odc.Open()
-        Try
-            Dim odccmd As New OleDbCommand With {
-            .CommandText = "SELECT * FROM Students WHERE ID =" & Setting.MaxArea - 2,
-            .Connection = odc
-        }
-            odc.Open()
-            Dim odcread As OleDbDataReader
-            Dim f As Object
-            odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
-            If odcread.HasRows = False Then
-                MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
-            Else
-                f = odcread.GetValue(0)
-            End If
-        Catch g As Exception
+        Dim odccmd As New OleDbCommand With {
+        .CommandText = "SELECT * FROM Students WHERE ID =" & Setting.MaxArea - 2,
+        .Connection = odc
+    }
+        Dim odcread As OleDbDataReader
+        odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
+        If odcread.HasRows = False Then
             MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
-        End Try
+        End If
+
         odc.Close()
         DeadLocker = True
+        Statistics.StaCounts = New List(Of Integer)
+        Statistics.Statistics = New List(Of String)
         '
-        Me.Show()
     End Sub
 
     '初始化数据

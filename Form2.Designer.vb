@@ -25,6 +25,7 @@ Partial Class Form2
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Button1
@@ -47,19 +48,31 @@ Partial Class Form2
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(205, 21)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "抽号发生器 .NET Ver. 6.0.0" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label1.Text = "抽号发生器 .NET Ver. 6.0.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label2.Location = New System.Drawing.Point(27, 62)
+        Me.Label2.Location = New System.Drawing.Point(27, 60)
         Me.Label2.MaximumSize = New System.Drawing.Size(160, 200)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(157, 104)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "基于Visual Basic .NET技术构建" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "具有多种实用功能" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "制造者:胡延涛" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "调试:胡延涛" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "特别感谢:陈远洋"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label3.Location = New System.Drawing.Point(200, 62)
+        Me.Label3.MaximumSize = New System.Drawing.Size(160, 200)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(89, 53)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Thanks To:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "HZH_Controls" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SunnyUI"
         '
         'Form2
         '
@@ -68,6 +81,7 @@ Partial Class Form2
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.钢铁邮件
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(339, 228)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
@@ -86,4 +100,5 @@ Partial Class Form2
     Friend WithEvents Button1 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class
