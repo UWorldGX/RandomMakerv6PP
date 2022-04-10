@@ -51,10 +51,10 @@
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Label6.Visible = True
         Label7.Visible = True
-        'UiLedDisplay1.Visible = True
-        'UiLedDisplay2.Visible = True
-        UiLabel1.Visible = True
-        UiLabel2.Visible = True
+        UiLedDisplay1.Visible = True
+        UiLedDisplay2.Visible = True
+        'UiLabel1.Visible = True
+        'UiLabel2.Visible = True
         UiLedDisplay1.Text = Form1.Statistics.StaCounts.Item(Form1.Statistics.Statistics.IndexOf(ComboBox1.SelectedItem))
         Dim b As Decimal = Form1.Statistics.StaCounts.Item(Form1.Statistics.Statistics.IndexOf(ComboBox1.SelectedItem)) / Form1.memories
         b *= 100

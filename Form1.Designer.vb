@@ -23,6 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.MainDialog = New System.Windows.Forms.Label()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
@@ -91,23 +96,16 @@ Partial Class Form1
         Me.PersonalizeFonts = New System.Windows.Forms.Button()
         Me.PersonalizeColor = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.StudentsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Database1DataSet1 = New RandomMakerv6PP.Database1DataSet1()
+        Me.DataGridView1 = New Sunny.UI.UIDataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.StudentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Database1DataSet = New RandomMakerv6PP.Database1DataSet()
+        Me.Database1DataSet1 = New RandomMakerv6PP.Database1DataSet1()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
-        Me.StudentsTableAdapter = New RandomMakerv6PP.Database1DataSetTableAdapters.StudentsTableAdapter()
-        Me.StudentsTableAdapter1 = New RandomMakerv6PP.Database1DataSet1TableAdapters.StudentsTableAdapter()
+        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.timepool = New RandomMakerv6PP.UserControl1()
         Me.pool = New RandomMakerv6PP.UserControl1()
         Me.MenuStrip1.SuspendLayout()
@@ -123,10 +121,8 @@ Partial Class Form1
         Me.GroupBox2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StudentsBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StudentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MainDialog
@@ -913,43 +909,49 @@ Partial Class Form1
         '
         'DataGridView1
         '
-        Me.DataGridView1.AutoGenerateColumns = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewCheckBoxColumn1})
-        Me.DataGridView1.DataSource = Me.StudentsBindingSource1
-        Me.DataGridView1.Location = New System.Drawing.Point(97, 18)
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView1.EnableHeadersVisualStyles = False
+        Me.DataGridView1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.Location = New System.Drawing.Point(55, 27)
         Me.DataGridView1.Name = "DataGridView1"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(336, 278)
-        Me.DataGridView1.TabIndex = 34
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "IsChecked"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "IsChecked"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
-        'StudentsBindingSource1
-        '
-        Me.StudentsBindingSource1.DataMember = "Students"
-        Me.StudentsBindingSource1.DataSource = Me.Database1DataSet1
-        '
-        'Database1DataSet1
-        '
-        Me.Database1DataSet1.DataSetName = "Database1DataSet1"
-        Me.Database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.DataGridView1.SelectedIndex = -1
+        Me.DataGridView1.ShowGridLine = True
+        Me.DataGridView1.Size = New System.Drawing.Size(355, 260)
+        Me.DataGridView1.StripeOddColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.TabIndex = 23
         '
         'Label2
         '
@@ -962,15 +964,10 @@ Partial Class Form1
         Me.Label2.TabIndex = 22
         Me.Label2.Text = "提示:选中某个对象以在实际抽取中忽略它."
         '
-        'StudentsBindingSource
+        'Database1DataSet1
         '
-        Me.StudentsBindingSource.DataMember = "Students"
-        Me.StudentsBindingSource.DataSource = Me.Database1DataSet
-        '
-        'Database1DataSet
-        '
-        Me.Database1DataSet.DataSetName = "Database1DataSet"
-        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Database1DataSet1.DataSetName = "Database1DataSet1"
+        Me.Database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'SaveFileDialog1
         '
@@ -1009,14 +1006,6 @@ Partial Class Form1
         Me.SaveFileDialog2.Filter = "文本文件|*.txt"
         Me.SaveFileDialog2.InitialDirectory = "D:\"
         Me.SaveFileDialog2.Title = "保存抽取记录"
-        '
-        'StudentsTableAdapter
-        '
-        Me.StudentsTableAdapter.ClearBeforeFill = True
-        '
-        'StudentsTableAdapter1
-        '
-        Me.StudentsTableAdapter1.ClearBeforeFill = True
         '
         'timepool
         '
@@ -1064,10 +1053,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel4)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1098,10 +1087,8 @@ Partial Class Form1
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StudentsBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StudentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1170,18 +1157,9 @@ Partial Class Form1
     Friend WithEvents IDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IsCheckedDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Database1DataSet As Database1DataSet
-    Friend WithEvents StudentsBindingSource As BindingSource
-    Friend WithEvents StudentsTableAdapter As Database1DataSetTableAdapters.StudentsTableAdapter
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Button8 As Button
     Friend WithEvents Database1DataSet1 As Database1DataSet1
-    Friend WithEvents StudentsBindingSource1 As BindingSource
-    Friend WithEvents StudentsTableAdapter1 As Database1DataSet1TableAdapters.StudentsTableAdapter
     Friend WithEvents timepool As UserControl1
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents pool As UserControl1
@@ -1195,4 +1173,6 @@ Partial Class Form1
     Friend WithEvents RepeatSwitch As HZH_Controls.Controls.UCSwitch
     Friend WithEvents Button1 As Button
     Friend WithEvents 统计数据ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DataGridView1 As Sunny.UI.UIDataGridView
+    Friend WithEvents BindingSource1 As BindingSource
 End Class

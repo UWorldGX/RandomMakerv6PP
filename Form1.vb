@@ -29,6 +29,9 @@ Public Class Form1
     Private doless As Boolean
 
     Public Statistics As New Stat
+
+    Const cmdtext As String = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
+
     '统计数据,新加入的功能
 
     '内部存储
@@ -621,7 +624,7 @@ CX6:
     '允许重复开关
 
 
-    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs)
         Dim selCell As DataGridViewCell, lblCellInfoColIndex, lblCellInfoRowIndex As Byte
         selCell = DataGridView1.CurrentCell
         lblCellInfoColIndex = selCell.ColumnIndex
@@ -815,6 +818,8 @@ CX6:
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Form4.Show()
     End Sub
+
+
     'Debug
 
     '=======Page 3 of 4,个性化=======
@@ -1207,28 +1212,20 @@ CX6:
     '实时时间
 
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: 这行代码将数据加载到表“Database1DataSet1.Students”中。您可以根据需要移动或删除它。
-        Me.StudentsTableAdapter1.Fill(Me.Database1DataSet1.Students)
         Dim sw As New StreamReader("RMNewConfig.json")
         JsonWord = sw.ReadToEnd
         Setting = reader.Deserialize(Of Configs)(JsonWord)
         sw.Close()
         MadePreparation()
-        Dim odc As New OleDbConnection() With {
-            .ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
-        }
-        odc.Open()
-        Dim odccmd As New OleDbCommand With {
-        .CommandText = "SELECT * FROM Students WHERE ID =" & Setting.MaxArea - 2,
-        .Connection = odc
-    }
-        Dim odcread As OleDbDataReader
-        odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
-        If odcread.HasRows = False Then
-            MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
-        End If
+        '    Dim odc As New OleDbConnection() With {
+        '        .ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
+        '    }
+        '    odc.Open()
 
-        odc.Close()
+        '    odc.Close()
+        DataGridView1.DataSource = BindingSource1
+        GetData("SELECT * FROM Students")
+
         DeadLocker = True
         Statistics.StaCounts = New List(Of Integer)
         Statistics.Statistics = New List(Of String)
@@ -1236,4 +1233,32 @@ CX6:
     End Sub
 
     '初始化数据
+    Sub GetData(selcmd As String)
+        Try
+            Dim odc As New OleDbConnection() With {
+            .ConnectionString = cmdtext
+        }
+            odc.Open()
+            Dim Adapter As New OleDbDataAdapter(selcmd, cmdtext)
+            Dim cmdbuilder As New OleDbCommandBuilder()
+            Dim table As New DataTable With {.Locale = Globalization.CultureInfo.InvariantCulture
+                }
+            Adapter.Fill(table)
+            BindingSource1.DataSource = table
+            ' 重置大小
+            DataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells)
+            Dim odccmd As New OleDbCommand With {
+        .CommandText = "SELECT * FROM Students WHERE ID =" & Setting.MaxArea,
+        .Connection = odc
+    }
+            Dim odcread As OleDbDataReader
+            odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
+            If odcread.HasRows = False Then
+                MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
+            End If
+            odc.Close()
+        Catch f As OleDbException
+            MsgBox("Fatal Error.")
+        End Try
+    End Sub
 End Class
