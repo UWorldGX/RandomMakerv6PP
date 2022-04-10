@@ -195,6 +195,7 @@ Partial Class Status
         Me.ComboBox1.Location = New System.Drawing.Point(83, 22)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(141, 25)
+        Me.ComboBox1.Sorted = True
         Me.ComboBox1.TabIndex = 0
         '
         'Label6

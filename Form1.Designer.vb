@@ -137,7 +137,7 @@ Partial Class Form1
         Me.MainDialog.Font = New System.Drawing.Font("方正像素12", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.MainDialog.ForeColor = System.Drawing.Color.Black
         Me.MainDialog.Image = Global.RandomMakerv6PP.My.Resources.Resources.PtDialog
-        Me.MainDialog.Location = New System.Drawing.Point(38, 3)
+        Me.MainDialog.Location = New System.Drawing.Point(38, 5)
         Me.MainDialog.Name = "MainDialog"
         Me.MainDialog.Size = New System.Drawing.Size(398, 72)
         Me.MainDialog.TabIndex = 1

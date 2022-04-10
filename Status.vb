@@ -1,12 +1,13 @@
 ﻿Public Class Status
     Private Sub Status_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.Setting.ModeCollections(Form1.Setting.CurrentMode).Times > 1 Then
+        If Form1.tms > 1 Then
             UniversalDialog1.Label1.Text = "统计连续抽取的数据没有意义."
             UniversalDialog1.Label2.Text = "将退出统计。"
             Form1.DoReadOnly = True : Form1.DoMultiLine = True
             UniversalDialog1.ShowDialog()
             Form1.Show()
             Me.Close()
+            Exit Sub
         End If
         If Form1.Setting.ModeCollections(Form1.Setting.CurrentMode).DoExtreme = True Then
             UniversalDialog1.Label1.Text = "统计极限模式的数据没有意义."
@@ -15,6 +16,7 @@
             UniversalDialog1.ShowDialog()
             Form1.Show()
             Me.Close()
+            Exit Sub
         End If
         Dim a As New List(Of Integer)
         a = Form1.Statistics.StaCounts

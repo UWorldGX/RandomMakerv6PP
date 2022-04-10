@@ -153,16 +153,23 @@ Public Class Form1
 
     '核心程序触发
 
-    Public Function CoreProgram(nand As Random)
+    Public Sub CoreProgram(nand As Random)
         Dim datas, tmsreal As Integer, temp As String
         Dim selCell As DataGridViewCell
         If makesure = 0 Then
 CX8:
             If doextreme = False Then
-                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & Setting.ModeCollections(Setting.CurrentMode).Name & Chr(13) & Chr(10) & "抽取次数:" & Str(tms), vbOKCancel + vbQuestion, "确认对话框") <> MsgBoxResult.Ok Then Exit Function
+                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" _
+                        & Setting.ModeCollections(Setting.CurrentMode).Name & Chr(13) & Chr(10) &
+                        "抽取次数:" & Str(tms), vbOKCancel + vbQuestion, "确认对话框") <> MsgBoxResult.Ok _
+                        Then Exit Sub
             Else
-                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" & Setting.ModeCollections(Setting.CurrentMode).Name & Chr(13) & Chr(10) & "抽取次数:" & Str(tms) & Chr(13) & Chr(10) & "警告!该模式为极限模式,抽取后将无法重复,确定吗?", vbOKCancel + vbCritical, "确认对话框") <> MsgBoxResult.Ok Then
-                    Exit Function
+                If MsgBox("都准备好了吗?" & Chr(13) & Chr(10) & "抽取模式:" &
+                          Setting.ModeCollections(Setting.CurrentMode).Name &
+                          Chr(13) & Chr(10) & "抽取次数:" & Str(tms) & Chr(13) & Chr(10) &
+                          "警告!该模式为极限模式,抽取后将无法重复,确定吗?", vbOKCancel + vbCritical, "确认对话框") _
+                          <> MsgBoxResult.Ok Then
+                    Exit Sub
                 End If
             End If
         End If
@@ -213,7 +220,7 @@ CX2:
                 Dim repeat(6), errortimes As Integer, trigger As Integer = 1
                 If errortimes = 1 Then
                     MsgBox("警告:" & "请检查数据库中是否存在可以抽出的项！", vbCritical + vbOKOnly, "错误")
-                    Exit Function
+                    Exit Sub
                 End If
                 '一次监测
                 Do
@@ -275,7 +282,7 @@ CX6:
         SaveLogs.Visible = True
         Timer2.Enabled = True
         ToolStripLabel5.Enabled = True
-    End Function
+    End Sub
 
     '核心程序
 
