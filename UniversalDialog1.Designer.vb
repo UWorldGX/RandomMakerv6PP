@@ -75,7 +75,7 @@ Partial Class UniversalDialog1
         '
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(29, 13)
+        Me.Label1.Location = New System.Drawing.Point(29, 10)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(453, 30)
         Me.Label1.TabIndex = 1
@@ -90,7 +90,7 @@ Partial Class UniversalDialog1
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label2.Location = New System.Drawing.Point(29, 38)
+        Me.Label2.Location = New System.Drawing.Point(29, 35)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(453, 30)
         Me.Label2.TabIndex = 2

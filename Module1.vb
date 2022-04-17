@@ -30,5 +30,11 @@
         Return all
     End Function
 
+    Public Sub GeneralD()
 
+    End Sub
+
+    Public Sub DoNiuMa()
+
+    End Sub
 End Module

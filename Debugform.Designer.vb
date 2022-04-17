@@ -28,6 +28,7 @@ Partial Class DebugForm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ProgressBar1 = New HZH_Controls.Controls.UCProcessLineExt()
+        Me.UcWave1 = New HZH_Controls.Controls.UCWave()
         Me.SuspendLayout()
         '
         'DebugOutput
@@ -84,7 +85,7 @@ Partial Class DebugForm
         Me.ProgressBar1.BackColor = System.Drawing.Color.Transparent
         Me.ProgressBar1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(237, Byte), Integer))
         Me.ProgressBar1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(77, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.ProgressBar1.Location = New System.Drawing.Point(16, 125)
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 117)
         Me.ProgressBar1.MaxValue = 100
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(261, 28)
@@ -93,6 +94,20 @@ Partial Class DebugForm
         Me.ProgressBar1.ValueBGColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(237, Byte), Integer))
         Me.ProgressBar1.ValueColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(77, Byte), Integer), CType(CType(59, Byte), Integer))
         '
+        'UcWave1
+        '
+        Me.UcWave1.BackColor = System.Drawing.Color.Transparent
+        Me.UcWave1.Enabled = False
+        Me.UcWave1.Location = New System.Drawing.Point(2, 144)
+        Me.UcWave1.Name = "UcWave1"
+        Me.UcWave1.Size = New System.Drawing.Size(296, 19)
+        Me.UcWave1.TabIndex = 4
+        Me.UcWave1.Text = "UcWave1"
+        Me.UcWave1.WaveColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(77, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.UcWave1.WaveHeight = 30
+        Me.UcWave1.WaveSleep = 50
+        Me.UcWave1.WaveWidth = 200
+        '
         'DebugForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -100,6 +115,7 @@ Partial Class DebugForm
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｈ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(297, 221)
+        Me.Controls.Add(Me.UcWave1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
@@ -122,4 +138,5 @@ Partial Class DebugForm
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ProgressBar1 As HZH_Controls.Controls.UCProcessLineExt
+    Friend WithEvents UcWave1 As HZH_Controls.Controls.UCWave
 End Class

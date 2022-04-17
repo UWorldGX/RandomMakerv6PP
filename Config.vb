@@ -9,6 +9,14 @@ Public Class Configs
     Public Property DialogImage As String
     Public Property CreateTime As String
     Public Property Version As String
+    Public Property Fonts As String
+    Public Property DoCustomFonts As Boolean
+    Public Structure CLR
+        Public Property R As Byte
+        Public Property G As Byte
+        Public Property B As Byte
+    End Structure
+    Public MyColor As CLR
     Public Structure Mode
         Public Property Name As String
         Public Property Type As Boolean

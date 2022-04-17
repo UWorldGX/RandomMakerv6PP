@@ -1,6 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports System.IO
 Imports System.Text
+Imports System.Drawing.Text
 Imports System.Web.Script.Serialization
 Public Class Form1
 
@@ -29,6 +30,7 @@ Public Class Form1
     Private doless As Boolean
 
     Public Statistics As New Stat
+    Public AC As New Achievements
 
     Const cmdtext As String = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
 
@@ -238,27 +240,27 @@ CX2:
                 Loop Until selCell.Value = False
                 '监测范围内是否有可用项
 CX7:
-                datas = nand.Next(1, dataRange)
+                datas = nand.Next(0, dataRange)
                 If datas > Setting.MaxArea Then GoTo CX7
                 repeat(0) = datas
                 selCell = DataGridView1(1, datas)
                 temp = selCell.Value
                 If temp = "" Then GoTo CX7
-                If tms < 2 Then
-                    If Statistics.Statistics.Contains(temp) = True Then
-                        Statistics.StaCounts.Item(Statistics.Statistics.IndexOf(temp)) += 1
-                    Else
-                        Statistics.Statistics.Add(temp)
-                        Statistics.StaCounts.Add(1)
-                    End If
-                End If
                 selCell = DataGridView1(2, datas)
                 If selCell.Value = False Then
+                    If tms < 2 Then
+                        If Statistics.Statistics.Contains(temp) = True Then
+                            Statistics.StaCounts.Item(Statistics.Statistics.IndexOf(temp)) += 1
+                        Else
+                            Statistics.Statistics.Add(temp)
+                            Statistics.StaCounts.Add(1)
+                        End If
+                    End If
                     DialogText = "抽取对象:" & temp
                     temp = "第" & Str(memories) & "次:" & temp
                     For circle = 1 To tmsreal Step 1
 CX6:
-                        datas = nand.Next(1, dataRange)
+                        datas = nand.Next(0, dataRange)
                         selCell = DataGridView1(1, datas)
                         selCell = DataGridView1(2, datas)
                         If selCell.Value = False Then
@@ -288,6 +290,9 @@ CX6:
                 MsgBox("警告:" & Err.Description, vbCritical + vbOKOnly, "错误")
             End Try
         End If
+        lock = True
+        Logs.SelectedIndex = memories
+        lock = False
         SaveLogs.Visible = True
         Timer2.Enabled = True
         ToolStripLabel5.Enabled = True
@@ -624,39 +629,6 @@ CX6:
     '允许重复开关
 
 
-    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs)
-        Dim selCell As DataGridViewCell, lblCellInfoColIndex, lblCellInfoRowIndex As Byte
-        selCell = DataGridView1.CurrentCell
-        lblCellInfoColIndex = selCell.ColumnIndex
-        lblCellInfoRowIndex = selCell.RowIndex
-        Dim odc As New OleDbConnection() With {
-            .ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;data source=Database1.mdb"
-        }
-        Dim a As Boolean
-        If selCell.Value = True Then
-            a = False
-        Else
-            a = True
-        End If
-        Try
-            Dim odccmd As New OleDbCommand With {
-            .CommandText = "UPDATE Students SET IsChecked = " & a & " WHERE ID= " & selCell.RowIndex + 1,
-            .Connection = odc
-        }
-            odc.Open()
-            Dim odcread As OleDbDataReader
-            'Dim dt As DataTable
-            'dt = odc.GetOleDbSchemaTable
-            odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
-        Catch g As Exception
-            MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
-        End Try
-        odc.Close()
-
-    End Sub
-
-
-
     '是否允许重复抽取
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Hide()
@@ -686,7 +658,7 @@ CX6:
         Setting.CurrentMode = 0
         Setting.MaxArea = 69
         Setting.Voicespeed = 25
-        Setting.Version = "6.0.0"
+        Setting.Version = Application.ProductVersion
         Setting.BackGroundImage = "推荐邮件(PICK UP)"
         Setting.DialogImage = "Pt(默认)"
         Setting.CreateTime = "2022.03.02"
@@ -731,6 +703,13 @@ CX6:
             End With
 
         Next
+        With Setting.MyColor
+            .R = 0 : .G = 0 : .B = 0
+        End With
+        MainDialog.ForeColor = Color.Black
+        PreviewDialog.ForeColor = Color.Black
+        Setting.Fonts = "Arial"
+        Setting.DoCustomFonts = False
     End Sub
 
     '全重置
@@ -775,16 +754,20 @@ CX6:
         TimesDisplay.Text = Str(tms)
         RangeDisplay.Text = Setting.ModeCollections(Setting.CurrentMode).Range
         If Setting.ModeCollections(Setting.CurrentMode).Type = False Then
+            dodata = False
             pool.Maximum = 100
             ranges = Setting.ModeCollections(Setting.CurrentMode).Range
             ToolStripLabel4.Enabled = False
             RepeatSwitch.Enabled = False
+            pool.Label2.Text = ranges
             pool.Reload()
         Else
+            dodata = True
             pool.Maximum = Setting.MaxArea
             dataRange = Setting.ModeCollections(Setting.CurrentMode).Range
             ToolStripLabel4.Enabled = True
             RepeatSwitch.Enabled = True
+            pool.Label2.Text = dataRange
             pool.Reload()
         End If
 
@@ -799,10 +782,40 @@ CX6:
         makesure = 0
         lock = True
         DoMakesureSwitch.Checked = False
+        '颜色预备
+        UiColorPicker1.Value = Color.FromArgb(Setting.MyColor.R, Setting.MyColor.G, Setting.MyColor.B)
+        MainDialog.ForeColor = UiColorPicker1.Value
+        PreviewDialog.ForeColor = UiColorPicker1.Value
         lock = False
         memo = False
         Timer1.Enabled = True
         def = True
+        '字体预备
+        Dim IFont As New System.Drawing.Text.InstalledFontCollection
+        For Each ff As FontFamily In IFont.Families
+            ComboBox1.Items.Add(ff.Name)
+        Next
+        'TODO
+        Dim fontpath As String = Application.StartupPath & "\Default.TTF"
+        Dim pfonts As PrivateFontCollection = New PrivateFontCollection()
+        pfonts.AddFontFile(fontpath)
+        If Setting.DoCustomFonts = False Then
+            If pfonts.Families(0).IsStyleAvailable(FontStyle.Bold) Then
+
+                Dim f As New Font(pfonts.Families(0), 15, FontStyle.Bold)
+                lock = True
+                ComboBox1.SelectedItem = "<默认>"
+                lock = False
+                MainDialog.Font = f
+                PreviewDialog.Font = f
+            End If
+        Else
+            MainDialog.Font = New Font(Setting.Fonts, 15, FontStyle.Bold, GraphicsUnit.Point)
+            PreviewDialog.Font = New Font(Setting.Fonts, 15, FontStyle.Bold, GraphicsUnit.Point)
+            lock = True
+            ComboBox1.SelectedItem = Setting.Fonts
+            lock = False
+        End If
         ToolStripStatusLabel3.Text = "使用的模式:" & Setting.ModeCollections(Setting.CurrentMode).Name
     End Sub
 
@@ -822,6 +835,42 @@ CX6:
 
     'Debug
 
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        Dim selCell As DataGridViewCell, lblCellInfoColIndex, lblCellInfoRowIndex As Byte
+        selCell = DataGridView1.CurrentCell
+        lblCellInfoColIndex = selCell.ColumnIndex
+        lblCellInfoRowIndex = selCell.RowIndex
+        Dim odc As New OleDbConnection() With {
+            .ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;data source=Database1.mdb"
+        }
+        Dim a As Boolean
+        Try
+            If selCell.Value = True Then
+                a = False
+            Else
+                a = True
+            End If
+        Catch d As Exception
+            Exit Sub
+        End Try
+        Try
+            Dim odccmd As New OleDbCommand With {
+            .CommandText = "UPDATE Students SET IsChecked = " & a & " WHERE ID= " & selCell.RowIndex + 1,
+            .Connection = odc
+        }
+            odc.Open()
+            Dim odcread As OleDbDataReader
+            'Dim dt As DataTable
+            'dt = odc.GetOleDbSchemaTable
+            odcread = odccmd.ExecuteReader(CommandBehavior.SingleResult)
+        Catch g As Exception
+            MsgBox("检查数据库是否正常!", vbOKOnly, "提示")
+        End Try
+        odc.Close()
+
+    End Sub
+
+    '修改数据库
     '=======Page 3 of 4,个性化=======
     Private Sub ComboBox2_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles BackGroundBase.SelectedIndexChanged
         DeadLocker = False
@@ -832,8 +881,15 @@ CX6:
         ToolStripLabel5.Enabled = False
     End Sub
 
+    Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        UniversalDialog1.Label1.Text = "确定要退出吗?"
+        DoReadOnly = False : DoMultiLine = False
+        If UniversalDialog1.ShowDialog <> DialogResult.OK Then
+            SplashScreen1.Show()
+        End If
+    End Sub
 
-
+    '退出确认对话框
     Private Sub ChangeBackGround(ByVal a As String)
         Select Case a
             Case Is = "推荐邮件(PICK UP)"
@@ -908,6 +964,8 @@ CX6:
         End Select
     End Sub
 
+
+
     '更换背景
 
     Private Sub Wht()
@@ -923,6 +981,8 @@ CX6:
         Label4.ForeColor = Color.White
         Label5.ForeColor = Color.White
         Label6.ForeColor = Color.White
+        Label7.ForeColor = Color.White
+        Label9.ForeColor = Color.White
         Label8.ForeColor = Color.White
         Label13.ForeColor = Color.White
         Label10.ForeColor = Color.White
@@ -935,6 +995,7 @@ CX6:
         If lock = True Then Exit Sub
         Call Xs()
     End Sub
+
 
     Private Sub Bla()
         ToolStripLabel1.LinkColor = Color.Black
@@ -949,6 +1010,8 @@ CX6:
         Label4.ForeColor = Color.Black
         Label5.ForeColor = Color.Black
         Label6.ForeColor = Color.Black
+        Label7.ForeColor = Color.Black
+        Label9.ForeColor = Color.Black
         Label8.ForeColor = Color.Black
         Label13.ForeColor = Color.Black
         Label10.ForeColor = Color.Black
@@ -999,29 +1062,69 @@ CX6:
 
     End Sub
     '更换对话框
+    Private Sub UiColorPicker1_ValueChanged(sender As Object, value As Color) Handles UiColorPicker1.ValueChanged
+        If lock = True Then Exit Sub
+        MainDialog.ForeColor = UiColorPicker1.Value
+        PreviewDialog.ForeColor = UiColorPicker1.Value
+        Setting.MyColor.R = UiColorPicker1.Value.R
+        Setting.MyColor.G = UiColorPicker1.Value.G
+        Setting.MyColor.B = UiColorPicker1.Value.B
+        Xs()
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles PersonalizeColor.Click
-        ColorDialog1.Color = MainDialog.ForeColor
-        If ColorDialog1.ShowDialog = DialogResult.OK Then
-            MainDialog.ForeColor = ColorDialog1.Color
-            PreviewDialog.ForeColor = ColorDialog1.Color
-        Else
-            Exit Sub
-        End If
     End Sub
 
+    Private Sub MainDialog_FontChanged(sender As Object, e As EventArgs) Handles MainDialog.FontChanged
+        Try
+
+        Catch ex As Exception
+            UniversalDialog1.Label1.Text = "字体设置错误。将重置字体。"
+            DoReadOnly = False : DoMultiLine = False
+            UniversalDialog1.ShowDialog()
+            Dim fontpath As String = Application.StartupPath & "\Default.TTF"
+            Dim pfonts As PrivateFontCollection = New PrivateFontCollection()
+            pfonts.AddFontFile(fontpath)
+            If pfonts.Families(0).IsStyleAvailable(FontStyle.Bold) Then
+
+                Dim f As New Font(pfonts.Families(0), 15, FontStyle.Bold)
+                lock = True
+                ComboBox1.SelectedItem = "<默认>"
+                lock = False
+                MainDialog.Font = f
+                PreviewDialog.Font = f
+                Setting.DoCustomFonts = False
+            End If
+        End Try
+    End Sub
+    '防止无效的字体
+
+
     '更换颜色
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles PersonalizeFonts.Click
-        FontDialog1.Font = MainDialog.Font
-        FontDialog1.ShowColor = True
-        If FontDialog1.ShowDialog = DialogResult.OK Then
-            MainDialog.Font = FontDialog1.Font
-            MainDialog.ForeColor = FontDialog1.Color
-            PreviewDialog.Font = FontDialog1.Font
-            PreviewDialog.ForeColor = FontDialog1.Color
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If lock = True Then Exit Sub
+        'TODO
+        If ComboBox1.SelectedIndex = 0 Then
+            Dim fontpath As String = Application.StartupPath & "\Default.TTF"
+            Dim pfonts As PrivateFontCollection = New PrivateFontCollection()
+            pfonts.AddFontFile(fontpath)
+            If pfonts.Families(0).IsStyleAvailable(FontStyle.Bold) Then
+
+                Dim f As New Font(pfonts.Families(0), 15, FontStyle.Bold)
+                lock = True
+                ComboBox1.SelectedItem = "<默认>"
+                lock = False
+                MainDialog.Font = f
+                PreviewDialog.Font = f
+                Setting.DoCustomFonts = False
+            End If
         Else
-            Exit Sub
+            Dim a As String = ComboBox1.SelectedItem
+            MainDialog.Font = New Font(a, 15, FontStyle.Bold, GraphicsUnit.Point)
+            PreviewDialog.Font = New Font(a, 15, FontStyle.Bold, GraphicsUnit.Point)
+            Setting.Fonts = a
+            Setting.DoCustomFonts = True
         End If
+        Xs()
     End Sub
 
     '更换字体
@@ -1058,16 +1161,24 @@ CX6:
         DoReadOnly = False : DoMultiLine = False
         If UniversalDialog1.ShowDialog = DialogResult.OK Then
             Setting.BackGroundImage = "推荐邮件(PICK UP)"
-            Me.BackgroundImage = My.Resources.天空邮件
+            Me.BackgroundImage = My.Resources.推荐邮件
             DeadLocker = False
             BackGroundBase.SelectedItem = "推荐邮件(PICK UP)"
             DialogBase.SelectedItem = "Pt(默认)"
             VoiceSpeedBase.SelectedItem = "中"
             Call Bla()
             DeadLocker = True
+            lock = True
+            With Setting.MyColor
+                .R = 0 : .G = 0 : .B = 0
+            End With
+            Setting.Fonts = "Arial"
+            Setting.DoCustomFonts = False
             Setting.DialogImage = "Pt(默认)"
             MainDialog.Image = My.Resources.PtDialog
             PreviewDialog.Image = My.Resources.PtDialog
+            MainDialog.ForeColor = Color.Black
+            PreviewDialog.ForeColor = Color.Black
             Setting.Voicespeed = 25
             DeadLocker = False
             Call Xs()
@@ -1082,11 +1193,14 @@ CX6:
 
     '=======Page 5 of 4,预加载和其他设定=======
 
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Logs.SelectedIndexChanged
+
+    Private Sub Logs_ItemClick(sender As Object, e As EventArgs) Handles Logs.ItemClick
+        If lock = True Then Exit Sub
         If Logs.SelectedIndex = 0 Then Exit Sub
         DialogText = Logs.SelectedItem
         Timer2.Enabled = True
     End Sub
+
 
     'Listbox1的响应动画
 
@@ -1216,6 +1330,10 @@ CX6:
         JsonWord = sw.ReadToEnd
         Setting = reader.Deserialize(Of Configs)(JsonWord)
         sw.Close()
+        Dim sf As New StreamReader("AC.json")
+        JsonWord = sf.ReadToEnd
+        AC = reader.Deserialize(Of Achievements)(JsonWord)
+        sf.Close()
         MadePreparation()
         '    Dim odc As New OleDbConnection() With {
         '        .ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
