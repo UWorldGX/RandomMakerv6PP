@@ -30,9 +30,11 @@ Public Class Form1
     Private doless As Boolean
 
     Public Statistics As New Stat
+    '成就
     Public AC As New Achievements
 
     Const cmdtext As String = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
+
 
     '统计数据,新加入的功能
 
@@ -152,7 +154,8 @@ Public Class Form1
     '颜色切换核心程序
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CoreButton.Click
-        Dim nand As New Random()
+        Dim rng As New Random()
+        Dim nand As New Random(rng.Next())
         Call CoreProgram(nand)
     End Sub
 
@@ -186,6 +189,7 @@ CX8:
         End If
         tmsreal = tms - 1
         memories = 1 + memories
+        AC.TTimes += 1
         RoundDisplay.Text = memories
         '随机数模式
         If dodata = False Then
@@ -203,7 +207,8 @@ CX1:
                 End If
             End If
             DialogText = "抽出数值:" & Str(datas)
-            temp = "第" & Str(memories) & "次:" & Str(datas)
+            Dim x As String = Str(memories).Substring(1, Str(memories).Length - 1)
+            temp = "第" & x & "次:" & Str(datas)
             For circle = 1 To tmsreal
 CX2:
                 datas = nand.Next(1, ranges + 1)
@@ -256,8 +261,10 @@ CX7:
                             Statistics.StaCounts.Add(1)
                         End If
                     End If
+                    DoNiuMa(datas, Statistics)
                     DialogText = "抽取对象:" & temp
-                    temp = "第" & Str(memories) & "次:" & temp
+                    Dim x As String = Str(memories).Substring(1, Str(memories).Length - 1)
+                    temp = "第" & x & "次:" & temp
                     For circle = 1 To tmsreal Step 1
 CX6:
                         datas = nand.Next(0, dataRange)
@@ -296,6 +303,7 @@ CX6:
         SaveLogs.Visible = True
         Timer2.Enabled = True
         ToolStripLabel5.Enabled = True
+        DoLucky(Statistics)
     End Sub
 
     '核心程序
@@ -346,6 +354,7 @@ CX6:
             DoReadOnly = False : DoMultiLine = True
             If UniversalDialog1.ShowDialog() = DialogResult.Cancel Then Exit Sub
         End If
+        DoLucky(Statistics)
         Dim xr As Integer
         xr = ModeSelection.SelectedIndex
         donew = False
@@ -824,9 +833,6 @@ CX6:
         DebugForm.Show()
     End Sub
 
-    Private Sub 统计数据ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 统计数据ToolStripMenuItem.Click
-        Status.Show()
-    End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Form4.Show()
@@ -884,9 +890,32 @@ CX6:
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         UniversalDialog1.Label1.Text = "确定要退出吗?"
         DoReadOnly = False : DoMultiLine = False
+
         If UniversalDialog1.ShowDialog <> DialogResult.OK Then
             SplashScreen1.Show()
+
         End If
+        GeneralD()
+
+        Dim te As String
+        te = reader.Serialize(AC)
+        If File.Exists("AC.json") Then
+            Try
+                File.Delete("AC.json")
+            Catch ex As Exception
+                UniversalDialog1.Label1.Text = "不存在默认成就文件.."
+                DoReadOnly = True : DoMultiLine = False
+                UniversalDialog1.ShowDialog()
+                Exit Sub
+            End Try
+        End If
+        Dim fs As FileStream
+        fs = File.Open("AC.json", FileMode.OpenOrCreate, FileAccess.Write)
+        Dim sw As New StreamWriter(fs, Encoding.UTF8)
+        sw.Write(te)
+        sw.Close()
+        fs.Close()
+
     End Sub
 
     '退出确认对话框
@@ -962,6 +991,22 @@ CX6:
                 Me.BackgroundImage = My.Resources.甜蜜邮件
                 Call Wht()
         End Select
+    End Sub
+
+    Private Sub 统计数据ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 统计数据ToolStripMenuItem1.Click
+        Status.Show()
+    End Sub
+
+    Private Sub 查看成就ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 查看成就ToolStripMenuItem.Click
+        Try
+            Process.Start("AManager.exe")
+        Catch ex As Exception
+            UniversalDialog1.Label1.Text = "成就查看器丢失.."
+            DoReadOnly = True : DoMultiLine = False
+            UniversalDialog1.ShowDialog()
+            Exit Sub
+
+        End Try
     End Sub
 
 
@@ -1343,6 +1388,7 @@ CX6:
         '    odc.Close()
         DataGridView1.DataSource = BindingSource1
         GetData("SELECT * FROM Students")
+
 
         DeadLocker = True
         Statistics.StaCounts = New List(Of Integer)

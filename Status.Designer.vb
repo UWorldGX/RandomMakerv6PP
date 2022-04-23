@@ -56,7 +56,7 @@ Partial Class Status
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(403, 296)
+        Me.Button1.Location = New System.Drawing.Point(403, 311)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 49)
@@ -71,7 +71,7 @@ Partial Class Status
         Me.Chart1.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
         Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(24, 3)
+        Me.Chart1.Location = New System.Drawing.Point(24, -24)
         Me.Chart1.Name = "Chart1"
         Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright
         Series1.ChartArea = "ChartArea1"
@@ -80,7 +80,7 @@ Partial Class Status
         Series1.Name = "Series1"
         Series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32
         Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(403, 201)
+        Me.Chart1.Size = New System.Drawing.Size(403, 226)
         Me.Chart1.TabIndex = 1
         Me.Chart1.Text = "Chart1"
         Title1.Name = "统计信息"
@@ -160,7 +160,7 @@ Partial Class Status
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(387, 243)
+        Me.Label2.Location = New System.Drawing.Point(396, 255)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(107, 17)
         Me.Label2.TabIndex = 42
@@ -171,7 +171,7 @@ Partial Class Status
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.IndianRed
-        Me.Label5.Location = New System.Drawing.Point(407, 267)
+        Me.Label5.Location = New System.Drawing.Point(426, 286)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(59, 21)
         Me.Label5.TabIndex = 43
@@ -187,7 +187,7 @@ Partial Class Status
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(63, 246)
+        Me.GroupBox1.Location = New System.Drawing.Point(63, 255)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(318, 112)
         Me.GroupBox1.TabIndex = 44
@@ -328,7 +328,7 @@ Partial Class Status
         Me.UiPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.UiPanel1.MinimumSize = New System.Drawing.Size(1, 1)
         Me.UiPanel1.Name = "UiPanel1"
-        Me.UiPanel1.Size = New System.Drawing.Size(446, 191)
+        Me.UiPanel1.Size = New System.Drawing.Size(446, 203)
         Me.UiPanel1.Style = Sunny.UI.UIStyle.Custom
         Me.UiPanel1.TabIndex = 48
         Me.UiPanel1.Text = "UiPanel1"
@@ -340,7 +340,7 @@ Partial Class Status
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.桥梁邮件Ｗ
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(520, 370)
+        Me.ClientSize = New System.Drawing.Size(520, 386)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.RoundDisplay2)
         Me.Controls.Add(Me.Label2)

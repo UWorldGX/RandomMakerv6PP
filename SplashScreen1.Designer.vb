@@ -47,15 +47,12 @@ Partial Class SplashScreen1
         '
         'Timer1
         '
-        Me.Timer1.Interval = 375
         '
         'Timer2
         '
-        Me.Timer2.Interval = 375
         '
         'Timer3
         '
-        Me.Timer3.Interval = 375
         '
         'Label2
         '

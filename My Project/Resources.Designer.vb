@@ -73,6 +73,16 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property Bag_奈克洛索尔合体器_Sprite() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Bag_奈克洛索尔合体器_Sprite", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property Bag_弱点保险_Sprite() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Bag_弱点保险_Sprite", resourceCulture)
@@ -106,6 +116,16 @@ Namespace My.Resources
         Friend ReadOnly Property Bag_讲究围巾_Sprite() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Bag_讲究围巾_Sprite", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property Bag_遗失物_IV_Sprite() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Bag_遗失物_IV_Sprite", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

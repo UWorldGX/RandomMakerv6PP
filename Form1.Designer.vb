@@ -33,6 +33,8 @@ Partial Class Form1
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.统计数据ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.统计数据ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.更多ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.更新记录ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.关于ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -110,6 +112,7 @@ Partial Class Form1
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.UiContextMenuStrip1 = New Sunny.UI.UIContextMenuStrip()
+        Me.查看成就ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -130,7 +133,7 @@ Partial Class Form1
         '
         Me.MainDialog.AutoEllipsis = True
         Me.MainDialog.BackColor = System.Drawing.Color.Transparent
-        Me.MainDialog.Cursor = System.Windows.Forms.Cursors.Cross
+        Me.MainDialog.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.MainDialog.Font = New System.Drawing.Font("方正像素12", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.MainDialog.ForeColor = System.Drawing.Color.Black
         Me.MainDialog.Image = Global.RandomMakerv6PP.My.Resources.Resources.PtDialog
@@ -152,33 +155,50 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(513, 25)
+        Me.MenuStrip1.Size = New System.Drawing.Size(513, 28)
         Me.MenuStrip1.TabIndex = 5
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         '统计数据ToolStripMenuItem
         '
+        Me.统计数据ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.统计数据ToolStripMenuItem1, Me.ToolStripSeparator5, Me.查看成就ToolStripMenuItem})
+        Me.统计数据ToolStripMenuItem.Image = Global.RandomMakerv6PP.My.Resources.Resources.Bag_奈克洛索尔合体器_Sprite
         Me.统计数据ToolStripMenuItem.Name = "统计数据ToolStripMenuItem"
-        Me.统计数据ToolStripMenuItem.Size = New System.Drawing.Size(77, 21)
-        Me.统计数据ToolStripMenuItem.Text = "统计数据..."
+        Me.统计数据ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F1), System.Windows.Forms.Keys)
+        Me.统计数据ToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
+        Me.统计数据ToolStripMenuItem.Text = "工具"
+        '
+        '统计数据ToolStripMenuItem1
+        '
+        Me.统计数据ToolStripMenuItem1.Name = "统计数据ToolStripMenuItem1"
+        Me.统计数据ToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+        Me.统计数据ToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.统计数据ToolStripMenuItem1.Text = "统计数据"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(177, 6)
         '
         '更多ToolStripMenuItem
         '
         Me.更多ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.更新记录ToolStripMenuItem, Me.关于ToolStripMenuItem})
+        Me.更多ToolStripMenuItem.Image = Global.RandomMakerv6PP.My.Resources.Resources.Bag_遗失物_IV_Sprite
         Me.更多ToolStripMenuItem.Name = "更多ToolStripMenuItem"
-        Me.更多ToolStripMenuItem.Size = New System.Drawing.Size(44, 21)
+        Me.更多ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.F2), System.Windows.Forms.Keys)
+        Me.更多ToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
         Me.更多ToolStripMenuItem.Text = "更多"
         '
         '更新记录ToolStripMenuItem
         '
         Me.更新记录ToolStripMenuItem.Name = "更新记录ToolStripMenuItem"
-        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.更新记录ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.更新记录ToolStripMenuItem.Text = "更新记录"
         '
         '关于ToolStripMenuItem
         '
         Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
-        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.关于ToolStripMenuItem.Text = "关于"
         '
         'FontDialog1
@@ -250,10 +270,10 @@ Partial Class Form1
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripSeparator2, Me.ToolStripLabel3, Me.ToolStripSeparator3, Me.ToolStripLabel4, Me.ToolStripSeparator4, Me.ToolStripLabel5})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 25)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 28)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(87, 361)
+        Me.ToolStrip1.Size = New System.Drawing.Size(87, 358)
         Me.ToolStrip1.TabIndex = 20
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -852,7 +872,7 @@ Partial Class Form1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(17, 146)
+        Me.Label9.Location = New System.Drawing.Point(17, 149)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(73, 20)
         Me.Label9.TabIndex = 22
@@ -895,7 +915,7 @@ Partial Class Form1
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(2, 72)
+        Me.Label13.Location = New System.Drawing.Point(2, 76)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(88, 20)
         Me.Label13.TabIndex = 18
@@ -914,7 +934,7 @@ Partial Class Form1
         'ReDiveP
         '
         Me.ReDiveP.AutoSize = True
-        Me.ReDiveP.Location = New System.Drawing.Point(229, 163)
+        Me.ReDiveP.Location = New System.Drawing.Point(229, 189)
         Me.ReDiveP.Name = "ReDiveP"
         Me.ReDiveP.Size = New System.Drawing.Size(129, 20)
         Me.ReDiveP.TabIndex = 16
@@ -924,7 +944,7 @@ Partial Class Form1
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(47, 109)
+        Me.Label10.Location = New System.Drawing.Point(47, 112)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(43, 20)
         Me.Label10.TabIndex = 14
@@ -1074,6 +1094,12 @@ Partial Class Form1
         Me.UiContextMenuStrip1.Style = Sunny.UI.UIStyle.Colorful
         Me.UiContextMenuStrip1.Text = "删除"
         '
+        '查看成就ToolStripMenuItem
+        '
+        Me.查看成就ToolStripMenuItem.Name = "查看成就ToolStripMenuItem"
+        Me.查看成就ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.查看成就ToolStripMenuItem.Text = "查看成就"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1085,10 +1111,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel3)
         Me.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1208,4 +1234,7 @@ Partial Class Form1
     Friend WithEvents UiColorPicker1 As Sunny.UI.UIColorPicker
     Friend WithEvents Label9 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents 统计数据ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents 查看成就ToolStripMenuItem As ToolStripMenuItem
 End Class

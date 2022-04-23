@@ -1,13 +1,14 @@
-﻿Public NotInheritable Class SplashScreen1
-
+﻿Imports System.Threading
+Public NotInheritable Class SplashScreen1
     Private Sub SplashScreen1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Timer1.Enabled = True
-        Form1.Hide()
-        Form1.Refresh()
+        UiProcessBar1.Value = 10
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Me.Refresh()
+        Form1.Show()
         Timer2.Enabled = True
         Timer1.Enabled = False
         Label1.Text = "Now Loading."
@@ -19,7 +20,6 @@
         Timer3.Enabled = True
         Timer2.Enabled = False
         Label1.Text = "Now Loading.."
-        Form1.Show()
         UiProcessBar1.Value = 66
     End Sub
 

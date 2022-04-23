@@ -11,5 +11,5 @@
 
     Public AchievementCollections(-1) As Achievementcollection
 
-
+    Public TTimes As Integer
 End Class

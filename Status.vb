@@ -35,6 +35,10 @@
         TimesDisplay2.Text = Form1.TimesDisplay.Text
         RoundDisplay2.Text = Form1.RoundDisplay.Text
         Label5.Text = Form1.Statistics.Statistics.Item(a.IndexOf(a.Max))
+        'If Form1.Statistics.Statistics.Count > 7 Then
+        '    Dim ac As New System.Drawing.Size(403, (Form1.Statistics.Statistics.Count - 7) * 25 + 201)
+        '    Chart1.Size = ac
+        'End If
     End Sub
 
 
