@@ -33,6 +33,7 @@ Public Class Form1
     '成就
     Public AC As New Achievements
 
+
     Const cmdtext As String = "Provider=Microsoft.ACE.OLEDB.12.0;data source=Database1.mdb"
 
 
@@ -88,7 +89,7 @@ Public Class Form1
                 ItemSwitch.Checked = True
                 RangeDisplay.Text = Str(dataRange)
                 RepeatSwitch.Enabled = True
-                RepeatSwitch.Checked = Setting.ModeCollections(xr).DoRepeat
+                RepeatSwitch.Active = Setting.ModeCollections(xr).DoRepeat
                 If DeadLocker = True Then
                     Logs.Items.Clear()
                     DialogText = "数据库模式已就绪.等待抽取."
@@ -101,12 +102,12 @@ Public Class Form1
             End If
             TimesDisplay.Text = Str(timepool.Value)
             If Setting.ModeCollections(xr).DoExtreme = True Then
-                ExtremeSwitch.Checked = True
+                ExtremeSwitch.Active = True
                 doextreme = True
                 CoreButton.Enabled = True
                 ExtremeLabel.Visible = True
             Else
-                ExtremeSwitch.Checked = False
+                ExtremeSwitch.Active = False
                 doextreme = False
                 CoreButton.Enabled = True
                 ExtremeLabel.Visible = False
@@ -246,6 +247,7 @@ CX2:
                 '监测范围内是否有可用项
 CX7:
                 datas = nand.Next(0, dataRange)
+
                 If datas > Setting.MaxArea Then GoTo CX7
                 repeat(0) = datas
                 selCell = DataGridView1(1, datas)
@@ -410,12 +412,12 @@ CX6:
             doextreme = True
             ExtremeLabel.Visible = True
             CoreButton.Enabled = True
-            ExtremeSwitch.Checked = True
+            ExtremeSwitch.Active = True
         Else
             doextreme = False
             ExtremeLabel.Visible = False
             CoreButton.Enabled = True
-            ExtremeSwitch.Checked = False
+            ExtremeSwitch.Active = False
         End If
         lock = False
         Call ColorSwitch(xc:=xr)
@@ -493,7 +495,7 @@ CX6:
     '微调范围
 
 
-    Private Sub ExtremeSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles ExtremeSwitch.CheckedChanged
+    Private Sub ExtremeSwitch_CheckedChanged(sender As Object, e As EventArgs)
         If lock = True Then Exit Sub
         donew = True
         If doextreme = False Then
@@ -621,12 +623,12 @@ CX6:
     '载入配置
 
 
-    Private Sub RepeatSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles RepeatSwitch.CheckedChanged
+    Private Sub RepeatSwitch_CheckedChanged(sender As Object, e As EventArgs)
         If lock = True Then Exit Sub
         donew = True
         If dodata = False Then
             MsgBox("警告!该选项仅供数据库模式使用!", vbOKOnly + vbCritical, "提示")
-            RepeatSwitch.Checked = False
+            RepeatSwitch.Active = False
             Exit Sub
         End If
         If dorepeat = False Then

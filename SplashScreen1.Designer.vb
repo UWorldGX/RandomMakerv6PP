@@ -78,9 +78,9 @@ Partial Class SplashScreen1
         Me.Label3.ForeColor = System.Drawing.SystemColors.Window
         Me.Label3.Location = New System.Drawing.Point(8, 82)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(178, 17)
+        Me.Label3.Size = New System.Drawing.Size(173, 17)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Version 6.1.0 ""Judgment Jolt"""
+        Me.Label3.Text = "Version 6.2.0 ""Prime Angels"""
         '
         'UiProcessBar1
         '
@@ -98,6 +98,7 @@ Partial Class SplashScreen1
         Me.UiProcessBar1.TabIndex = 4
         Me.UiProcessBar1.Text = "UiProcessBar1"
         Me.UiProcessBar1.Value = 100
+        Me.UiProcessBar1.ZoomScaleRect = New System.Drawing.Rectangle(0, 0, 0, 0)
         '
         'SplashScreen1
         '

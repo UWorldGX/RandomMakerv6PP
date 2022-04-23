@@ -28,24 +28,11 @@ Partial Class Form4
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.UcWave1 = New HZH_Controls.Controls.UCWave()
         Me.UiDataGridView1 = New Sunny.UI.UIDataGridView()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.UiDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'UcWave1
-        '
-        Me.UcWave1.Location = New System.Drawing.Point(-1, 395)
-        Me.UcWave1.Name = "UcWave1"
-        Me.UcWave1.Size = New System.Drawing.Size(806, 56)
-        Me.UcWave1.TabIndex = 5
-        Me.UcWave1.Text = "UcWave1"
-        Me.UcWave1.WaveColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(77, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.UcWave1.WaveHeight = 30
-        Me.UcWave1.WaveSleep = 50
-        Me.UcWave1.WaveWidth = 200
         '
         'UiDataGridView1
         '
@@ -99,7 +86,6 @@ Partial Class Form4
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.UiDataGridView1)
-        Me.Controls.Add(Me.UcWave1)
         Me.Name = "Form4"
         Me.Text = "Form4"
         CType(Me.UiDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -107,7 +93,6 @@ Partial Class Form4
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents UcWave1 As HZH_Controls.Controls.UCWave
     Friend WithEvents UiDataGridView1 As Sunny.UI.UIDataGridView
     Friend WithEvents BindingSource1 As BindingSource
 End Class

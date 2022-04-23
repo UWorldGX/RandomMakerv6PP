@@ -17,7 +17,7 @@
             ElseIf d > 45000 Then
                 MsgBox("抽取次数过大,可能导致记录显示不全!", vbOKOnly + vbInformation)
             End If
-            ProgressBar1.MaxValue = d
+            ProgressBar1.Maximum = d
         Catch f As InvalidCastException
             MsgBox("无效的数据!", vbOKOnly + vbCritical)
             Exit Sub
@@ -28,8 +28,9 @@
         End If
 
         For cir = 1 To d
-            Dim a As New Random()
-            Call Form1.CoreProgram(a)
+            Dim rng As New Random()
+            Dim nand As New Random(rng.Next())
+            Call Form1.CoreProgram(nand)
             ProgressBar1.Value += 1
         Next
         If UniversalDG2.ShowDialog() = DialogResult.OK Then
