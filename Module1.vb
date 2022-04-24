@@ -36,8 +36,10 @@
 
     Public Sub DoNiuMa(a As Integer, b As Stat)
         If Form1.AC.AchievementCollections(6).IsAchieved = False Then
-            If a = 0 Then Form1.AC.AchievementCollections(6).IsAchieved = True
-            Achieved(Form1.AC.AchievementCollections(6).Name)
+            If a = 0 Then
+                Form1.AC.AchievementCollections(6).IsAchieved = True
+                Achieved(Form1.AC.AchievementCollections(6).Name)
+            End If
         End If
         If Form1.AC.AchievementCollections(7).IsAchieved = False Then
             Dim c As Integer

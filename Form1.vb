@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Text
 Imports System.Drawing.Text
 Imports System.Web.Script.Serialization
+Imports Newtonsoft.Json
 Public Class Form1
 
     '=========定义公用变量=========
@@ -26,7 +27,6 @@ Public Class Form1
     '控制对话框是否为单按钮
     Public JsonWord As String : Public TempMdName As String = ""
     '存储json文本和临时的模式名称
-    Public reader As New JavaScriptSerializer
     Private doless As Boolean
 
     Public Statistics As New Stat
@@ -494,8 +494,7 @@ CX6:
 
     '微调范围
 
-
-    Private Sub ExtremeSwitch_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub ExtremeSwitch_ValueChanged(sender As Object, value As Boolean) Handles ExtremeSwitch.ValueChanged
         If lock = True Then Exit Sub
         donew = True
         If doextreme = False Then
@@ -507,7 +506,9 @@ CX6:
             CoreButton.Enabled = True
             ExtremeLabel.Visible = False
         End If
+
     End Sub
+
     '极限模式开关
 
     Private Sub NumberSwitch_CheckedChanged(sender As Object, e As EventArgs) Handles NumberSwitch.CheckedChanged
@@ -588,7 +589,7 @@ CX6:
                 Dim sr As New StreamReader(fs, Encoding.UTF8)
                 JsonWord = sr.ReadToEnd()
                 sr.Close()
-                Setting = reader.Deserialize(Of Configs)(JsonWord)
+                Setting = JsonConvert.DeserializeObject(Of Configs)(JsonWord)
                 lock = True
                 ModeSelection.Items.Clear()
                 For i As Integer = 0 To Setting.TotalMode - 1
@@ -622,8 +623,7 @@ CX6:
 
     '载入配置
 
-
-    Private Sub RepeatSwitch_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub RepeatSwitch_ValueChanged(sender As Object, value As Boolean) Handles RepeatSwitch.ValueChanged
         If lock = True Then Exit Sub
         donew = True
         If dodata = False Then
@@ -636,7 +636,10 @@ CX6:
         Else
             dorepeat = False
         End If
+
     End Sub
+
+
     '允许重复开关
 
 
@@ -900,7 +903,7 @@ CX6:
         GeneralD()
 
         Dim te As String
-        te = reader.Serialize(AC)
+        te = JsonConvert.SerializeObject(AC)
         If File.Exists("AC.json") Then
             Try
                 File.Delete("AC.json")
@@ -1010,6 +1013,7 @@ CX6:
 
         End Try
     End Sub
+
 
 
 
@@ -1320,7 +1324,7 @@ CX6:
     Public Sub Xs()
         If doless = True Then Exit Sub
         Dim te As String
-        te = reader.Serialize(Setting)
+        te = JsonConvert.SerializeObject(Setting)
         If File.Exists("RMNewConfig.json") Then
             Try
                 File.Delete("RMNewConfig.json")
@@ -1375,11 +1379,11 @@ CX6:
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim sw As New StreamReader("RMNewConfig.json")
         JsonWord = sw.ReadToEnd
-        Setting = reader.Deserialize(Of Configs)(JsonWord)
+        Setting = JsonConvert.DeserializeObject(Of Configs)(JsonWord)
         sw.Close()
         Dim sf As New StreamReader("AC.json")
         JsonWord = sf.ReadToEnd
-        AC = reader.Deserialize(Of Achievements)(JsonWord)
+        AC = JsonConvert.DeserializeObject(Of Achievements)(JsonWord)
         sf.Close()
         MadePreparation()
         '    Dim odc As New OleDbConnection() With {

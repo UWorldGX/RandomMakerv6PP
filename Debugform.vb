@@ -1,7 +1,8 @@
-﻿Public Class DebugForm
+﻿Imports Newtonsoft.Json
+Public Class DebugForm
     Private Sub DebugOutput_Click(sender As Object, e As EventArgs) Handles DebugOutput.Click
         Dim c As String
-        c = Form1.reader.Serialize(Form1.Setting)
+        c = JsonConvert.SerializeObject(Form1.Setting)
         TextBox1.Text = c
     End Sub
 

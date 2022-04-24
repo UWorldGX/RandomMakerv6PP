@@ -23,6 +23,7 @@
         For i As Integer = 1 To Form1.Setting.TotalMode + 1
             ListBox1.Items.Add(Form1.Setting.ModeCollections(i - 1).Name)
         Next
+        Achieved(Form1.AC.AchievementCollections(3).Name)
         DeadLocker = False
     End Sub
     '初始化模式编辑器

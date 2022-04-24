@@ -23,12 +23,12 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MainDialog = New System.Windows.Forms.Label()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -73,11 +73,21 @@ Partial Class Form1
         Me.DoMakesureSwitch = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.timepool = New RandomMakerv6PP.UserControl1()
+        Me.pool = New RandomMakerv6PP.UserControl1()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.ImportButton = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RepeatSwitch = New Sunny.UI.UISwitch()
+        Me.ExtremeSwitch = New Sunny.UI.UISwitch()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Debugselect = New System.Windows.Forms.Button()
+        Me.ItemSwitch = New System.Windows.Forms.RadioButton()
+        Me.NumberSwitch = New System.Windows.Forms.RadioButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PreviewDialog = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -103,16 +113,6 @@ Partial Class Form1
         Me.SaveFileDialog2 = New System.Windows.Forms.SaveFileDialog()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.UiContextMenuStrip1 = New Sunny.UI.UIContextMenuStrip()
-        Me.timepool = New RandomMakerv6PP.UserControl1()
-        Me.pool = New RandomMakerv6PP.UserControl1()
-        Me.NumberSwitch = New System.Windows.Forms.RadioButton()
-        Me.ItemSwitch = New System.Windows.Forms.RadioButton()
-        Me.Debugselect = New System.Windows.Forms.Button()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ExtremeSwitch = New Sunny.UI.UISwitch()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.RepeatSwitch = New Sunny.UI.UISwitch()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -121,12 +121,12 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'MainDialog
@@ -623,6 +623,41 @@ Partial Class Form1
         Me.Button1.Text = "模式编辑器..."
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'timepool
+        '
+        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
+        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.timepool.BlueText = "抽取次数"
+        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.timepool.Location = New System.Drawing.Point(94, 53)
+        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.timepool.Maximum = 7
+        Me.timepool.Minimum = 1
+        Me.timepool.Name = "timepool"
+        Me.timepool.Size = New System.Drawing.Size(417, 51)
+        Me.timepool.TabIndex = 35
+        Me.timepool.Type = 0
+        Me.timepool.Value = 1
+        Me.timepool.Warn = False
+        '
+        'pool
+        '
+        Me.pool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.pool.BackgroundImage = CType(resources.GetObject("pool.BackgroundImage"), System.Drawing.Image)
+        Me.pool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pool.BlueText = "抽取范围"
+        Me.pool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.pool.Location = New System.Drawing.Point(94, 102)
+        Me.pool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.pool.Maximum = 100
+        Me.pool.Minimum = 1
+        Me.pool.Name = "pool"
+        Me.pool.Size = New System.Drawing.Size(417, 51)
+        Me.pool.TabIndex = 37
+        Me.pool.Type = 1
+        Me.pool.Value = 16
+        Me.pool.Warn = False
+        '
         'PictureBox2
         '
         Me.PictureBox2.Image = Global.RandomMakerv6PP.My.Resources.Resources.设置主界面
@@ -684,6 +719,112 @@ Partial Class Form1
         Me.Button5.TabIndex = 25
         Me.Button5.Text = "导出配置"
         Me.Button5.UseVisualStyleBackColor = False
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.RepeatSwitch)
+        Me.GroupBox3.Controls.Add(Me.ExtremeSwitch)
+        Me.GroupBox3.Controls.Add(Me.Label6)
+        Me.GroupBox3.Controls.Add(Me.Label5)
+        Me.GroupBox3.Controls.Add(Me.Debugselect)
+        Me.GroupBox3.Controls.Add(Me.ItemSwitch)
+        Me.GroupBox3.Controls.Add(Me.NumberSwitch)
+        Me.GroupBox3.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox3.Location = New System.Drawing.Point(98, 151)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(373, 92)
+        Me.GroupBox3.TabIndex = 7
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "数据相关"
+        '
+        'RepeatSwitch
+        '
+        Me.RepeatSwitch.ActiveText = ""
+        Me.RepeatSwitch.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RepeatSwitch.InActiveText = ""
+        Me.RepeatSwitch.Location = New System.Drawing.Point(167, 26)
+        Me.RepeatSwitch.MinimumSize = New System.Drawing.Size(1, 1)
+        Me.RepeatSwitch.Name = "RepeatSwitch"
+        Me.RepeatSwitch.Size = New System.Drawing.Size(51, 27)
+        Me.RepeatSwitch.TabIndex = 43
+        Me.RepeatSwitch.Text = "UiSwitch1"
+        Me.RepeatSwitch.ZoomScaleRect = New System.Drawing.Rectangle(0, 0, 0, 0)
+        '
+        'ExtremeSwitch
+        '
+        Me.ExtremeSwitch.ActiveText = ""
+        Me.ExtremeSwitch.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ExtremeSwitch.InActiveText = ""
+        Me.ExtremeSwitch.Location = New System.Drawing.Point(25, 25)
+        Me.ExtremeSwitch.MinimumSize = New System.Drawing.Size(1, 1)
+        Me.ExtremeSwitch.Name = "ExtremeSwitch"
+        Me.ExtremeSwitch.Size = New System.Drawing.Size(51, 27)
+        Me.ExtremeSwitch.TabIndex = 42
+        Me.ExtremeSwitch.Text = "UiSwitch1"
+        Me.ExtremeSwitch.ZoomScaleRect = New System.Drawing.Rectangle(0, 0, 0, 0)
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label6.Location = New System.Drawing.Point(218, 28)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(69, 19)
+        Me.Label6.TabIndex = 41
+        Me.Label6.Text = "允许重复"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label5.Location = New System.Drawing.Point(82, 28)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(69, 19)
+        Me.Label5.TabIndex = 40
+        Me.Label5.Text = "极限模式"
+        '
+        'Debugselect
+        '
+        Me.Debugselect.BackColor = System.Drawing.Color.Transparent
+        Me.Debugselect.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
+        Me.Debugselect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Debugselect.FlatAppearance.BorderSize = 0
+        Me.Debugselect.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Debugselect.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Debugselect.ForeColor = System.Drawing.Color.White
+        Me.Debugselect.Location = New System.Drawing.Point(284, 49)
+        Me.Debugselect.Name = "Debugselect"
+        Me.Debugselect.Size = New System.Drawing.Size(80, 32)
+        Me.Debugselect.TabIndex = 32
+        Me.Debugselect.Text = "Debug"
+        Me.Debugselect.UseVisualStyleBackColor = False
+        Me.Debugselect.Visible = False
+        '
+        'ItemSwitch
+        '
+        Me.ItemSwitch.AutoSize = True
+        Me.ItemSwitch.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ItemSwitch.ForeColor = System.Drawing.Color.Black
+        Me.ItemSwitch.Location = New System.Drawing.Point(179, 58)
+        Me.ItemSwitch.Name = "ItemSwitch"
+        Me.ItemSwitch.Size = New System.Drawing.Size(87, 23)
+        Me.ItemSwitch.TabIndex = 9
+        Me.ItemSwitch.Text = "数据驱动"
+        Me.ItemSwitch.UseVisualStyleBackColor = True
+        '
+        'NumberSwitch
+        '
+        Me.NumberSwitch.AutoSize = True
+        Me.NumberSwitch.Checked = True
+        Me.NumberSwitch.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.NumberSwitch.ForeColor = System.Drawing.Color.Black
+        Me.NumberSwitch.Location = New System.Drawing.Point(43, 58)
+        Me.NumberSwitch.Name = "NumberSwitch"
+        Me.NumberSwitch.Size = New System.Drawing.Size(72, 23)
+        Me.NumberSwitch.TabIndex = 8
+        Me.NumberSwitch.TabStop = True
+        Me.NumberSwitch.Text = "随机数"
+        Me.NumberSwitch.UseVisualStyleBackColor = True
         '
         'Panel3
         '
@@ -854,43 +995,43 @@ Partial Class Form1
         '
         'DataGridView1
         '
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridView1.EnableHeadersVisualStyles = False
         Me.DataGridView1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DataGridView1.Location = New System.Drawing.Point(107, 23)
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer))
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView1.RowTemplate.Height = 23
         Me.DataGridView1.SelectedIndex = -1
         Me.DataGridView1.Size = New System.Drawing.Size(284, 260)
@@ -958,147 +1099,6 @@ Partial Class Form1
         Me.UiContextMenuStrip1.Text = "删除"
         Me.UiContextMenuStrip1.ZoomScaleRect = New System.Drawing.Rectangle(0, 0, 0, 0)
         '
-        'timepool
-        '
-        Me.timepool.BackgroundImage = CType(resources.GetObject("timepool.BackgroundImage"), System.Drawing.Image)
-        Me.timepool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.timepool.BlueText = "抽取次数"
-        Me.timepool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.timepool.Location = New System.Drawing.Point(94, 53)
-        Me.timepool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.timepool.Maximum = 7
-        Me.timepool.Minimum = 1
-        Me.timepool.Name = "timepool"
-        Me.timepool.Size = New System.Drawing.Size(417, 51)
-        Me.timepool.TabIndex = 35
-        Me.timepool.Type = 0
-        Me.timepool.Value = 1
-        Me.timepool.Warn = False
-        '
-        'pool
-        '
-        Me.pool.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.pool.BackgroundImage = CType(resources.GetObject("pool.BackgroundImage"), System.Drawing.Image)
-        Me.pool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pool.BlueText = "抽取范围"
-        Me.pool.Font = New System.Drawing.Font("方正粗圆_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.pool.Location = New System.Drawing.Point(94, 102)
-        Me.pool.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.pool.Maximum = 100
-        Me.pool.Minimum = 1
-        Me.pool.Name = "pool"
-        Me.pool.Size = New System.Drawing.Size(417, 51)
-        Me.pool.TabIndex = 37
-        Me.pool.Type = 1
-        Me.pool.Value = 16
-        Me.pool.Warn = False
-        '
-        'NumberSwitch
-        '
-        Me.NumberSwitch.AutoSize = True
-        Me.NumberSwitch.Checked = True
-        Me.NumberSwitch.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.NumberSwitch.ForeColor = System.Drawing.Color.Black
-        Me.NumberSwitch.Location = New System.Drawing.Point(43, 58)
-        Me.NumberSwitch.Name = "NumberSwitch"
-        Me.NumberSwitch.Size = New System.Drawing.Size(72, 23)
-        Me.NumberSwitch.TabIndex = 8
-        Me.NumberSwitch.TabStop = True
-        Me.NumberSwitch.Text = "随机数"
-        Me.NumberSwitch.UseVisualStyleBackColor = True
-        '
-        'ItemSwitch
-        '
-        Me.ItemSwitch.AutoSize = True
-        Me.ItemSwitch.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ItemSwitch.ForeColor = System.Drawing.Color.Black
-        Me.ItemSwitch.Location = New System.Drawing.Point(179, 58)
-        Me.ItemSwitch.Name = "ItemSwitch"
-        Me.ItemSwitch.Size = New System.Drawing.Size(87, 23)
-        Me.ItemSwitch.TabIndex = 9
-        Me.ItemSwitch.Text = "数据驱动"
-        Me.ItemSwitch.UseVisualStyleBackColor = True
-        '
-        'Debugselect
-        '
-        Me.Debugselect.BackColor = System.Drawing.Color.Transparent
-        Me.Debugselect.BackgroundImage = Global.RandomMakerv6PP.My.Resources.Resources.bton1
-        Me.Debugselect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Debugselect.FlatAppearance.BorderSize = 0
-        Me.Debugselect.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Debugselect.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Debugselect.ForeColor = System.Drawing.Color.White
-        Me.Debugselect.Location = New System.Drawing.Point(284, 49)
-        Me.Debugselect.Name = "Debugselect"
-        Me.Debugselect.Size = New System.Drawing.Size(80, 32)
-        Me.Debugselect.TabIndex = 32
-        Me.Debugselect.Text = "Debug"
-        Me.Debugselect.UseVisualStyleBackColor = False
-        Me.Debugselect.Visible = False
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label5.Location = New System.Drawing.Point(82, 28)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(69, 19)
-        Me.Label5.TabIndex = 40
-        Me.Label5.Text = "极限模式"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("微软雅黑", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label6.Location = New System.Drawing.Point(218, 28)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(69, 19)
-        Me.Label6.TabIndex = 41
-        Me.Label6.Text = "允许重复"
-        '
-        'ExtremeSwitch
-        '
-        Me.ExtremeSwitch.ActiveText = ""
-        Me.ExtremeSwitch.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ExtremeSwitch.InActiveText = ""
-        Me.ExtremeSwitch.Location = New System.Drawing.Point(25, 25)
-        Me.ExtremeSwitch.MinimumSize = New System.Drawing.Size(1, 1)
-        Me.ExtremeSwitch.Name = "ExtremeSwitch"
-        Me.ExtremeSwitch.Size = New System.Drawing.Size(51, 27)
-        Me.ExtremeSwitch.TabIndex = 42
-        Me.ExtremeSwitch.Text = "UiSwitch1"
-        Me.ExtremeSwitch.ZoomScaleRect = New System.Drawing.Rectangle(0, 0, 0, 0)
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.RepeatSwitch)
-        Me.GroupBox3.Controls.Add(Me.ExtremeSwitch)
-        Me.GroupBox3.Controls.Add(Me.Label6)
-        Me.GroupBox3.Controls.Add(Me.Label5)
-        Me.GroupBox3.Controls.Add(Me.Debugselect)
-        Me.GroupBox3.Controls.Add(Me.ItemSwitch)
-        Me.GroupBox3.Controls.Add(Me.NumberSwitch)
-        Me.GroupBox3.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox3.Location = New System.Drawing.Point(98, 151)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(373, 92)
-        Me.GroupBox3.TabIndex = 7
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "数据相关"
-        '
-        'RepeatSwitch
-        '
-        Me.RepeatSwitch.ActiveText = ""
-        Me.RepeatSwitch.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.RepeatSwitch.InActiveText = ""
-        Me.RepeatSwitch.Location = New System.Drawing.Point(167, 26)
-        Me.RepeatSwitch.MinimumSize = New System.Drawing.Size(1, 1)
-        Me.RepeatSwitch.Name = "RepeatSwitch"
-        Me.RepeatSwitch.Size = New System.Drawing.Size(51, 27)
-        Me.RepeatSwitch.TabIndex = 43
-        Me.RepeatSwitch.Text = "UiSwitch1"
-        Me.RepeatSwitch.ZoomScaleRect = New System.Drawing.Rectangle(0, 0, 0, 0)
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -1136,6 +1136,8 @@ Partial Class Form1
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1143,8 +1145,6 @@ Partial Class Form1
         Me.Panel4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
